@@ -1,6 +1,7 @@
 "use client";
 
 import { useHeaderSection } from "@/hooks/use-header-section";
+import Image from "next/image";
 import { useRef, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@workspace/ui/components/button";
@@ -140,9 +141,11 @@ export function PortfolioSection() {
                   className="relative flex h-56 sm:h-72 items-center justify-center overflow-hidden rounded-t-xl p-8 sm:p-10"
                   style={{ background: item.imageBackground }}
                 >
-                  <img
+                  <Image
                     src={item.image || "/placeholder.svg"}
                     alt={`${item.name} project`}
+                    width={640}
+                    height={360}
                     className="max-h-full max-w-full object-contain"
                   />
                 </div>
@@ -150,9 +153,11 @@ export function PortfolioSection() {
                 <div className="flex flex-col h-full p-6 sm:p-8 gap-5 sm:gap-6">
                   <div className="flex items-center gap-3 min-w-0">
                     <div className="flex size-12 sm:size-14 items-center justify-center rounded-full bg-white/10 ring-2 ring-white/20 border border-white/30 overflow-hidden">
-                      <img
+                      <Image
                         src={item.logo || "/placeholder.svg"}
                         alt={`${item.name} logo`}
+                        width={56}
+                        height={56}
                         className="size-full object-contain rounded-full"
                       />
                     </div>
@@ -207,9 +212,11 @@ export function PortfolioSection() {
                         <div className="flex min-w-0 flex-col justify-between p-6 md:p-6 lg:p-7 xl:p-7 2xl:p-8 gap-4 md:gap-5 lg:gap-6">
                           <div className="flex items-center gap-3 min-w-0">
                                 <div className="flex size-11 md:size-12 lg:size-12 items-center justify-center rounded-full bg-white/10 ring-2 ring-white/20 border border-white/30 overflow-hidden">
-                              <img
+                              <Image
                                 src={item.logo || "/placeholder.svg"}
                                 alt={`${item.name} logo`}
+                                width={48}
+                                height={48}
                                 className="size-full object-contain rounded-full"
                               />
                             </div>
@@ -239,9 +246,11 @@ export function PortfolioSection() {
                           className="relative flex h-full items-center justify-center overflow-hidden rounded-br-xl p-8 md:p-10 lg:p-12"
                           style={{ background: item.imageBackground }}
                         >
-                          <img
+                          <Image
                             src={item.image || "/placeholder.svg"}
                             alt={`${item.name} project`}
+                            width={640}
+                            height={360}
                             className="max-h-full max-w-full object-contain"
                           />
                         </div>

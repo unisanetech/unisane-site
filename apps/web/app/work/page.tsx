@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 
 import { PageLayout } from "@/components/layouts/page-layout";
@@ -49,66 +50,70 @@ export default function WorkPage() {
 
               const cardContent = (
                 <>
-                <div
-                  className="relative h-60 w-full overflow-hidden bg-muted/40"
-                  style={{
-                    background:
-                      item.imageBackground ??
-                      "linear-gradient(135deg, rgba(18,19,22,0.35) 0%, rgba(18,19,22,0.7) 100%)",
-                  }}
-                >
-                  <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/35 opacity-80" />
-                  {item.image ? (
-                    <img
-                      src={item.image}
-                      alt={`${item.name} showcase`}
-                      className="relative z-10 h-full w-full object-cover object-top transition-transform duration-300 group-hover:scale-105"
-                    />
-                  ) : (
-                    <div className="relative z-10 flex h-full w-full items-center justify-center bg-muted/30 text-xs font-semibold uppercase tracking-[0.35em] text-muted-foreground">
-                      Preview under NDA
-                    </div>
-                  )}
-                </div>
+                  <div
+                    className="relative h-60 w-full overflow-hidden bg-muted/40"
+                    style={{
+                      background:
+                        item.imageBackground ??
+                        "linear-gradient(135deg, rgba(18,19,22,0.35) 0%, rgba(18,19,22,0.7) 100%)",
+                    }}
+                  >
+                    <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/35 opacity-80" />
+                    {item.image ? (
+                      <Image
+                        src={item.image}
+                        alt={`${item.name} showcase`}
+                        fill
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                        className="relative z-10 h-full w-full object-cover object-top transition-transform duration-300 group-hover:scale-105"
+                      />
+                    ) : (
+                      <div className="relative z-10 flex h-full w-full items-center justify-center bg-muted/30 text-xs font-semibold uppercase tracking-[0.35em] text-muted-foreground">
+                        Preview under NDA
+                      </div>
+                    )}
+                  </div>
 
-                <div className="flex flex-1 flex-col gap-4 p-6 sm:p-7">
-                  <div className="flex items-center gap-3">
-                    <div className="flex size-10 items-center justify-center rounded-full bg-primary/10">
-                      {item.logo ? (
-                        <img
-                          src={item.logo}
-                          alt={`${item.name} logo`}
-                          className="h-6 w-6 object-contain"
-                        />
-                      ) : (
-                        <span className="text-xs font-semibold text-primary">
-                          {initials}
+                  <div className="flex flex-1 flex-col gap-4 p-6 sm:p-7">
+                    <div className="flex items-center gap-3">
+                      <div className="flex size-10 items-center justify-center rounded-full bg-primary/10">
+                        {item.logo ? (
+                          <Image
+                            src={item.logo}
+                            alt={`${item.name} logo`}
+                            width={24}
+                            height={24}
+                            className="h-6 w-6 object-contain"
+                          />
+                        ) : (
+                          <span className="text-xs font-semibold text-primary">
+                            {initials}
+                          </span>
+                        )}
+                      </div>
+                      <div className="min-w-0">
+                        <h2 className="text-lg font-semibold tracking-tight text-foreground sm:text-xl">
+                          {item.name}
+                        </h2>
+                        <p className="text-xs text-muted-foreground">{displayUrl}</p>
+                      </div>
+                    </div>
+
+                    <p className="text-sm text-muted-foreground leading-relaxed sm:text-base">
+                      {summaryText}
+                    </p>
+
+                    <div className="mt-auto flex flex-wrap gap-2">
+                      {services.slice(0, 3).map((service) => (
+                        <span
+                          key={`${item.id}-${service}`}
+                          className="inline-flex items-center rounded-full border border-border/60 px-3 py-1 text-xs font-medium text-muted-foreground transition-colors group-hover:border-primary/30 group-hover:text-foreground"
+                        >
+                          {service}
                         </span>
-                      )}
-                    </div>
-                    <div className="min-w-0">
-                      <h2 className="text-lg font-semibold tracking-tight text-foreground sm:text-xl">
-                        {item.name}
-                      </h2>
-                      <p className="text-xs text-muted-foreground">{displayUrl}</p>
+                      ))}
                     </div>
                   </div>
-
-                  <p className="text-sm text-muted-foreground leading-relaxed sm:text-base">
-                    {summaryText}
-                  </p>
-
-                  <div className="mt-auto flex flex-wrap gap-2">
-                    {services.slice(0, 3).map((service) => (
-                      <span
-                        key={`${item.id}-${service}`}
-                        className="inline-flex items-center rounded-full border border-border/60 px-3 py-1 text-xs font-medium text-muted-foreground transition-colors group-hover:border-primary/30 group-hover:text-foreground"
-                      >
-                        {service}
-                      </span>
-                    ))}
-                  </div>
-                </div>
                 </>
               );
 

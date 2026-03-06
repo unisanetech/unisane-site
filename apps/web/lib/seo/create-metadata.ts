@@ -180,8 +180,12 @@ export function createPageMetadata(
       : `/${canonicalPath}`;
   const absoluteCanonical = toAbsolute(canonical);
 
-  const { canonical: _ignoredCanonical, ...otherAlternates } =
-    entry.alternates ?? {};
+  const otherAlternates = entry.alternates
+    ? { ...entry.alternates }
+    : undefined;
+  if (otherAlternates) {
+    delete otherAlternates.canonical;
+  }
 
   const ogImages = normaliseOgImages(
     entry.openGraph?.images,
