@@ -7,7 +7,7 @@
 - Owner: `architecture-program`
 - Scope: `core/program/findings`
 - Canonical: `yes`
-- Last Updated: `2026-04-20`
+- Last Updated: `2026-07-24`
 - Review Cycle: `per key change`
 - Related Docs:
   - `docs/core/program/findings/registry.md`
@@ -15,11 +15,14 @@
   - `docs/core/program/execution/archive/P77-W2.md`
   - `docs/architecture/08-ui-application-architecture.md`
   - `docs/core/ssot/10-ui-application-architecture-baseline.md`
+  - `docs/core/ssot/13-unisane-ops-product-architecture-baseline.md`
+  - `docs/core/program/plans/unisane-ops-product-architecture-and-extraction-plan.md`
   - `unisane-platforms/apps/data-entry-lm/config/ui/metadata.ts`
   - `unisane-platforms/apps/invoice-platform/src/support/metadata/invoice-region-metadata.ts`
 
 ## Changelog
 
+- `2026-07-24`: Split the remaining destination explicitly: reusable SEO helpers converge into `@unisane/web-runtime/seo`, while persistent public URL, slug, redirect, and alias ownership remains a separate Framework capability.
 - `2026-04-20`: Archived `P77-W2` after the invoice-platform adoption slice verified cleanly. Both `data-entry-lm` and `invoice-platform` now lower metadata through `@unisane/web-seo`, both apps ship `robots.ts` plus `sitemap.ts`, `invoice-platform` preserves region-aware canonicals and alternates through the shared contract, and private auth/dashboard route families now use the same noindex helper path. The finding stays open because the broader cross-app adoption lane, starter defaults, and the future `@unisane/public-urls` capability are still queued.
 - `2026-04-20`: Archived `P77-W1` after the proving slice verified cleanly. `@unisane/web-seo` now exists, `data-entry-lm` uses the shared typed metadata config plus public/private helper wrappers, `robots.ts` and `sitemap.ts` are live there, and the home page ships the bounded JSON-LD baseline. Opened `P77-W2` for the next bounded slice: migrate `invoice-platform` onto the shared toolkit, preserve its region-aware alternates contract, and keep redirects/slug persistence out of scope.
 - `2026-04-20`: Opened after the cross-app SEO architecture review. The repo still has fragmented metadata ownership, no shared robots/sitemap/canonical/Open Graph/Twitter/JSON-LD toolkit, no consistent public-vs-private indexing policy, and no bounded future path for redirects, slug history, or canonical public URL identity. Activated the paired strategy plan and opened `P77-W1` as the first proving slice.
@@ -53,7 +56,7 @@ If this gap stays open:
 
 ## Fix Plan
 
-1. Build one shared toolkit package at `unisane/packages/foundation/web-seo` with the public import `@unisane/web-seo`.
+1. Preserve the current `@unisane/web-seo` behavior while converging its reusable runtime helpers into `@unisane/web-runtime/seo` through the Ops extraction plan.
 2. Keep app-owned defaults in `config/ui/metadata.ts` and app-specific helpers under `src/support/metadata/**`.
 3. Prove the pattern in `data-entry-lm` by converging root/public/private metadata, adding `robots.ts`, adding `sitemap.ts`, and setting truthful canonical metadata for the public marketing routes.
 4. Use `invoice-platform` as the second proof so the shared API covers both the simple single-site case and the region-aware public-site case.
