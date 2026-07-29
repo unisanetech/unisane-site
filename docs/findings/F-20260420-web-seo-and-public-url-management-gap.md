@@ -1,24 +1,17 @@
+---
+id: 'F-dab91fc12e24'
+owner: 'unisane'
+scope: workspace
+role: finding
+lifecycle: active
+authority: supporting
+provenance: accepted
+view: current
+severity: SHOULD
+status: in-progress
+---
+
 # F-20260420-web-seo-and-public-url-management-gap: Shared Web SEO And Public URL Management Gap
-
-## Metadata
-
-- Doc ID: `F-20260420-web-seo-and-public-url-management-gap`
-- Status: `active`
-- Owner: `architecture-program`
-- Scope: `core/program/findings`
-- Canonical: `yes`
-- Last Updated: `2026-07-24`
-- Review Cycle: `per key change`
-- Related Docs:
-  - `docs/core/program/findings/registry.md`
-  - `docs/core/program/plans/framework-web-seo-and-public-url-management-plan.md`
-  - `docs/core/program/execution/archive/P77-W2.md`
-  - `docs/architecture/08-ui-application-architecture.md`
-  - `docs/core/ssot/10-ui-application-architecture-baseline.md`
-  - `docs/core/ssot/13-unisane-ops-product-architecture-baseline.md`
-  - `docs/core/program/plans/unisane-ops-product-architecture-and-extraction-plan.md`
-  - `unisane-platforms/apps/data-entry-lm/config/ui/metadata.ts`
-  - `unisane-platforms/apps/invoice-platform/src/support/metadata/invoice-region-metadata.ts`
 
 ## Changelog
 
@@ -74,5 +67,5 @@ If this gap stays open:
 
 ## Linked Docs
 
-1. `docs/core/program/plans/framework-web-seo-and-public-url-management-plan.md`
-2. `docs/core/program/execution/archive/P77-W2.md`
+1. `docs/work/archive/plans/framework-web-seo-and-public-url-management-plan.md`
+2. `docs/work/archive/tasks/P77-W2.md`
