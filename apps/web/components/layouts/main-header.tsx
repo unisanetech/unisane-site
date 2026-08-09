@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { useState } from 'react';
 import { Menu, X } from 'lucide-react';
-import { Button } from '@workspace/ui/components/button';
+import { Button } from '@/components/ui/button';
 import { useHeaderStore } from '@/stores/header-store';
 import { Logo } from '@/components/shared/logo';
 import { ThemeToggle } from '@/components/shared/theme-toggle';

@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "sourceRepository": "umbrella:dev",
+  "sourceCommit": "e3cb9c768c1b3b96c059269b2a68d0db1624b9bc",
+  "sourcePaths": [
+    "unisane-landing/"
+  ],
+  "renames": [
+    {
+      "from": "unisane-landing/",
+      "to": ""
+    }
+  ],
+  "filter": {
+    "tool": "git-filter-repo",
+    "version": "a40bce548d2c",
+    "arguments": [
+      "--force",
+      "--refs",
+      "refs/heads/main",
+      "--path",
+      "unisane-landing/",
+      "--path-rename",
+      "unisane-landing/:"
+    ]
+  },
+  "tags": {
+    "imported": [],
+    "rationale": "The audited Site history has no Site-owned tags."
+  }
+}

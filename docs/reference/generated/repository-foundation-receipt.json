@@ -1,0 +1,168 @@
+{
+  "contentDigest": "ac16275ec873d5860a3266df047a4d91664231cd266f2138e2ee181155e909fe",
+  "externalMutations": [],
+  "files": [
+    {
+      "path": ".editorconfig",
+      "sha256": "3a151560c443f6fe8a734313554126e8625ff1ae0642d44115f9bd097b873390"
+    },
+    {
+      "path": ".gitattributes",
+      "sha256": "a2cbaf17cba8b97c8ad37789cb2d8d4220d40b97469495607cf5b082faaef134"
+    },
+    {
+      "path": ".gitignore",
+      "sha256": "a6ca78af27de1794ce07accb9f7b580a9207412609d1e7902f480b38b81584e5"
+    },
+    {
+      "path": ".node-version",
+      "sha256": "55ce66383dffcaf804e6d3b03993b0d332cb5d7c38e26e9f92fb78ab040dc70c"
+    },
+    {
+      "path": "AGENTS.md",
+      "sha256": "2aafbd00deb84c7f35aa1e3a8185c24a9f02522a40749eb355ceee94ab9c8cca"
+    },
+    {
+      "path": "docs/00-start-here.md",
+      "sha256": "aeb47f6463a0065cf6adb844ef9a32ed70d04abe7a2840fea0240f605da95c3c"
+    },
+    {
+      "path": "eslint.config.mjs",
+      "sha256": "9f29a402bf3efb12681e6f11c8857945c526ab0e450053761eae596c474e8b2b"
+    },
+    {
+      "path": "package.json",
+      "sha256": "67718a1ff345ae01c7b1035c0a8ff7efbf2301f7415ff74ed5439c64f31d27bf"
+    },
+    {
+      "path": "pnpm-lock.yaml",
+      "sha256": "ed2dc02ee73028a149cbd4823dbcdbb84cdbe7bef85f06c0e09978335592f4ae"
+    },
+    {
+      "path": "pnpm-workspace.yaml",
+      "sha256": "60ce4d1dbf137701a4683d171391c51662700c2f3e32a7caab8b2efc22540e65"
+    },
+    {
+      "path": "prettier.config.mjs",
+      "sha256": "e4a363b17cdc1af850055f9cea70d30caaefc9de140ce4553204b03703f3b7fe"
+    },
+    {
+      "path": "README.md",
+      "sha256": "82abdb156c9e98b6510b4801f65f59428055e8e2ee43660d9ff4ab24cad40a35"
+    },
+    {
+      "path": "SECURITY.md",
+      "sha256": "44676ce066c2763e8d20fe472aba05cbea49a25c9c590ac99d9fb7fba81975a1"
+    },
+    {
+      "path": "skopos.config.yaml",
+      "sha256": "ab9db21b231d3c58aee1c8029cee9336c876169c767fff6a9130b8742a2c83c9"
+    },
+    {
+      "path": "tools/skopos/scopes.yaml",
+      "sha256": "cf129734c315e363dc39ec4938c25d3bc74be25e6bc54b54d72613a109cd12fd"
+    },
+    {
+      "path": "tsconfig.json",
+      "sha256": "41e577f706f8710c62f7510eb0192e788d741b06c129e5be98e72253fce27a63"
+    },
+    {
+      "path": "turbo.json",
+      "sha256": "3bb5eadd59644b82a69623b1d467f278487ee23ad4dcd1a2dc4e16a30e167e1d"
+    },
+    {
+      "path": "vitest.config.mjs",
+      "sha256": "9261e391f5ab9d56def583d66e8eec5b25b52122f46f2c6056c72b8abf61d448"
+    }
+  ],
+  "gates": {
+    "foundation": {
+      "allowed": true,
+      "blockers": [],
+      "declared": "ready"
+    },
+    "localShadow": {
+      "allowed": false,
+      "blockers": [],
+      "declared": "blocked"
+    },
+    "productionDeployment": {
+      "allowed": false,
+      "blockers": [
+        {
+          "concern": "deployment",
+          "path": "distribution.deployment",
+          "state": "unresolved"
+        },
+        {
+          "concern": "security",
+          "path": "governance.security",
+          "state": "unresolved"
+        }
+      ],
+      "declared": "blocked"
+    },
+    "publicRelease": {
+      "allowed": false,
+      "blockers": [
+        {
+          "concern": "legal",
+          "path": "legal.assetRights",
+          "state": "unapproved"
+        },
+        {
+          "concern": "legal",
+          "path": "legal.contributors",
+          "state": "unapproved"
+        },
+        {
+          "concern": "legal",
+          "path": "legal.license",
+          "state": "unapproved"
+        },
+        {
+          "concern": "legal",
+          "path": "legal.notice",
+          "state": "unapproved"
+        },
+        {
+          "concern": "legal",
+          "path": "legal.publicDistribution",
+          "state": "unapproved"
+        }
+      ],
+      "declared": "blocked"
+    },
+    "remoteAuthority": {
+      "allowed": false,
+      "blockers": [
+        {
+          "concern": "authority",
+          "path": "authority.target",
+          "state": "unresolved"
+        },
+        {
+          "concern": "codeowners",
+          "path": "governance.codeowners",
+          "state": "unresolved"
+        },
+        {
+          "concern": "security",
+          "path": "governance.security",
+          "state": "unresolved"
+        },
+        {
+          "concern": "recovery",
+          "path": "ownership.recovery",
+          "state": "unresolved"
+        }
+      ],
+      "declared": "blocked"
+    }
+  },
+  "manifestDigest": "66ba7ea6c2d408bceae58b0e81cb3c7215f1fc5e04bbae77cdcb88665d5399e3",
+  "profile": "public-site",
+  "profileDigest": "20ac761b45c7e4ccf26855930b182b26e358e0bdfe42e260654ea3cd507b4981",
+  "repository": "unisane-site",
+  "schemaVersion": 1
+}

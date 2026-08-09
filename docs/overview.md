@@ -18,11 +18,11 @@ publication gateway, not writable product or package truth.
 
 ## Current State
 
-At umbrella commit `8dcbadbc556476dfb8866f819400fbb884dc9827`, all candidate Site
-source remains under `unisane-landing/**`. No final `unisane-site/**` staging root,
-standalone repository, remote, authority cutover, or approved public distribution
-exists. The repository-system manifest reports the foundation gate ready and every
-later Site gate blocked.
+This local standalone candidate is filtered from umbrella commit
+`e3cb9c768c1b3b96c059269b2a68d0db1624b9bc`. The historical
+`unisane-landing/**` path is renamed to repository root, the approved public-site
+foundation is materialized, and the candidate has no remote. The umbrella `dev` branch
+remains the only writable Site authority.
 
 The authoritative tree now removes the generic template README identity, the simulated
 onboarding route/form/success path, every CTA to that route, unapproved contact/social/
@@ -30,10 +30,15 @@ legal destinations, empty scaffolds, and copied UI components that have no impor
 from the retained routes. A dependency-free Site-local check prevents those behaviors
 and broken static internal targets from returning.
 
-This source-safety floor does not make the tree extractable. The remaining Site content,
-brand surfaces and assets are retained behind owner/rights blockers, while the local
-`@workspace/ui` source alias, package/workspace/tooling/lockfile state, and every legal,
-security, operations, deployment, domain and public-release gate remain unresolved.
+The standalone target collapses the three used local UI files into app-owned source,
+removes the generic package/config shells, removes every `@workspace/*` identity and
+source alias, and owns one Node 24.13.0 / pnpm 10.26.0 workspace and lockfile. Clean
+install, source-safety, typecheck, lint, test, and production build proof is local only.
+
+The remaining Site content, brand surfaces, and assets stay behind owner/rights blockers.
+Accessibility, SEO, performance, preview/deployment, full public-history review,
+target-local Skopos adoption activation, legal, security, operations, domain, remote,
+public-release, and production-authority gates remain unresolved.
 
 ## Target Relationship
 

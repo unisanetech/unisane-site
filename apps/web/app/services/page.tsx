@@ -13,7 +13,7 @@ import {
 
 import { createPageMetadata } from "@/lib/seo";
 import { PageLayout } from "@/components/layouts/page-layout";
-import { cn } from "@workspace/ui/lib/utils";
+import { cn } from "@/lib/utils";
 
 type Service = {
   title: string;

@@ -5,7 +5,7 @@ import Link from "next/link";
 import { PageLayout } from "@/components/layouts/page-layout";
 import { PORTFOLIO_HIGHLIGHTS } from "@/lib/content/portfolio";
 import { createPageMetadata } from "@/lib/seo";
-import { cn } from "@workspace/ui/lib/utils";
+import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = createPageMetadata("work");
 

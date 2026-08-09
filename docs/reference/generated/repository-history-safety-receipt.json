@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "commitCount": 12,
+  "mergeCommitCount": 0,
+  "authorCount": 1,
+  "blobCount": 174,
+  "totalBlobBytes": 13921749,
+  "binaryBlobCount": 21,
+  "largeBlobs": [
+    {
+      "object": "8f14076ad981f2e4f3047660abff20e598d2293a",
+      "path": "apps/web/public/images/portfolio/billquest.png",
+      "bytes": 1646547
+    },
+    {
+      "object": "961da92f1bb3e1569ef0fd7f802023d22d38a8b0",
+      "path": "apps/web/public/images/portfolio/rhythmo.png",
+      "bytes": 2666949
+    },
+    {
+      "object": "24d598caa3d031c59c89b71defba90b8898eb12e",
+      "path": "apps/web/public/images/portfolio/zipper.png",
+      "bytes": 1989375
+    },
+    {
+      "object": "481b92133e10d82e3de94da89678ff1ceb866da2",
+      "path": "apps/web/public/images/proccess/design-and-architect.png",
+      "bytes": 1065945
+    },
+    {
+      "object": "2750c3345a183f88baba777a7b21af628b488d5c",
+      "path": "apps/web/public/images/proccess/discover-and-align.png",
+      "bytes": 1074710
+    }
+  ],
+  "highConfidenceSecretCandidateCount": 0,
+  "sensitivePathCandidateCount": 0,
+  "result": "pass"
+}

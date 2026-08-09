@@ -1,11 +1,12 @@
 import path from 'node:path';
-import process from 'node:process';
+import { fileURLToPath } from 'node:url';
+
+const workspaceRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  transpilePackages: ['@workspace/ui'],
   turbopack: {
-    root: path.join(process.cwd(), '..', '..', '..'),
+    root: workspaceRoot,
   },
 };
 

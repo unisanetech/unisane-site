@@ -1,22 +1,33 @@
-# Unisane Site
+# unisane-site
 
-`unisane-landing/**` is the current authoritative umbrella source for the candidate
-future `unisane-site` repository. It is not a standalone repository or deployment
-authority, and no extraction or public release is authorized from this directory.
+Repository-local foundation for company-site.
 
-Start with [the Site Memory router](docs/00-start-here.md). The
-[repository-readiness contract](docs/architecture/00-repository-readiness-contract.md)
-defines the unresolved dependency, tooling, legal, asset, content, security, and
-operational gates.
+This materialized foundation is target-owned and has no runtime/build dependency on Unisane Infrastructure or sibling repositories. It does not itself establish remote, release, deployment, legal, or agent-ready authority.
 
-Run the source-safety floor with:
+This local repository is a non-authoritative review candidate derived from umbrella
+commit `e3cb9c768c1b3b96c059269b2a68d0db1624b9bc`. It has no remote. The umbrella
+`dev` branch remains the writable Site authority until a separately approved cutover.
 
-```bash
-pnpm run check:source-safety
+## Local verification
+
+```sh
+corepack pnpm install --frozen-lockfile
+corepack pnpm test
+corepack pnpm typecheck
+corepack pnpm lint
+corepack pnpm build
 ```
 
-The check is deliberately narrow. It prevents the removed simulated intake behavior,
-unapproved contact destinations, broken static internal targets, missing referenced
-assets, and new sibling-repository dependency locators from returning. It does not
-claim the final install, build, UI-package, lockfile, CI, accessibility, SEO,
-performance, deployment, or public-release gates are ready.
+## Declared blockers
+
+- remoteAuthority: authority.target (unresolved)
+- remoteAuthority: governance.codeowners (unresolved)
+- remoteAuthority: governance.security (unresolved)
+- remoteAuthority: ownership.recovery (unresolved)
+- publicRelease: legal.assetRights (unapproved)
+- publicRelease: legal.contributors (unapproved)
+- publicRelease: legal.license (unapproved)
+- publicRelease: legal.notice (unapproved)
+- publicRelease: legal.publicDistribution (unapproved)
+- productionDeployment: distribution.deployment (unresolved)
+- productionDeployment: governance.security (unresolved)

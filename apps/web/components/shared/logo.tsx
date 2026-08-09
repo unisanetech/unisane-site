@@ -1,7 +1,7 @@
 "use client";
 
 import type { SVGProps } from "react";
-import { cn } from "@workspace/ui/lib/utils";
+import { cn } from "@/lib/utils";
 
 type LogoProps = Omit<SVGProps<SVGSVGElement>, "width" | "height"> & {
   size?: number | string;

@@ -114,12 +114,8 @@ const moduleFileSet = new Set(moduleFiles);
 
 const resolveOwnedImport = (from, specifier) => {
   let base;
-  if (specifier === '@workspace/ui/globals.css') {
-    base = join(siteRoot, 'packages', 'ui', 'src', 'styles', 'globals.css');
-  } else if (specifier.startsWith('@/')) {
+  if (specifier.startsWith('@/')) {
     base = join(webRoot, specifier.slice(2));
-  } else if (specifier.startsWith('@workspace/ui/')) {
-    base = join(siteRoot, 'packages', 'ui', 'src', specifier.slice('@workspace/ui/'.length));
   } else if (specifier.startsWith('.')) {
     base = join(dirname(from), specifier);
   } else {
@@ -139,10 +135,7 @@ for (const path of moduleFiles) {
     ...source.matchAll(/\bimport\s+(?:\(\s*)?["']([^"']+)["']/g),
   ].map((match) => match[1]);
   const ownedSpecifiers = specifiers.filter(
-    (specifier) =>
-      specifier.startsWith('.') ||
-      specifier.startsWith('@/') ||
-      specifier.startsWith('@workspace/ui/'),
+    (specifier) => specifier.startsWith('.') || specifier.startsWith('@/'),
   );
   const resolvedImports = ownedSpecifiers.map((specifier) => ({
     specifier,
@@ -173,8 +166,7 @@ const runtimeModules = moduleFiles.filter(
     path.startsWith(join(webRoot, 'components')) ||
     path.startsWith(join(webRoot, 'hooks')) ||
     path.startsWith(join(webRoot, 'lib')) ||
-    path.startsWith(join(webRoot, 'stores')) ||
-    path.startsWith(join(siteRoot, 'packages', 'ui', 'src')),
+    path.startsWith(join(webRoot, 'stores')),
 );
 
 for (const path of runtimeModules) {
@@ -184,10 +176,12 @@ for (const path of runtimeModules) {
 }
 
 const dependencyFiles = walk(siteRoot).filter((path) =>
-  /(?:package\.json|tsconfig(?:\.[^/]+)?\.json|\.npmrc)$/.test(path),
+  /(?:package\.json|pnpm-(?:lock|workspace)\.yaml|tsconfig(?:\.[^/]+)?\.json|next\.config\.mjs|\.npmrc)$/.test(
+    path,
+  ),
 );
 const forbiddenDependencyLocator =
-  /(?:"(?:file|link|github):|git\+|\.\.\/(?:\.\.\/)*unisane-(?:infrastructure|ops|platforms|pro|ui)(?:\/|"))/;
+  /(?:@workspace\/|workspace:|"(?:file|link|github):|git\+|\.\.\/(?:\.\.\/)*unisane-(?:infrastructure|ops|platforms|pro|ui)(?:\/|"))/;
 
 for (const path of dependencyFiles) {
   if (forbiddenDependencyLocator.test(readFileSync(path, 'utf8'))) {

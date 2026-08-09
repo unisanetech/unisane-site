@@ -1,29 +1,28 @@
 {
-  "name": "unisane",
-  "version": "0.0.1",
+  "description": "company-site repository workspace",
+  "devDependencies": {
+    "eslint": "9.39.2",
+    "prettier": "3.6.2",
+    "turbo": "2.6.3",
+    "typescript": "5.9.2",
+    "vitest": "4.0.16"
+  },
+  "engines": {
+    "node": ">=24.13.0"
+  },
+  "name": "unisane-site",
+  "packageManager": "pnpm@10.26.0",
   "private": true,
   "scripts": {
-    "build": "turbo build",
-    "dev": "turbo dev",
-    "lint": "turbo lint",
-    "test": "pnpm run check:source-safety",
+    "build": "turbo run build",
+    "check:history-safety": "node scripts/check-history-safety.mjs",
+    "check:repository-boundary": "node scripts/check-repository-boundary.mjs",
     "check:source-safety": "node scripts/check-source-safety.mjs",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\""
+    "dev": "pnpm --filter @unisane-site/web dev",
+    "lint": "turbo run lint",
+    "start": "pnpm --filter @unisane-site/web start",
+    "test": "turbo run test",
+    "typecheck": "turbo run typecheck"
   },
-  "devDependencies": {
-    "@workspace/eslint-config": "workspace:*",
-    "@workspace/typescript-config": "workspace:*",
-    "prettier": "^3.6.2",
-    "turbo": "^2.5.5",
-    "typescript": "5.7.3"
-  },
-  "packageManager": "pnpm@10.4.1",
-  "engines": {
-    "node": ">=20"
-  },
-  "dependencies": {
-    "motion": "^12.23.24",
-    "react-icons": "^5.5.0",
-    "zustand": "^5.0.8"
-  }
+  "version": "0.0.0"
 }

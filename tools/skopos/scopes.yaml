@@ -1,0 +1,16 @@
+schemaVersion: 1
+scopes:
+  - id: workspace
+    title: "unisane-site"
+    kind: workspace
+    path: .
+    memoryRoot: docs
+    codeRoots:
+      - .
+    parent: null
+    profile: "public-site"
+    dependsOn: []
+    owners:
+      - "site-maintainers"
+    aliases:
+      - root

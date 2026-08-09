@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 
-import "@workspace/ui/globals.css";
+import "./globals.css";
 import { Providers } from "@/components/providers";
 import { createBaseMetadata } from "@/lib/seo";
 import { SiteHeader } from "@/components/layouts/main-header";

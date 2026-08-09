@@ -4,7 +4,7 @@ import { useHeaderSection } from '@/hooks/use-header-section';
 import Image from 'next/image';
 import { useRef, useState } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
-import { Button } from '@workspace/ui/components/button';
+import { Button } from '@/components/ui/button';
 import { PORTFOLIO_HIGHLIGHTS } from '@/lib/content/portfolio';
 
 const getDisplayUrl = (url: string) => url.replace(/^https?:\/\//, '').replace(/\/$/, '');

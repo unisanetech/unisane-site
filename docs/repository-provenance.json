@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "sourceRepository": "umbrella:dev",
+  "sourceCommit": "e3cb9c768c1b3b96c059269b2a68d0db1624b9bc",
+  "filterDigest": "8b26eb576f5d0313412b869360cb4ca76afca426cf8f3f48a714034c26b1e347",
+  "commitMapDigest": "9811632e297184cdef3e0463add4f952d4eb7aa57cb24e13b55d743404544e7f",
+  "fileInventoryDigest": "ebe4e27807a1fea11afc74491f46cc3438e0beff447000b6d762d3ed995289e1",
+  "zeroResidueDigest": "22de4b994ef189d9cbf890d5fc31a149dfd5ff89e393d379e9a013edf5be4969"
+}

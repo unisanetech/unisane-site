@@ -1,9 +1,17 @@
-import { nextJsConfig } from "@workspace/eslint-config/next-js"
+import nextVitals from "eslint-config-next/core-web-vitals"
 
 /** @type {import("eslint").Linter.Config} */
-export default [
+const config = [
   {
     ignores: [".next/**"],
   },
-  ...nextJsConfig,
+  ...nextVitals,
+  {
+    rules: {
+      "react-hooks/refs": "off",
+      "react-hooks/set-state-in-effect": "off",
+    },
+  },
 ]
+
+export default config
