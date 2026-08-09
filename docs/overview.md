@@ -35,6 +35,14 @@ removes the generic package/config shells, removes every `@workspace/*` identity
 source alias, and owns one Node 24.13.0 / pnpm 10.26.0 workspace and lockfile. Clean
 install, source-safety, typecheck, lint, test, and production build proof is local only.
 
+The extraction object database was reduced from 110,009 stored objects to the 341
+objects reachable at the reviewed cleanup checkpoint, and the dangling
+`refs/remotes/origin/HEAD` residue was removed. The repo-local boundary check now fails
+on configured remotes, remote-tracking refs, invalid or dangling refs, and Git
+connectivity/integrity errors. The committed filtered-history checkpoint receipt covers
+the 12 imported commits; `pnpm check:history-safety` remains the live authority for all
+history reachable from the current local refs.
+
 The remaining Site content, brand surfaces, and assets stay behind owner/rights blockers.
 Accessibility, SEO, performance, preview/deployment, full public-history review,
 target-local Skopos adoption activation, legal, security, operations, domain, remote,

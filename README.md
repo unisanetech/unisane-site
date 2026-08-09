@@ -12,6 +12,8 @@ commit `e3cb9c768c1b3b96c059269b2a68d0db1624b9bc`. It has no remote. The umbrell
 
 ```sh
 corepack pnpm install --frozen-lockfile
+corepack pnpm check:repository-boundary
+corepack pnpm check:history-safety
 corepack pnpm test
 corepack pnpm typecheck
 corepack pnpm lint

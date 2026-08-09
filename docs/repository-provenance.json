@@ -5,5 +5,10 @@
   "filterDigest": "8b26eb576f5d0313412b869360cb4ca76afca426cf8f3f48a714034c26b1e347",
   "commitMapDigest": "9811632e297184cdef3e0463add4f952d4eb7aa57cb24e13b55d743404544e7f",
   "fileInventoryDigest": "ebe4e27807a1fea11afc74491f46cc3438e0beff447000b6d762d3ed995289e1",
-  "zeroResidueDigest": "22de4b994ef189d9cbf890d5fc31a149dfd5ff89e393d379e9a013edf5be4969"
+  "filteredTip": "310d9cb98a2f5303cbfe46e499652719eed697d8",
+  "filteredHistoryCheckpointReceipt": "docs/reference/generated/repository-filtered-history-checkpoint-receipt.json",
+  "extractionIntegrityReceipt": "docs/reference/generated/repository-extraction-integrity-receipt.json",
+  "liveHistoryAuthority": "pnpm check:history-safety",
+  "liveBoundaryAndIntegrityAuthority": "pnpm check:repository-boundary",
+  "zeroResidueDigest": "5625bbd9fbc8d683bdbf3f77139625b5b5e2d12187d57a4b6d1b51300aaa4389"
 }

@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "receiptKind": "extraction-object-hygiene-checkpoint",
+  "scope": "candidate-head-before-integrity-correction",
+  "candidateHead": "954f86a505f8f94cc7626142c1d0422c4d4782c8",
+  "before": {
+    "configuredRemoteCount": 0,
+    "remoteTrackingRefResidue": [
+      "refs/remotes/origin/HEAD -> refs/remotes/origin/dev (absent)"
+    ],
+    "looseObjectCount": 96,
+    "packedObjectCount": 109913,
+    "totalStoredObjectCount": 110009,
+    "packSizeKiB": 306618,
+    "reachable": {
+      "commitCount": 13,
+      "treeCount": 112,
+      "blobCount": 216,
+      "totalObjectCount": 341
+    },
+    "derivedUnreachableObjectCount": 109668,
+    "fsckResult": "fail-invalid-dangling-remote-tracking-ref-and-unreachable-residue"
+  },
+  "cleanup": {
+    "deletedRef": "refs/remotes/origin/HEAD",
+    "commands": [
+      "git symbolic-ref --delete refs/remotes/origin/HEAD",
+      "git reflog expire --expire=now --all",
+      "git repack -Ad",
+      "git prune --expire=now",
+      "git repack -Ad"
+    ]
+  },
+  "afterCleanup": {
+    "configuredRemoteCount": 0,
+    "remoteTrackingRefCount": 0,
+    "looseObjectCount": 0,
+    "packedObjectCount": 341,
+    "totalStoredObjectCount": 341,
+    "packSizeKiB": 12816,
+    "packSizeHuman": "12.52 MiB",
+    "reachable": {
+      "commitCount": 13,
+      "treeCount": 112,
+      "blobCount": 216,
+      "totalObjectCount": 341
+    },
+    "unreachableObjectCount": 0,
+    "fsckFullStrictNoReflogs": "pass",
+    "fsckFullStrictNoReflogsUnreachable": "pass"
+  },
+  "finalLiveAuthorities": {
+    "repositoryIntegrity": "pnpm check:repository-boundary",
+    "completeReachableHistory": "pnpm check:history-safety",
+    "note": "The umbrella successor Task records the corrected final target HEAD and final post-commit object and pack counts."
+  }
+}

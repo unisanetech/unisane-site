@@ -1,8 +1,16 @@
 {
   "schemaVersion": 1,
   "repository": "unisane-site",
-  "trackedFileCount": 83,
+  "trackedFileCount": 84,
   "remoteCount": 0,
+  "remoteNames": [],
+  "remoteTrackingRefs": [],
+  "gitIntegrity": {
+    "command": "git fsck --full --strict --no-reflogs --no-progress",
+    "exitCode": 0,
+    "diagnosticCount": 0,
+    "diagnostics": []
+  },
   "nestedSourceResidue": [],
   "parentAuthority": [],
   "symlinkCount": 0,

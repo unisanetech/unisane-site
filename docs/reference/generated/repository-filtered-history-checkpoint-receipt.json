@@ -1,5 +1,20 @@
 {
   "schemaVersion": 1,
+  "receiptKind": "filtered-history-checkpoint",
+  "scope": "filtered-source-history-before-materialization",
+  "source": {
+    "repository": "umbrella:dev",
+    "commit": "e3cb9c768c1b3b96c059269b2a68d0db1624b9bc",
+    "path": "unisane-landing/**"
+  },
+  "filteredTip": "310d9cb98a2f5303cbfe46e499652719eed697d8",
+  "filterDigest": "8b26eb576f5d0313412b869360cb4ca76afca426cf8f3f48a714034c26b1e347",
+  "commitMapDigest": "9811632e297184cdef3e0463add4f952d4eb7aa57cb24e13b55d743404544e7f",
+  "liveCompleteHistoryAuthority": {
+    "command": "pnpm check:history-safety",
+    "scope": "all objects reachable from current local refs",
+    "note": "This committed checkpoint receipt does not attest the materialization commit that contains it."
+  },
   "commitCount": 12,
   "mergeCommitCount": 0,
   "authorCount": 1,
