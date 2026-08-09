@@ -19,7 +19,8 @@
       "totalObjectCount": 341
     },
     "derivedUnreachableObjectCount": 109668,
-    "fsckResult": "fail-invalid-dangling-remote-tracking-ref-and-unreachable-residue"
+    "fsckResult": "fail-invalid-dangling-remote-tracking-symbolic-ref",
+    "unreachableResidueResult": "separate-extraction-object-hygiene-condition"
   },
   "cleanup": {
     "deletedRef": "refs/remotes/origin/HEAD",
