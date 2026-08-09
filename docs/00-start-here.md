@@ -21,6 +21,7 @@ these documents do not authorize a rename, extraction, remote, publication, or d
 - [Overview](overview.md)
 - [Repository readiness contract](architecture/00-repository-readiness-contract.md)
 - [Current source and history inventory](reference/current-source-and-history-inventory.md)
+- [Source-safety disposition](reference/source-safety-disposition.md)
 
 ## Authority Boundary
 

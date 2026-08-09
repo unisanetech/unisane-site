@@ -150,18 +150,18 @@ manifest/lock drift or silently select different major versions.
 
 ## Content, Brand, Asset, And Operational Ownership
 
-| Surface | Site-local owner | External/shared owner | Gate |
-| --- | --- | --- | --- |
-| navigation, marketing pages, Site UI and Site SEO copy | Site | brand/legal review where applicable | source convergence/public release |
-| logo use, identity, company claims, social/contact identities | Site publishing | founder/authorized brand and legal owner | source convergence |
-| product claims and documentation | read-only presentation | owning product repository publishes a versioned projection | source convergence |
-| case studies, testimonials, metrics and customer names | Site content | customer/contract/legal consent owner | public release |
-| fonts, icons, images, video, screenshots and copied components | Site asset manifest | copyright/license/provenance owner | local shadow/public release |
-| environment-variable schema and non-secret examples | Site | provider-specific values remain in approved host/secret manager | local shadow/deployment |
-| analytics events, consent UX, privacy/cookie content | Site | approved analytics/privacy/security owners | public release/deployment |
-| canonical URL, redirects and application host requirements | Site | Infrastructure owns declarative domain/DNS control; provider owns actual state | local shadow/deployment |
-| preview/production config, migrations, rollback and runtime checks | Site | approved hosting provider and deployment identities | local shadow/deployment |
-| monitoring, alerting, SLO, incident, backup and recovery | Site operations | provider capabilities and company emergency owner | production deployment |
+| Surface                                                            | Site-local owner       | External/shared owner                                                          | Gate                              |
+| ------------------------------------------------------------------ | ---------------------- | ------------------------------------------------------------------------------ | --------------------------------- |
+| navigation, marketing pages, Site UI and Site SEO copy             | Site                   | brand/legal review where applicable                                            | source convergence/public release |
+| logo use, identity, company claims, social/contact identities      | Site publishing        | founder/authorized brand and legal owner                                       | source convergence                |
+| product claims and documentation                                   | read-only presentation | owning product repository publishes a versioned projection                     | source convergence                |
+| case studies, testimonials, metrics and customer names             | Site content           | customer/contract/legal consent owner                                          | public release                    |
+| fonts, icons, images, video, screenshots and copied components     | Site asset manifest    | copyright/license/provenance owner                                             | local shadow/public release       |
+| environment-variable schema and non-secret examples                | Site                   | provider-specific values remain in approved host/secret manager                | local shadow/deployment           |
+| analytics events, consent UX, privacy/cookie content               | Site                   | approved analytics/privacy/security owners                                     | public release/deployment         |
+| canonical URL, redirects and application host requirements         | Site                   | Infrastructure owns declarative domain/DNS control; provider owns actual state | local shadow/deployment           |
+| preview/production config, migrations, rollback and runtime checks | Site                   | approved hosting provider and deployment identities                            | local shadow/deployment           |
+| monitoring, alerting, SLO, incident, backup and recovery           | Site operations        | provider capabilities and company emergency owner                              | production deployment             |
 
 Environment-variable documentation records names, purpose, required/optional state,
 scope, safe placeholder, validation, rotation owner, and provider owner. Values and
@@ -222,19 +222,19 @@ All evidence binds the exact source freeze, lockfile, Node/pnpm/Corepack version
 operating-system/runtime image, commands, relevant configuration, and cold-cache state.
 Receipts identify artifact/report digests and redact sensitive values.
 
-| Evidence | Minimum pass condition |
-| --- | --- |
-| clean install | disposable standalone clone; no parent/sibling checkout; empty package/cache/build state; Corepack selects Node `24.13.0` and pnpm `10.26.0`; `pnpm install --frozen-lockfile` succeeds without lock changes or undeclared lifecycle repair |
-| dependency direction | lockfile and source scan contain no forbidden cross-repository locator or source alias; UI resolves to approved released/canary coordinates |
-| lint and types | repo-root `pnpm lint` and `pnpm typecheck` select all owned source and pass with zero warnings where configured as errors |
-| tests | repo-root `pnpm test` runs unit, component, route, content/link, privacy, data-handling, and failure-path coverage selected by the owner; zero tests is failure |
-| production build | cold `pnpm build` succeeds twice from the same source/lock in isolated clones; output manifests match after documented nondeterministic metadata exclusions; no network/provider mutation, secret leak, or parent resolution occurs |
-| runtime smoke | built output starts by the documented command; every public route, 404/error path, navigation target, metadata asset and declared form behavior is exercised |
-| accessibility | automated semantic/contrast checks plus keyboard, focus, reduced-motion, zoom/reflow and screen-reader smoke journeys pass the owner-approved accessibility budget; absent budget or unreviewed serious findings fail |
-| SEO | approved canonical domain input; route/canonical/metadata/Open Graph/robots/sitemap/structured-data/link checks pass; placeholder, broken, duplicate or unintended-index content fails |
-| performance | fixed production profile, route set, network/device conditions, run count and aggregation method are committed before measurement; owner-approved Web Vitals/bundle/image budgets pass; absent thresholds fail rather than inventing numbers |
-| preview | immutable commit deploys to a protected non-production environment with no production/DNS mutation; route, security-header, privacy/consent, intake and rollback smoke checks pass; the preview URL and receipt are access-appropriate |
-| provenance | tracked manifest/tree, history/filter/map digests, audit receipt IDs, target foundation digest and build/preview receipts reconcile to one source freeze |
+| Evidence             | Minimum pass condition                                                                                                                                                                                                                       |
+| -------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| clean install        | disposable standalone clone; no parent/sibling checkout; empty package/cache/build state; Corepack selects Node `24.13.0` and pnpm `10.26.0`; `pnpm install --frozen-lockfile` succeeds without lock changes or undeclared lifecycle repair  |
+| dependency direction | lockfile and source scan contain no forbidden cross-repository locator or source alias; UI resolves to approved released/canary coordinates                                                                                                  |
+| lint and types       | repo-root `pnpm lint` and `pnpm typecheck` select all owned source and pass with zero warnings where configured as errors                                                                                                                    |
+| tests                | repo-root `pnpm test` runs unit, component, route, content/link, privacy, data-handling, and failure-path coverage selected by the owner; zero tests is failure                                                                              |
+| production build     | cold `pnpm build` succeeds twice from the same source/lock in isolated clones; output manifests match after documented nondeterministic metadata exclusions; no network/provider mutation, secret leak, or parent resolution occurs          |
+| runtime smoke        | built output starts by the documented command; every public route, 404/error path, navigation target, metadata asset and declared form behavior is exercised                                                                                 |
+| accessibility        | automated semantic/contrast checks plus keyboard, focus, reduced-motion, zoom/reflow and screen-reader smoke journeys pass the owner-approved accessibility budget; absent budget or unreviewed serious findings fail                        |
+| SEO                  | approved canonical domain input; route/canonical/metadata/Open Graph/robots/sitemap/structured-data/link checks pass; placeholder, broken, duplicate or unintended-index content fails                                                       |
+| performance          | fixed production profile, route set, network/device conditions, run count and aggregation method are committed before measurement; owner-approved Web Vitals/bundle/image budgets pass; absent thresholds fail rather than inventing numbers |
+| preview              | immutable commit deploys to a protected non-production environment with no production/DNS mutation; route, security-header, privacy/consent, intake and rollback smoke checks pass; the preview URL and receipt are access-appropriate       |
+| provenance           | tracked manifest/tree, history/filter/map digests, audit receipt IDs, target foundation digest and build/preview receipts reconcile to one source freeze                                                                                     |
 
 Public fork checks never receive secrets. Jobs requiring protected environments run only
 under explicit trust conditions. CI artifacts, Lighthouse/axe reports, screenshots,
@@ -246,57 +246,47 @@ unless a reviewed fixture explicitly owns them.
 `open` means the applicable gate cannot advance. A later-stage blocker does not claim an
 earlier technical shadow is publicly releasable.
 
-| ID | Open blocker | Owner decision/evidence required | Earliest blocked gate |
-| --- | --- | --- | --- |
-| SITE-B01 | template and final Site identity are mixed | all-file disposition; final repository/app/package names; remove dummy identity | source convergence |
-| SITE-B02 | app imports local `@workspace/ui` through a source alias | decide released UI consumption versus proven Site-local subset; zero forbidden links | source convergence |
-| SITE-B03 | workspace, Turbo, manifest, Node/pnpm and lockfile state is inconsistent and inherits umbrella authority | target-local configs and one regenerated frozen lock; clean isolated install | source convergence |
-| SITE-B04 | no test suite, self-contained CI, accessibility, SEO, performance, privacy, link, security, or preview proof exists | implement owner-local commands and cold-clone CI | local shadow |
-| SITE-B05 | onboarding simulates delivery, logs submitted data, and makes unimplemented promises | product/privacy/security owner either removes the flow or implements an approved end-to-end data contract and tests | source convergence |
-| SITE-B06 | brand, contact, social, legal-entity, portfolio, testimonial and quantified-outcome claims are unverified | authorized brand/content/legal evidence and explicit per-claim disposition | source convergence |
-| SITE-B07 | license, NOTICE, attribution, contributor and public-distribution terms are unapproved | authorized legal decisions and enforcement evidence | public remote/release |
-| SITE-B08 | full-history secret/private/customer/provider/public-safety audit has not run | approved scans, review, redacted receipts, rotations/scrubs where required | local shadow |
-| SITE-B09 | 21 images dominate the tree; large-object necessity, optimization, provenance and rights are unresolved | per-asset owner, digest, rights, disposition and performance evidence | local shadow |
-| SITE-B10 | environment schema is undocumented and no safe example exists | Site/provider owner matrix, placeholders, validation and secret boundary | local shadow |
-| SITE-B11 | analytics, consent, privacy, cookie, retention and data-subject ownership are unresolved | approved product/privacy/security contract and tests | public release/deployment |
-| SITE-B12 | canonical domains, redirects, registrar/DNS ownership and recovery are unverified | Site requirements plus Infrastructure/provider desired-state and recovery evidence | local shadow for domain claims; deployment for mutation |
-| SITE-B13 | host, preview/production deployment, rollback, incidents, monitoring, SLO and cost ownership are unresolved | approved Site operations contract and preview proof | local shadow for target shape; production deployment for operation |
-| SITE-B14 | no target-local docs/AGENTS/Skopos authority or adoption proof exists | contained Memory, existing-project assessment, reviewed activation and local Actions/Guards | local shadow |
-| SITE-B15 | CODEOWNERS, recovery, vulnerability reporting, community/security policy and branch controls are unresolved | authenticated human/team and security-owner decisions | remote authority |
-| SITE-B16 | public routes contain placeholder/broken targets and have no declared experience or quality budgets | source-bound visitor journey plus accessibility/SEO/performance/link evidence | source convergence/local shadow |
-| SITE-B17 | no target remote or external organization authority is authorized | separate authenticated owner/recovery/governance Task and approval | remote authority |
-| SITE-B18 | no converged Site source freeze, zero-residue report, filter spec or provenance plan exists | finish the next source-convergence Task and record a new immutable freeze | local shadow |
+| ID       | Open blocker                                                                                                                         | Owner decision/evidence required                                                            | Earliest blocked gate                                              |
+| -------- | ------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------ |
+| SITE-B01 | template README identity and conclusively unused scaffolds are removed, but final repository/app/package identity remains unresolved | approve final repository/app/package names and reconcile retained roots                     | source convergence                                                 |
+| SITE-B02 | app imports local `@workspace/ui` through a source alias                                                                             | decide released UI consumption versus proven Site-local subset; zero forbidden links        | source convergence                                                 |
+| SITE-B03 | workspace, Turbo, manifest, Node/pnpm and lockfile state is inconsistent and inherits umbrella authority                             | target-local configs and one regenerated frozen lock; clean isolated install                | source convergence                                                 |
+| SITE-B04 | no test suite, self-contained CI, accessibility, SEO, performance, privacy, link, security, or preview proof exists                  | implement owner-local commands and cold-clone CI                                            | local shadow                                                       |
+| SITE-B06 | brand, contact, social, legal-entity, portfolio, testimonial and quantified-outcome claims are unverified                            | authorized brand/content/legal evidence and explicit per-claim disposition                  | source convergence                                                 |
+| SITE-B07 | license, NOTICE, attribution, contributor and public-distribution terms are unapproved                                               | authorized legal decisions and enforcement evidence                                         | public remote/release                                              |
+| SITE-B08 | full-history secret/private/customer/provider/public-safety audit has not run                                                        | approved scans, review, redacted receipts, rotations/scrubs where required                  | local shadow                                                       |
+| SITE-B09 | 21 images dominate the tree; large-object necessity, optimization, provenance and rights are unresolved                              | per-asset owner, digest, rights, disposition and performance evidence                       | local shadow                                                       |
+| SITE-B10 | environment schema is undocumented and no safe example exists                                                                        | Site/provider owner matrix, placeholders, validation and secret boundary                    | local shadow                                                       |
+| SITE-B11 | analytics, consent, privacy, cookie, retention and data-subject ownership are unresolved                                             | approved product/privacy/security contract and tests                                        | public release/deployment                                          |
+| SITE-B12 | canonical domains, redirects, registrar/DNS ownership and recovery are unverified                                                    | Site requirements plus Infrastructure/provider desired-state and recovery evidence          | local shadow for domain claims; deployment for mutation            |
+| SITE-B13 | host, preview/production deployment, rollback, incidents, monitoring, SLO and cost ownership are unresolved                          | approved Site operations contract and preview proof                                         | local shadow for target shape; production deployment for operation |
+| SITE-B14 | no target-local docs/AGENTS/Skopos authority or adoption proof exists                                                                | contained Memory, existing-project assessment, reviewed activation and local Actions/Guards | local shadow                                                       |
+| SITE-B15 | CODEOWNERS, recovery, vulnerability reporting, community/security policy and branch controls are unresolved                          | authenticated human/team and security-owner decisions                                       | remote authority                                                   |
+| SITE-B16 | placeholder static targets are removed and checked, but no declared visitor journey or accessibility/SEO/performance budgets exist   | source-bound visitor journey plus accessibility/SEO/performance evidence                    | local shadow                                                       |
+| SITE-B17 | no target remote or external organization authority is authorized                                                                    | separate authenticated owner/recovery/governance Task and approval                          | remote authority                                                   |
+| SITE-B18 | no converged Site source freeze, zero-residue report, filter spec or provenance plan exists                                          | finish the next source-convergence Task and record a new immutable freeze                   | local shadow                                                       |
 
-The local filtered shadow remains blocked while any of `SITE-B01` through `SITE-B06`,
-`SITE-B08` through `SITE-B10`, `SITE-B12` through `SITE-B14`, `SITE-B16`, or `SITE-B18`
-is open. `SITE-B07`, `SITE-B11`, `SITE-B15`, and `SITE-B17` remain explicit later-gate
-blockers even if a non-authoritative shadow eventually passes.
+`SITE-B05` is closed for the current authoritative tree: the non-functional intake
+route/form, simulated success, visitor-field console emission, and every route CTA are
+deleted, and the Site-local source-safety check fails if they return. A future intake
+surface requires a new approved product/privacy/security contract and Task; this closure
+does not pre-approve one.
+
+The local filtered shadow remains blocked while `SITE-B01` through `SITE-B04`,
+`SITE-B06`, `SITE-B08` through `SITE-B10`, `SITE-B12` through `SITE-B14`, `SITE-B16`, or
+`SITE-B18` is open. `SITE-B07`, `SITE-B11`, `SITE-B15`, and `SITE-B17` remain explicit
+later-gate blockers even if a non-authoritative shadow eventually passes.
 
 ## Safest Next Task
 
-The next Task is **authoritative Site source convergence and public-safety preparation**,
-not a filtered shadow.
+After this source-safety floor is reviewed and closed, the safest next Task is a bounded
+Site/UI dependency and standalone tooling decision, not a filtered shadow. It must
+resolve `SITE-B02` and `SITE-B03` without sibling source, select the retained Site-local
+package shape, and only then regenerate one target lockfile and prove an isolated clean
+install. It must not absorb brand/content/asset/legal decisions or claim `SITE-B04`
+closed merely because package installation works.
 
-It must be a new high-impact umbrella Skopos Task owning the exact
-`unisane-landing/**` source/config/docs boundary needed for cleanup and no external
-repository path. Its acceptance criteria are:
-
-1. enumerate all 140 current paths plus every historical-only path and assign an
-   evidence-backed disposition;
-2. resolve or block final identity, brand/content claims, onboarding behavior, asset
-   provenance, legal prerequisites, environment/deployment ownership, and the Site/UI
-   package boundary without guessing;
-3. converge the authoritative source to target-local package/workspace/tooling/lockfile/
-   CI/docs/Skopos shape with no parent or sibling dependency;
-4. implement or deliberately remove every public behavior and placeholder, then prove
-   focused source checks from the authoritative boundary;
-5. run the full current/history public-safety and large-object audit, keeping sensitive
-   details out of public receipts;
-6. produce a zero-residue report, exact future filter/rename specification, source-bound
-   provenance plan, and new immutable umbrella freeze; and
-7. close only when Skopos reports its Evidence, Memory, questions and Readiness
-   satisfied.
-
-Only after that Task closes may a separate high-impact Task propose a disposable local
+Full history/public-safety, CI and quality proof, repository-local Skopos adoption, and
+the zero-residue/filter/provenance freeze remain separate bounded work before any local
 filtered shadow. Remote, legal/public release, DNS/hosting mutation, deployment, and
-authority cutover remain separate later Tasks with explicit approval.
+authority cutover remain later Tasks with explicit approval.

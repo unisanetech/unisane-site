@@ -24,11 +24,16 @@ standalone repository, remote, authority cutover, or approved public distributio
 exists. The repository-system manifest reports the foundation gate ready and every
 later Site gate blocked.
 
-The current tree contains a genuine Next.js marketing-site implementation mixed with a
-generic shadcn monorepo template, site-local copied UI source, stale workspace identity,
-unverified public claims and assets, a simulated onboarding flow, and incomplete
-standalone tooling. It is therefore candidate input for source convergence, not an
-extractable repository boundary.
+The authoritative tree now removes the generic template README identity, the simulated
+onboarding route/form/success path, every CTA to that route, unapproved contact/social/
+legal destinations, empty scaffolds, and copied UI components that have no import path
+from the retained routes. A dependency-free Site-local check prevents those behaviors
+and broken static internal targets from returning.
+
+This source-safety floor does not make the tree extractable. The remaining Site content,
+brand surfaces and assets are retained behind owner/rights blockers, while the local
+`@workspace/ui` source alias, package/workspace/tooling/lockfile state, and every legal,
+security, operations, deployment, domain and public-release gate remain unresolved.
 
 ## Target Relationship
 

@@ -1,34 +1,22 @@
-# shadcn/ui monorepo template
+# Unisane Site
 
-This template is for creating a monorepo with shadcn/ui.
+`unisane-landing/**` is the current authoritative umbrella source for the candidate
+future `unisane-site` repository. It is not a standalone repository or deployment
+authority, and no extraction or public release is authorized from this directory.
 
-## Usage
+Start with [the Site Memory router](docs/00-start-here.md). The
+[repository-readiness contract](docs/architecture/00-repository-readiness-contract.md)
+defines the unresolved dependency, tooling, legal, asset, content, security, and
+operational gates.
+
+Run the source-safety floor with:
 
 ```bash
-pnpm dlx shadcn@latest init
+pnpm run check:source-safety
 ```
 
-## Adding components
-
-To add components to your app, run the following command at the root of your `web` app:
-
-```bash
-pnpm dlx shadcn@latest add button -c apps/web
-```
-
-This will place the ui components in the `packages/ui/src/components` directory.
-
-## Tailwind
-
-Your `tailwind.config.ts` and `globals.css` are already set up to use the components from the `ui` package.
-
-## Using components
-
-To use the components in your app, import them from the `ui` package.
-
-```tsx
-import { Button } from "@workspace/ui/components/button"
-```
-# unisane
-# unisane
-# unisane.com
+The check is deliberately narrow. It prevents the removed simulated intake behavior,
+unapproved contact destinations, broken static internal targets, missing referenced
+assets, and new sibling-repository dependency locators from returning. It does not
+claim the final install, build, UI-package, lockfile, CI, accessibility, SEO,
+performance, deployment, or public-release gates are ready.

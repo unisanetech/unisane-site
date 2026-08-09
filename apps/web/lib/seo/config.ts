@@ -1,16 +1,12 @@
-import type { Metadata } from "next";
+import type { Metadata } from 'next';
 
-export type SeoRoute =
-  | "home"
-  | "onboarding"
-  | "services"
-  | "work";
+export type SeoRoute = 'home' | 'services' | 'work';
 
 export interface SeoEntry {
   /**
    * Page title. Can leverage Next.js template strings if required.
    */
-  title: Metadata["title"];
+  title: Metadata['title'];
   /**
    * Primary meta description.
    */
@@ -26,170 +22,137 @@ export interface SeoEntry {
   /**
    * Per-page robots overrides.
    */
-  robots?: Metadata["robots"];
+  robots?: Metadata['robots'];
   /**
    * Open Graph overrides applied on top of site defaults.
    */
-  openGraph?: Partial<NonNullable<Metadata["openGraph"]>>;
+  openGraph?: Partial<NonNullable<Metadata['openGraph']>>;
   /**
    * Twitter card overrides applied on top of site defaults.
    */
-  twitter?: Partial<NonNullable<Metadata["twitter"]>>;
+  twitter?: Partial<NonNullable<Metadata['twitter']>>;
   /**
    * Alternate links (languages, canonical overrides, etc.).
    */
-  alternates?: Partial<NonNullable<Metadata["alternates"]>>;
+  alternates?: Partial<NonNullable<Metadata['alternates']>>;
 }
 
-export const SITE_NAME = "Unisane";
-export const ORG_NAME = "Unisane Technologies (OPC) Pvt Ltd";
+export const SITE_NAME = 'Unisane';
 export const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/+$/, "") ??
-  "https://www.unisane.com";
+  process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/+$/, '') ?? 'https://www.unisane.com';
 
 export const DEFAULT_SEO_ENTRY: SeoEntry = {
   title: SITE_NAME,
   description:
-    "Unisane is the product team for ambitious SaaS, marketplaces, and e-commerce brands—shipping modern web apps and cloud-ready backends end-to-end.",
-  path: "/",
+    'Unisane is the product team for ambitious SaaS, marketplaces, and e-commerce brands—shipping modern web apps and cloud-ready backends end-to-end.',
+  path: '/',
   keywords: [
-    "Unisane",
-    "Unisane Technologies",
-    "Next.js agency",
-    "full-stack development",
-    "SaaS development",
-    "e-commerce development",
-    "marketplace development",
+    'Unisane',
+    'Unisane Technologies',
+    'Next.js agency',
+    'full-stack development',
+    'SaaS development',
+    'e-commerce development',
+    'marketplace development',
   ],
   openGraph: {
-    type: "website",
+    type: 'website',
     images: [
       {
-        url: "/images/cta/code-sample.png",
+        url: '/images/cta/code-sample.png',
         width: 1200,
         height: 630,
-        alt: "Unisane product preview",
+        alt: 'Unisane product preview',
       },
     ],
   },
   twitter: {
-    card: "summary_large_image",
-    images: ["/images/cta/code-sample.png"],
+    card: 'summary_large_image',
+    images: ['/images/cta/code-sample.png'],
   },
 };
 
 export const SEO_ENTRIES: Record<SeoRoute, SeoEntry> = {
   home: {
     ...DEFAULT_SEO_ENTRY,
-    title: "Unisane | Full-stack Web & Product Development",
+    title: 'Unisane | Full-stack Web & Product Development',
     description:
-      "Partner with Unisane to plan, design, build, and grow modern digital products. Next.js frontends, Node backends, bespoke design systems, and growth analytics included from day one.",
-    path: "/",
+      'Partner with Unisane to plan, design, build, and grow modern digital products. Next.js frontends, Node backends, bespoke design systems, and growth analytics included from day one.',
+    path: '/',
     openGraph: {
-      title: "Unisane | Full-stack Web & Product Development",
+      title: 'Unisane | Full-stack Web & Product Development',
       description:
-        "Modern architecture, reusable design systems, and cloud-ready backends—delivered by one team from idea to scaling.",
+        'Modern architecture, reusable design systems, and cloud-ready backends—delivered by one team from idea to scaling.',
     },
     twitter: {
-      title: "Unisane | Full-stack Web & Product Development",
+      title: 'Unisane | Full-stack Web & Product Development',
       description:
-        "Modern architecture, reusable design systems, and cloud-ready backends—delivered by one team from idea to scaling.",
-    },
-  },
-  onboarding: {
-    title: "Kickstart Your Build | Unisane Onboarding",
-    description:
-      "Share your roadmap, goals, and constraints in one guided form. Unisane returns with a clear build plan, timelines, and the team that ships it.",
-    path: "/onboarding",
-    keywords: [
-      "Unisane onboarding",
-      "project kickoff",
-      "product discovery",
-      "software project brief",
-    ],
-    openGraph: {
-      title: "Kickstart Your Build | Unisane Onboarding",
-      description:
-        "Submit your brief in minutes and receive timelines, a delivery crew, and next release milestones—without the back-and-forth.",
-      images: [
-        {
-          url: "/images/portfolio/zipper.png",
-          width: 1200,
-          height: 630,
-          alt: "Sample Unisane product launch preview",
-        },
-      ],
-    },
-    twitter: {
-      title: "Kickstart Your Build | Unisane Onboarding",
-      description:
-        "Submit your build brief, get matched with the Unisane team, and start shipping the next release together.",
-      images: ["/images/portfolio/zipper.png"],
+        'Modern architecture, reusable design systems, and cloud-ready backends—delivered by one team from idea to scaling.',
     },
   },
   services: {
-    title: "Services | Unisane Full-Stack Product Teams",
+    title: 'Services | Unisane Full-Stack Product Teams',
     description:
-      "Explore Unisane services—from landing page launches and design systems to bespoke web apps, backend APIs, and D2C/B2C e-commerce platforms.",
-    path: "/services",
+      'Explore Unisane services—from landing page launches and design systems to bespoke web apps, backend APIs, and D2C/B2C e-commerce platforms.',
+    path: '/services',
     keywords: [
-      "web development services",
-      "landing page design",
-      "custom web applications",
-      "e-commerce development",
-      "backend API architecture",
-      "design systems",
+      'web development services',
+      'landing page design',
+      'custom web applications',
+      'e-commerce development',
+      'backend API architecture',
+      'design systems',
     ],
     openGraph: {
-      title: "Unisane Services | Build, Launch, and Scale",
+      title: 'Unisane Services | Build, Launch, and Scale',
       description:
-        "Product strategy, design systems, frontends, APIs, and e-commerce builds—delivered by a dedicated Unisane crew.",
+        'Product strategy, design systems, frontends, APIs, and e-commerce builds—delivered by a dedicated Unisane crew.',
       images: [
         {
-          url: "/images/portfolio/bill-generator.png",
+          url: '/images/portfolio/bill-generator.png',
           width: 1200,
           height: 630,
-          alt: "Unisane services overview",
+          alt: 'Unisane services overview',
         },
       ],
     },
     twitter: {
-      title: "Unisane Services | Build, Launch, and Scale",
+      title: 'Unisane Services | Build, Launch, and Scale',
       description:
-        "See how Unisane tackles landing pages, product UX, backend APIs, and full e-commerce implementations.",
-      images: ["/images/portfolio/bill-generator.png"],
+        'See how Unisane tackles landing pages, product UX, backend APIs, and full e-commerce implementations.',
+      images: ['/images/portfolio/bill-generator.png'],
     },
   },
   work: {
-    title: "Work | Unisane Case Studies",
+    title: 'Work | Unisane Case Studies',
     description:
-      "See how Unisane delivers growth for SaaS, marketplaces, and e-commerce teams with full-stack product crews and measurable outcomes.",
-    path: "/work",
+      'See how Unisane delivers growth for SaaS, marketplaces, and e-commerce teams with full-stack product crews and measurable outcomes.',
+    path: '/work',
     keywords: [
-      "Unisane work",
-      "case studies",
-      "SaaS case study",
-      "marketplace launch",
-      "AI product delivery",
+      'Unisane work',
+      'case studies',
+      'SaaS case study',
+      'marketplace launch',
+      'AI product delivery',
     ],
     openGraph: {
-      title: "Unisane Work | Case Studies & Results",
+      title: 'Unisane Work | Case Studies & Results',
       description:
-        "Bill Generator, Zipper, Examon AI and more—shipping production-ready experiences with strategy, design systems, engineering, and analytics.",
+        'Bill Generator, Zipper, Examon AI and more—shipping production-ready experiences with strategy, design systems, engineering, and analytics.',
       images: [
         {
-          url: "/images/portfolio/examon.png",
+          url: '/images/portfolio/examon.png',
           width: 1200,
           height: 630,
-          alt: "Unisane work case studies montage",
+          alt: 'Unisane work case studies montage',
         },
       ],
     },
     twitter: {
-      title: "Unisane Work | Case Studies & Results",
+      title: 'Unisane Work | Case Studies & Results',
       description:
-        "Explore the launches Unisane continues to support across SaaS, marketplaces, commerce, and AI-driven products.",
-      images: ["/images/portfolio/examon.png"],
+        'Explore the launches Unisane continues to support across SaaS, marketplaces, commerce, and AI-driven products.',
+      images: ['/images/portfolio/examon.png'],
     },
   },
 };

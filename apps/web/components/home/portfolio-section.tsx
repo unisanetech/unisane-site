@@ -1,33 +1,30 @@
-"use client";
+'use client';
 
-import { useHeaderSection } from "@/hooks/use-header-section";
-import Image from "next/image";
-import { useRef, useState } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
-import { Button } from "@workspace/ui/components/button";
-import { PORTFOLIO_HIGHLIGHTS } from "@/lib/content/portfolio";
+import { useHeaderSection } from '@/hooks/use-header-section';
+import Image from 'next/image';
+import { useRef, useState } from 'react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { Button } from '@workspace/ui/components/button';
+import { PORTFOLIO_HIGHLIGHTS } from '@/lib/content/portfolio';
 
-const getDisplayUrl = (url: string) =>
-  url.replace(/^https?:\/\//, "").replace(/\/$/, "");
+const getDisplayUrl = (url: string) => url.replace(/^https?:\/\//, '').replace(/\/$/, '');
 
 export function PortfolioSection() {
   const sectionRef = useHeaderSection({
-    background: "bg-portfolio",
-    foreground: "text-white",
-    accentColor: "text-white",
+    background: 'bg-portfolio',
+    foreground: 'text-white',
+    accentColor: 'text-white',
   });
 
   const showcaseItems = PORTFOLIO_HIGHLIGHTS.filter(
-    (item): item is typeof PORTFOLIO_HIGHLIGHTS[number] &
-      Required<Pick<typeof item, "url" | "logo" | "image" | "imageBackground">> =>
+    (
+      item,
+    ): item is (typeof PORTFOLIO_HIGHLIGHTS)[number] &
+      Required<Pick<typeof item, 'url' | 'logo' | 'image' | 'imageBackground'>> =>
       !item.isConfidential && Boolean(item.url && item.logo && item.image && item.imageBackground),
   );
 
-  const infiniteItems = [
-    ...showcaseItems,
-    ...showcaseItems,
-    ...showcaseItems,
-  ];
+  const infiniteItems = [...showcaseItems, ...showcaseItems, ...showcaseItems];
 
   const itemCount = showcaseItems.length;
 
@@ -39,8 +36,7 @@ export function PortfolioSection() {
 
   const trackRef = useRef<HTMLDivElement | null>(null);
 
-  const getRealIndex = (idx: number) =>
-    ((idx % itemCount) + itemCount) % itemCount;
+  const getRealIndex = (idx: number) => ((idx % itemCount) + itemCount) % itemCount;
 
   const goToPrevious = () => {
     if (isResettingRef.current) return;
@@ -108,21 +104,20 @@ export function PortfolioSection() {
     <section
       ref={sectionRef}
       id="portfolio-section"
-      className="relative bg-portfolio text-white min-h-screen py-12 sm:py-14 md:py-16 lg:py-20 xl:py-24 2xl:py-28 flex flex-col justify-center "
+      className="bg-portfolio relative flex min-h-screen flex-col justify-center py-12 text-white sm:py-14 md:py-16 lg:py-20 xl:py-24 2xl:py-28"
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-6 flex flex-col gap-4 sm:mb-8 sm:gap-6 md:mb-10 lg:mb-12 xl:mb-14">
           <div className="max-w-xl lg:max-w-2xl xl:max-w-3xl">
-            <p className="text-[10px] sm:text-xs font-semibold uppercase tracking-[0.35em] text-white/70">
+            <p className="text-[10px] font-semibold tracking-[0.35em] text-white/70 uppercase sm:text-xs">
               Selected work
             </p>
-            <h2 className="mt-2 text-2xl sm:text-3xl md:text-4xl lg:text-[2.75rem] xl:text-[3.25rem] 2xl:text-[3.5rem] font-bold leading-[1.15] tracking-tight text-balance">
+            <h2 className="mt-2 text-2xl leading-[1.15] font-bold tracking-tight text-balance sm:text-3xl md:text-4xl lg:text-[2.75rem] xl:text-[3.25rem] 2xl:text-[3.5rem]">
               Shipped products
               <br />— live in production
             </h2>
-            <p className="mt-2 text-xs sm:text-sm md:text-base text-white/70 max-w-2xl">
-              SaaS, e-commerce, and marketplaces—Next.js & Node, MongoDB, SEO,
-              GTM & GA4 in place.
+            <p className="mt-2 max-w-2xl text-xs text-white/70 sm:text-sm md:text-base">
+              SaaS, e-commerce, and marketplaces—Next.js & Node, MongoDB, SEO, GTM & GA4 in place.
             </p>
           </div>
         </div>
@@ -130,7 +125,7 @@ export function PortfolioSection() {
 
       <div className="relative w-full">
         {/* Mobile */}
-        <div className="md:hidden space-y-6 sm:space-y-8 px-4 sm:px-6">
+        <div className="space-y-6 px-4 sm:space-y-8 sm:px-6 md:hidden">
           {showcaseItems.map((item) => (
             <div
               key={item.id}
@@ -138,11 +133,11 @@ export function PortfolioSection() {
             >
               <div className="flex flex-col">
                 <div
-                  className="relative flex h-56 sm:h-72 items-center justify-center overflow-hidden rounded-t-xl p-8 sm:p-10"
+                  className="relative flex h-56 items-center justify-center overflow-hidden rounded-t-xl p-8 sm:h-72 sm:p-10"
                   style={{ background: item.imageBackground }}
                 >
                   <Image
-                    src={item.image || "/placeholder.svg"}
+                    src={item.image}
                     alt={`${item.name} project`}
                     width={640}
                     height={360}
@@ -150,23 +145,23 @@ export function PortfolioSection() {
                   />
                 </div>
 
-                <div className="flex flex-col h-full p-6 sm:p-8 gap-5 sm:gap-6">
-                  <div className="flex items-center gap-3 min-w-0">
-                    <div className="flex size-12 sm:size-14 items-center justify-center rounded-full bg-white/10 ring-2 ring-white/20 border border-white/30 overflow-hidden">
+                <div className="flex h-full flex-col gap-5 p-6 sm:gap-6 sm:p-8">
+                  <div className="flex min-w-0 items-center gap-3">
+                    <div className="flex size-12 items-center justify-center overflow-hidden rounded-full border border-white/30 bg-white/10 ring-2 ring-white/20 sm:size-14">
                       <Image
-                        src={item.logo || "/placeholder.svg"}
+                        src={item.logo}
                         alt={`${item.name} logo`}
                         width={56}
                         height={56}
-                        className="size-full object-contain rounded-full"
+                        className="size-full rounded-full object-contain"
                       />
                     </div>
-                    <span className="text-sm sm:text-base font-semibold text-white truncate">
+                    <span className="truncate text-sm font-semibold text-white sm:text-base">
                       {item.name}
                     </span>
                   </div>
 
-                  <p className="text-balance text-base sm:text-lg font-semibold leading-snug text-white/90">
+                  <p className="text-base leading-snug font-semibold text-balance text-white/90 sm:text-lg">
                     &ldquo;{item.quote}&rdquo;
                   </p>
 
@@ -175,7 +170,7 @@ export function PortfolioSection() {
                       href={item.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-[10px] sm:text-xs text-white/60 hover:text-white/80 transition-colors truncate"
+                      className="truncate text-[10px] text-white/60 transition-colors hover:text-white/80 sm:text-xs"
                     >
                       {getDisplayUrl(item.url)}
                     </a>
@@ -193,39 +188,36 @@ export function PortfolioSection() {
               ref={trackRef}
               onTransitionEnd={handleTransitionEnd}
               className={`flex gap-4 will-change-transform ${
-                hasTransition
-                  ? "transition-transform duration-700 ease-out"
-                  : ""
+                hasTransition ? 'transition-transform duration-700 ease-out' : ''
               }`}
               style={{ transform: getTransform() }}
             >
               {infiniteItems.map((item, index) => (
                 <div
                   key={`${item.id}-${index}`}
-                  className={`flex-shrink-0 w-[65%] min-h-[360px] md:min-h-[400px] lg:min-h-[440px] xl:min-h-[480px]
-                    transition-transform duration-700 ease-out ${index === currentIndex ? "scale-100" : "scale-90"}`}
+                  className={`min-h-[360px] w-[65%] flex-shrink-0 transition-transform duration-700 ease-out md:min-h-[400px] lg:min-h-[440px] xl:min-h-[480px] ${index === currentIndex ? 'scale-100' : 'scale-90'}`}
                 >
                   <div className="relative size-full">
                     <div className="h-full overflow-hidden rounded-xl border border-white/10 bg-gradient-to-br from-white/5 to-transparent">
-                      <div className="grid h-full md:grid-cols-2 items-stretch">
+                      <div className="grid h-full items-stretch md:grid-cols-2">
                         {/* Left: Logo → Quote → Site */}
-                        <div className="flex min-w-0 flex-col justify-between p-6 md:p-6 lg:p-7 xl:p-7 2xl:p-8 gap-4 md:gap-5 lg:gap-6">
-                          <div className="flex items-center gap-3 min-w-0">
-                                <div className="flex size-11 md:size-12 lg:size-12 items-center justify-center rounded-full bg-white/10 ring-2 ring-white/20 border border-white/30 overflow-hidden">
+                        <div className="flex min-w-0 flex-col justify-between gap-4 p-6 md:gap-5 md:p-6 lg:gap-6 lg:p-7 xl:p-7 2xl:p-8">
+                          <div className="flex min-w-0 items-center gap-3">
+                            <div className="flex size-11 items-center justify-center overflow-hidden rounded-full border border-white/30 bg-white/10 ring-2 ring-white/20 md:size-12 lg:size-12">
                               <Image
-                                src={item.logo || "/placeholder.svg"}
+                                src={item.logo}
                                 alt={`${item.name} logo`}
                                 width={48}
                                 height={48}
-                                className="size-full object-contain rounded-full"
+                                className="size-full rounded-full object-contain"
                               />
                             </div>
-                            <p className="text-sm md:text-base lg:text-lg font-semibold text-white truncate">
+                            <p className="truncate text-sm font-semibold text-white md:text-base lg:text-lg">
                               {item.name}
                             </p>
                           </div>
 
-                          <p className="min-w-0 text-balance text-base md:text-lg lg:text-lg xl:text-lg 2xl:text-xl font-semibold leading-snug text-white/90 line-clamp-5 xl:line-clamp-6">
+                          <p className="line-clamp-5 min-w-0 text-base leading-snug font-semibold text-balance text-white/90 md:text-lg lg:text-lg xl:line-clamp-6 xl:text-lg 2xl:text-xl">
                             &ldquo;{item.quote}&rdquo;
                           </p>
 
@@ -234,7 +226,7 @@ export function PortfolioSection() {
                               href={item.url}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="text-[10px] md:text-xs lg:text-sm xl:text-xs text-white/60 hover:text-white/80 transition-colors truncate"
+                              className="truncate text-[10px] text-white/60 transition-colors hover:text-white/80 md:text-xs lg:text-sm xl:text-xs"
                             >
                               {getDisplayUrl(item.url)}
                             </a>
@@ -247,7 +239,7 @@ export function PortfolioSection() {
                           style={{ background: item.imageBackground }}
                         >
                           <Image
-                            src={item.image || "/placeholder.svg"}
+                            src={item.image}
                             alt={`${item.name} project`}
                             width={640}
                             height={360}
@@ -269,16 +261,14 @@ export function PortfolioSection() {
 
           {/* Company names + arrows */}
           <div className="relative mt-5 md:mt-6 lg:mt-6">
-            <div className="flex items-center justify-center gap-4 md:gap-5 lg:gap-6 xl:gap-8 text-[10px] md:text-xs lg:text-sm text-white/40">
+            <div className="flex items-center justify-center gap-4 text-[10px] text-white/40 md:gap-5 md:text-xs lg:gap-6 lg:text-sm xl:gap-8">
               {showcaseItems.map((item, index) => (
                 <button
                   key={item.id}
                   onClick={() => goToSlide(index)}
                   disabled={isResettingRef.current}
-                  className={`transition-colors hover:text-white/70 disabled:opacity-50 disabled:cursor-not-allowed ${
-                    getRealIndex(currentIndex) === index
-                      ? "font-medium text-white"
-                      : ""
+                  className={`transition-colors hover:text-white/70 disabled:cursor-not-allowed disabled:opacity-50 ${
+                    getRealIndex(currentIndex) === index ? 'font-medium text-white' : ''
                   }`}
                 >
                   {item.name}
@@ -286,13 +276,13 @@ export function PortfolioSection() {
               ))}
             </div>
 
-            <div className="absolute right-[17.5%] top-1/2 -translate-y-1/2 flex items-center gap-2 md:gap-3">
+            <div className="absolute top-1/2 right-[17.5%] flex -translate-y-1/2 items-center gap-2 md:gap-3">
               <Button
                 variant="ghost"
                 size="icon"
                 onClick={goToPrevious}
                 disabled={isResettingRef.current}
-                className="size-7 md:size-8 lg:size-9 xl:size-10 rounded-full border border-white/10 bg-white/5 text-white hover:bg-white/20 hover:border-white/20 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                className="size-7 rounded-full border border-white/10 bg-white/5 text-white transition-colors hover:border-white/20 hover:bg-white/20 disabled:cursor-not-allowed disabled:opacity-50 md:size-8 lg:size-9 xl:size-10"
               >
                 <ChevronLeft className="size-3 md:size-4 lg:size-4 xl:size-5" />
               </Button>
@@ -301,7 +291,7 @@ export function PortfolioSection() {
                 size="icon"
                 onClick={goToNext}
                 disabled={isResettingRef.current}
-                className="size-7 md:size-8 lg:size-9 xl:size-10 rounded-full border border-white/10 bg-white/5 text-white hover:bg-white/20 hover:border-white/20 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                className="size-7 rounded-full border border-white/10 bg-white/5 text-white transition-colors hover:border-white/20 hover:bg-white/20 disabled:cursor-not-allowed disabled:opacity-50 md:size-8 lg:size-9 xl:size-10"
               >
                 <ChevronRight className="size-3 md:size-4 lg:size-4 xl:size-5" />
               </Button>
