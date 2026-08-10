@@ -36,6 +36,6 @@ branch remains writable Site authority until a separately approved cutover.
 authority. `pnpm check:history-safety` is the live complete reachable-history safety
 authority; the committed filtered-history receipt covers only the pre-materialization
 filtered checkpoint and avoids a self-referential final-history claim.
-`node scripts/check-site-asset-inventory.mjs` verifies the privacy-safe mechanical
+`pnpm check:asset-inventory` verifies the privacy-safe mechanical
 asset, font, and source/CSS network-reference receipt. That receipt records no rights,
 provider, privacy, performance-threshold, publication, or release conclusion.

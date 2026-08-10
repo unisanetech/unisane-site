@@ -1,0 +1,42 @@
+{
+  "id": "site.asset-inventory",
+  "title": "Verify Site asset, font, and network inventory",
+  "description": "Verify the deterministic privacy-safe tracked asset, font, and source/CSS network-reference receipt, including its fail-closed privacy fixtures.",
+  "category": "quality-check",
+  "scope": ["workspace"],
+  "command": "pnpm check:asset-inventory",
+  "cwd": ".",
+  "timeoutMs": 120000,
+  "inputs": [
+    "apps/web",
+    "docs/00-start-here.md",
+    "docs/reference/generated/site-asset-font-network-inventory.json",
+    "docs/standards/00-repository-readiness-contract.md",
+    "package.json",
+    "scripts/check-site-asset-inventory.mjs",
+    "tools/skopos/actions/site-asset-inventory.yaml",
+    "tools/skopos/guards/site-asset-inventory.yaml"
+  ],
+  "sourceExcludes": [],
+  "outputs": [],
+  "outputExcludes": [],
+  "affects": [],
+  "capabilities": {
+    "process": "required",
+    "network": "none",
+    "browser": "none",
+    "tools": ["pnpm", "node", "git"],
+    "secrets": [],
+    "services": []
+  },
+  "effects": { "workspace": "none", "artifacts": "none", "external": "none" },
+  "concurrency": "shared",
+  "workspaceMode": "overlay-safe",
+  "safety": "read-only",
+  "requiresApproval": false,
+  "whenToUse": "Require for Site asset/source/CSS, inventory checker/receipt, package command, inventory docs, or inventory Action/Guard declaration changes.",
+  "phases": ["stabilization", "closure"],
+  "risks": ["light", "standard", "high-impact"],
+  "recommendedAfter": [],
+  "owner": "site-maintainers"
+}

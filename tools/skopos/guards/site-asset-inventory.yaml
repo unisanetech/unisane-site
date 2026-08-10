@@ -1,0 +1,26 @@
+{
+  "id": "site.asset-inventory",
+  "title": "Site asset and reference changes require inventory Evidence",
+  "description": "Prevent asset, source/CSS, checker, receipt, package-command, inventory-doc, or capability changes from closing with a stale privacy-safe inventory.",
+  "owner": "site-maintainers",
+  "scope": ["workspace"],
+  "strength": "required",
+  "appliesTo": {
+    "paths": [
+      "apps/web/**",
+      "docs/00-start-here.md",
+      "docs/reference/generated/site-asset-font-network-inventory.json",
+      "docs/standards/00-repository-readiness-contract.md",
+      "package.json",
+      "scripts/check-site-asset-inventory.mjs",
+      "tools/skopos/actions/site-asset-inventory.yaml",
+      "tools/skopos/guards/site-asset-inventory.yaml"
+    ],
+    "phases": ["stabilization", "closure"],
+    "risks": ["light", "standard", "high-impact"]
+  },
+  "requires": {
+    "actionIds": ["site.asset-inventory"],
+    "evidence": "source-bound-action"
+  }
+}

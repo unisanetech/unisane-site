@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
   "generatedBy": "scripts/check-site-asset-inventory.mjs",
-  "sourceInputDigest": "a2ce1e665e2f31d0b7297e683e82a0d9f14c1e02003b7780b8cb2d00a760bb75",
+  "sourceInputDigest": "20bd63305af8a3811972abe375755c42a2c8ee6002a916b1757d826cf8c6b057",
   "methodology": {
     "generationCommand": "node scripts/check-site-asset-inventory.mjs --write",
-    "verificationCommand": "node scripts/check-site-asset-inventory.mjs",
+    "verificationCommand": "pnpm check:asset-inventory",
     "trackedInputCommand": "git ls-files -z -- apps/web",
     "scope": "tracked Site assets plus source/CSS references only",
     "sourceExtensions": [

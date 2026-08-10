@@ -16,6 +16,7 @@
   "private": true,
   "scripts": {
     "build": "turbo run build",
+    "check:asset-inventory": "node scripts/check-site-asset-inventory.mjs",
     "check:cold-checkout": "node scripts/check-cold-checkout.mjs",
     "check:history-safety": "node scripts/check-history-safety.mjs",
     "check:local-readiness": "pnpm --filter @unisane-site/web check:local-readiness",

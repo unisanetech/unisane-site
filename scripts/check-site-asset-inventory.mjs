@@ -333,6 +333,7 @@ for (const sourcePath of sourcePaths) {
     }
     networkOccurrences.push({
       target,
+      hostname: parsed.hostname.toLowerCase(),
       sourcePath,
       ...lineAndColumn(source, match.index),
       syntax: cssExtensions.has(extension)
@@ -425,7 +426,7 @@ const networkReferences = networkOccurrences
       left.line - right.line ||
       left.column - right.column,
   )
-  .map(({ target, ...reference }) => {
+  .map(({ target, hostname, ...reference }) => {
     const targetSha256 = sha256(target)
     if (!networkTargetIds.has(targetSha256)) {
       networkTargetIds.set(
@@ -469,7 +470,7 @@ const receipt = {
   sourceInputDigest,
   methodology: {
     generationCommand: `node ${scriptPath} --write`,
-    verificationCommand: `node ${scriptPath}`,
+    verificationCommand: 'pnpm check:asset-inventory',
     trackedInputCommand: 'git ls-files -z -- apps/web',
     scope: 'tracked Site assets plus source/CSS references only',
     sourceExtensions: [...sourceExtensions].sort(),
@@ -521,6 +522,191 @@ const receipt = {
   ],
 }
 
+const assertPrivacySafeReceipt = ({
+  candidate,
+  withheldAssetPaths,
+  withheldNetworkTargets,
+  withheldNetworkHostnames,
+}) => {
+  const customerLikeEntries = candidate.assets.entries.filter(
+    (asset) =>
+      asset.pathDisclosure === 'withheld-customer-like-filename' ||
+      asset.locator?.kind === 'opaque-id',
+  )
+  if (customerLikeEntries.length !== withheldAssetPaths.length) {
+    throw new Error('customer-like asset privacy coverage is incomplete')
+  }
+  const forbiddenAssetKeys = new Set([
+    'filename',
+    'path',
+    'publicPath',
+    'publicUrl',
+    'rawPath',
+    'repositoryPath',
+  ])
+  for (const asset of customerLikeEntries) {
+    const locatorKeys = Object.keys(asset.locator ?? {}).sort()
+    if (
+      asset.locator?.kind !== 'opaque-id' ||
+      locatorKeys.join(',') !== 'kind,value' ||
+      typeof asset.locator.value !== 'string' ||
+      !/^customer-like-asset-[0-9]{3}$/u.test(asset.locator.value)
+    ) {
+      throw new Error('customer-like asset locator is not opaque-only')
+    }
+    if (Object.keys(asset).some((key) => forbiddenAssetKeys.has(key))) {
+      throw new Error('customer-like asset contains a raw path field')
+    }
+  }
+
+  const forbiddenNetworkKeys = new Set([
+    'host',
+    'hostname',
+    'href',
+    'origin',
+    'rawHostname',
+    'rawTarget',
+    'target',
+    'url',
+  ])
+  const inspectNetworkValue = (value) => {
+    if (typeof value === 'string' && /(?:https?:)?\/\/[a-z0-9]/iu.test(value)) {
+      throw new Error('network reference contains a URL-shaped value')
+    }
+    if (Array.isArray(value)) {
+      for (const child of value) inspectNetworkValue(child)
+      return
+    }
+    if (value === null || typeof value !== 'object') return
+    for (const [key, child] of Object.entries(value)) {
+      if (forbiddenNetworkKeys.has(key)) {
+        throw new Error(
+          'network reference contains a raw target or hostname field',
+        )
+      }
+      inspectNetworkValue(child)
+    }
+  }
+  for (const reference of candidate.network.references) {
+    inspectNetworkValue(reference)
+  }
+
+  const candidateText = JSON.stringify(candidate)
+  const rawSensitiveFilenamesEmitted = withheldAssetPaths.some((path) =>
+    candidateText.includes(path),
+  )
+  const rawNetworkTargetsEmitted = withheldNetworkTargets.some((target) =>
+    candidateText.includes(target),
+  )
+  const rawNetworkHostnamesEmitted = withheldNetworkHostnames.some((hostname) =>
+    candidateText.includes(hostname),
+  )
+  if (rawSensitiveFilenamesEmitted) {
+    throw new Error(
+      'receipt contains an exact withheld customer-like asset path',
+    )
+  }
+  if (rawNetworkTargetsEmitted || rawNetworkHostnamesEmitted) {
+    throw new Error(
+      'receipt contains an exact withheld network target or hostname',
+    )
+  }
+  return {
+    rawSensitiveFilenamesEmitted,
+    rawNetworkTargetsEmitted,
+    rawNetworkHostnamesEmitted,
+  }
+}
+
+const expectPrivacyRejection = (name, candidate, rawValues) => {
+  let rejected = false
+  try {
+    assertPrivacySafeReceipt({ candidate, ...rawValues })
+  } catch {
+    rejected = true
+  }
+  if (!rejected) throw new Error(`${name} privacy fixture was accepted`)
+  return { name, result: 'rejected-as-expected' }
+}
+
+const rawPrivacyValues = {
+  withheldAssetPaths: rawAssets
+    .filter((asset) => asset.customerLike)
+    .map((asset) => asset.path),
+  withheldNetworkTargets: networkOccurrences.map(
+    (reference) => reference.target,
+  ),
+  withheldNetworkHostnames: networkOccurrences.map(
+    (reference) => reference.hostname,
+  ),
+}
+const privacyAudit = assertPrivacySafeReceipt({
+  candidate: receipt,
+  ...rawPrivacyValues,
+})
+const customerFixturePath =
+  rawPrivacyValues.withheldAssetPaths[0] ??
+  'apps/web/public/images/customer-like/privacy-fixture.png'
+const customerLocatorFixture = structuredClone(receipt)
+const customerFixtureEntry = customerLocatorFixture.assets.entries.find(
+  (asset) => asset.pathDisclosure === 'withheld-customer-like-filename',
+)
+if (customerFixtureEntry) {
+  customerFixtureEntry.locator = {
+    kind: 'repository-path',
+    value: customerFixturePath,
+  }
+} else {
+  customerLocatorFixture.assets.entries.push({
+    assetId: 'asset-privacy-fixture',
+    locator: { kind: 'repository-path', value: customerFixturePath },
+    pathDisclosure: 'withheld-customer-like-filename',
+  })
+}
+const rawNetworkTarget =
+  rawPrivacyValues.withheldNetworkTargets[0] ??
+  'https://privacy-fixture.invalid/resource'
+const rawNetworkHostname = new URL(rawNetworkTarget).hostname
+const rawUrlFixture = structuredClone(receipt)
+const rawUrlReference = rawUrlFixture.network.references[0] ?? {}
+rawUrlReference.target = rawNetworkTarget
+if (rawUrlFixture.network.references.length === 0) {
+  rawUrlFixture.network.references.push(rawUrlReference)
+}
+const rawHostnameFixture = structuredClone(receipt)
+const rawHostnameReference = rawHostnameFixture.network.references[0] ?? {}
+rawHostnameReference.hostname = rawNetworkHostname
+if (rawHostnameFixture.network.references.length === 0) {
+  rawHostnameFixture.network.references.push(rawHostnameReference)
+}
+const fixtureRawValues = {
+  withheldAssetPaths: [
+    ...new Set([...rawPrivacyValues.withheldAssetPaths, customerFixturePath]),
+  ],
+  withheldNetworkTargets: [
+    ...new Set([...rawPrivacyValues.withheldNetworkTargets, rawNetworkTarget]),
+  ],
+  withheldNetworkHostnames: [
+    ...new Set([
+      ...rawPrivacyValues.withheldNetworkHostnames,
+      rawNetworkHostname,
+    ]),
+  ],
+}
+const privacyNegativeFixtures = [
+  expectPrivacyRejection(
+    'raw-customer-locator',
+    customerLocatorFixture,
+    fixtureRawValues,
+  ),
+  expectPrivacyRejection('raw-network-url', rawUrlFixture, fixtureRawValues),
+  expectPrivacyRejection(
+    'raw-network-hostname',
+    rawHostnameFixture,
+    fixtureRawValues,
+  ),
+]
+
 const serialized = `${JSON.stringify(receipt, null, 2)}\n`
 if (writeMode) {
   writeFileSync(join(repositoryRoot, receiptPath), serialized)
@@ -546,8 +732,9 @@ console.log(
       fontAssetCount: receipt.assets.fontCount,
       networkReferenceCount: networkReferences.length,
       uniqueNetworkTargetCount: networkTargetIds.size,
-      rawSensitiveFilenamesEmitted: false,
-      rawNetworkTargetsEmitted: false,
+      ...privacyAudit,
+      privacyNegativeFixtures,
+      networkUsed: false,
     },
     null,
     2,
