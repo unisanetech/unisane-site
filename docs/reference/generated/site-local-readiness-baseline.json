@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "generatedBy": "scripts/check-local-readiness.mjs",
-  "sourceInputDigest": "b340335c7ff41d8e477a96862300e6de7683cd51e0ef15b68044d048c04313c1",
+  "sourceInputDigest": "47c82c81fabb1e02ba7bf6c89d51c5b55d0dd36028b8eebbfcf09147b588d59c",
   "methodology": {
     "generationCommand": "pnpm refresh:local-readiness-baseline",
     "verificationCommand": "pnpm verify:local-readiness",
@@ -149,22 +149,22 @@
           "route": "/",
           "sampleCount": 5,
           "responseBytes": 187239,
-          "medianMilliseconds": 3.369,
-          "p95Milliseconds": 3.547
+          "medianMilliseconds": 3.307,
+          "p95Milliseconds": 3.342
         },
         {
           "route": "/services",
           "sampleCount": 5,
           "responseBytes": 43863,
-          "medianMilliseconds": 1.369,
-          "p95Milliseconds": 1.591
+          "medianMilliseconds": 1.061,
+          "p95Milliseconds": 1.5
         },
         {
           "route": "/work",
           "sampleCount": 5,
           "responseBytes": 57567,
-          "medianMilliseconds": 1.14,
-          "p95Milliseconds": 1.253
+          "medianMilliseconds": 1.159,
+          "p95Milliseconds": 1.232
         }
       ]
     },

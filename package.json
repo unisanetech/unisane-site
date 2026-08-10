@@ -2,6 +2,7 @@
   "description": "company-site repository workspace",
   "devDependencies": {
     "eslint": "9.39.2",
+    "js-yaml": "4.3.1",
     "prettier": "3.6.2",
     "turbo": "2.6.3",
     "typescript": "5.9.2",
@@ -25,7 +26,8 @@
     "lint": "turbo run lint",
     "refresh:local-readiness-baseline": "pnpm build && pnpm --filter @unisane-site/web refresh:local-readiness-baseline",
     "start": "pnpm --filter @unisane-site/web start",
-    "test": "pnpm build && pnpm --filter @unisane-site/web test",
+    "test": "pnpm build && pnpm --filter @unisane-site/web test && pnpm test:cold-checkout-bindings",
+    "test:cold-checkout-bindings": "node scripts/check-cold-checkout.mjs --test-action-bindings",
     "typecheck": "turbo run typecheck",
     "verify:local-readiness": "pnpm build && pnpm check:local-readiness"
   },

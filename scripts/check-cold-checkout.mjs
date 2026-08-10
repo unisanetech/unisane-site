@@ -13,8 +13,201 @@ import { tmpdir } from 'node:os'
 import { dirname, join } from 'node:path'
 import process from 'node:process'
 import { fileURLToPath } from 'node:url'
+import { JSON_SCHEMA, load as parseYaml } from 'js-yaml'
 
 const sourceRoot = dirname(dirname(fileURLToPath(import.meta.url)))
+const parityCommands = [
+  'pnpm check:source-safety',
+  'pnpm typecheck',
+  'pnpm lint',
+  'pnpm build',
+  'pnpm test',
+  'pnpm verify:local-readiness',
+  'pnpm check:repository-boundary',
+]
+const registeredActions = [
+  {
+    path: 'tools/skopos/actions/site-source-safety.yaml',
+    id: 'site.source-safety',
+    command: parityCommands[0],
+  },
+  {
+    path: 'tools/skopos/actions/quality-typecheck.yaml',
+    id: 'quality.typecheck',
+    command: parityCommands[1],
+  },
+  {
+    path: 'tools/skopos/actions/quality-lint.yaml',
+    id: 'quality.lint',
+    command: parityCommands[2],
+  },
+  {
+    path: 'tools/skopos/actions/quality-build.yaml',
+    id: 'quality.build',
+    command: parityCommands[3],
+  },
+  {
+    path: 'tools/skopos/actions/quality-test.yaml',
+    id: 'quality.test',
+    command: parityCommands[4],
+  },
+  {
+    path: 'tools/skopos/actions/site-local-readiness.yaml',
+    id: 'site.local-readiness',
+    command: parityCommands[5],
+  },
+  {
+    path: 'tools/skopos/actions/repository-boundary.yaml',
+    id: 'repository.boundary',
+    command: parityCommands[6],
+  },
+]
+
+const assert = (condition, message) => {
+  if (!condition) throw new Error(message)
+}
+
+const parseActionDeclaration = (source, label) => {
+  let declaration
+  try {
+    declaration = parseYaml(source, {
+      filename: label,
+      json: false,
+      schema: JSON_SCHEMA,
+    })
+  } catch (error) {
+    throw new Error(
+      `${label} is not a structurally valid Action declaration: ${error instanceof Error ? error.message : String(error)}`,
+    )
+  }
+  assert(
+    declaration !== null &&
+      typeof declaration === 'object' &&
+      !Array.isArray(declaration),
+    `${label} must contain one Action object`,
+  )
+  return declaration
+}
+
+const validateActionBindings = (bindings, readSource) => {
+  const declarations = bindings.map((binding) => ({
+    binding,
+    declaration: parseActionDeclaration(readSource(binding.path), binding.path),
+  }))
+  const seenIds = new Set()
+  for (const { binding, declaration } of declarations) {
+    assert(
+      typeof declaration.id === 'string' && declaration.id.length > 0,
+      `${binding.path} must declare a non-empty Action id`,
+    )
+    assert(
+      !seenIds.has(declaration.id),
+      `${binding.path} duplicates Action id ${declaration.id}`,
+    )
+    seenIds.add(declaration.id)
+  }
+  for (const { binding, declaration } of declarations) {
+    assert(
+      declaration.id === binding.id,
+      `${binding.path} declares id ${String(declaration.id)} instead of ${binding.id}`,
+    )
+    assert(
+      declaration.command === binding.command,
+      `${binding.path} declares command ${String(declaration.command)} instead of ${binding.command}`,
+    )
+    assert(
+      declaration.cwd === '.',
+      `${binding.path} declares cwd ${String(declaration.cwd)} instead of .`,
+    )
+  }
+  return declarations.map(({ binding }) => ({
+    path: binding.path,
+    id: binding.id,
+    command: binding.command,
+    cwd: '.',
+  }))
+}
+
+const runActionBindingRegression = () => {
+  const actualBindings = validateActionBindings(registeredActions, (path) =>
+    readFileSync(join(sourceRoot, path), 'utf8'),
+  )
+  const expected = {
+    path: '<fixture>',
+    id: 'quality.build',
+    command: 'pnpm build',
+  }
+  const negativeCases = [
+    {
+      name: 'comment-command-decoy',
+      source: `# "command": "pnpm build"\nid: quality.build\ncommand: pnpm unsafe-build\ncwd: .\n`,
+      expectedMessage:
+        'declares command pnpm unsafe-build instead of pnpm build',
+    },
+    {
+      name: 'wrong-cwd',
+      source: `id: quality.build\ncommand: pnpm build\ncwd: apps/web\n`,
+      expectedMessage: 'declares cwd apps/web instead of .',
+    },
+    {
+      name: 'malformed-declaration',
+      source: `id: quality.build\ncommand: [pnpm build\ncwd: .\n`,
+      expectedMessage: 'is not a structurally valid Action declaration',
+    },
+    {
+      name: 'duplicate-id',
+      bindings: [
+        expected,
+        {
+          path: '<fixture-duplicate>',
+          id: 'quality.test',
+          command: 'pnpm test',
+        },
+      ],
+      sources: {
+        '<fixture>': `id: quality.build\ncommand: pnpm build\ncwd: .\n`,
+        '<fixture-duplicate>': `id: quality.build\ncommand: pnpm test\ncwd: .\n`,
+      },
+      expectedMessage: 'duplicates Action id quality.build',
+    },
+  ]
+  const results = negativeCases.map((fixture) => {
+    let rejection = ''
+    try {
+      const bindings = fixture.bindings ?? [expected]
+      validateActionBindings(bindings, (path) =>
+        fixture.sources ? fixture.sources[path] : fixture.source,
+      )
+    } catch (error) {
+      rejection = error instanceof Error ? error.message : String(error)
+    }
+    assert(
+      rejection.includes(fixture.expectedMessage),
+      `${fixture.name} did not fail closed as expected: ${rejection || '<accepted>'}`,
+    )
+    return { name: fixture.name, result: 'rejected-as-expected' }
+  })
+  console.log(
+    JSON.stringify(
+      {
+        schemaVersion: 1,
+        check: 'cold-checkout-action-binding-regression',
+        result: 'pass',
+        actualBindings,
+        negativeCases: results,
+        networkUsed: false,
+      },
+      null,
+      2,
+    ),
+  )
+}
+
+if (process.argv.includes('--test-action-bindings')) {
+  runActionBindingRegression()
+  process.exit(0)
+}
+
 const temporaryRoot = mkdtempSync(join(tmpdir(), 'unisane-site-cold-'))
 const checkoutRoot = join(temporaryRoot, 'unisane-site')
 const storeRoot = join(temporaryRoot, 'pnpm-store')
@@ -28,24 +221,6 @@ const expectedNode = readFileSync(
   'utf8',
 ).trim()
 const expectedPnpm = '10.26.0'
-const parityCommands = [
-  'pnpm check:source-safety',
-  'pnpm typecheck',
-  'pnpm lint',
-  'pnpm build',
-  'pnpm test',
-  'pnpm verify:local-readiness',
-  'pnpm check:repository-boundary',
-]
-const registeredCommands = [
-  ['tools/skopos/actions/site-source-safety.yaml', parityCommands[0]],
-  ['tools/skopos/actions/quality-typecheck.yaml', parityCommands[1]],
-  ['tools/skopos/actions/quality-lint.yaml', parityCommands[2]],
-  ['tools/skopos/actions/quality-build.yaml', parityCommands[3]],
-  ['tools/skopos/actions/quality-test.yaml', parityCommands[4]],
-  ['tools/skopos/actions/site-local-readiness.yaml', parityCommands[5]],
-  ['tools/skopos/actions/repository-boundary.yaml', parityCommands[6]],
-]
 const commandResults = []
 const report = {
   schemaVersion: 1,
@@ -71,6 +246,8 @@ const report = {
     providerWorkflow: 'absent-by-design-pending-remote-and-security-authority',
     commands: parityCommands,
     registeredActionCommandsMatched: false,
+    registeredActionBindingsMatched: false,
+    registeredActionBindings: [],
   },
   commands: commandResults,
   thresholds: {
@@ -127,15 +304,6 @@ const run = (command, args, cwd, label) => {
   if (result.status !== 0) {
     throw new Error(`${label} exited ${result.status ?? 'without a status'}`)
   }
-}
-
-const assert = (condition, message) => {
-  if (!condition) throw new Error(message)
-}
-
-const actionCommand = (path) => {
-  const source = readFileSync(join(checkoutRoot, path), 'utf8')
-  return source.match(/['"]command['"]\s*:\s*['"]([^'"]+)['"]/)?.[1]
 }
 
 try {
@@ -240,13 +408,12 @@ try {
     packageJson.scripts?.['ci:verify'] === declaredParity,
     'package.json ci:verify does not exactly match the proven command sequence',
   )
-  for (const [path, expectedCommand] of registeredCommands) {
-    assert(
-      actionCommand(path) === expectedCommand,
-      `${path} does not register ${expectedCommand}`,
-    )
-  }
+  report.ciParity.registeredActionBindings = validateActionBindings(
+    registeredActions,
+    (path) => readFileSync(join(checkoutRoot, path), 'utf8'),
+  )
   report.ciParity.registeredActionCommandsMatched = true
+  report.ciParity.registeredActionBindingsMatched = true
 
   const lockfilePath = join(checkoutRoot, 'pnpm-lock.yaml')
   const lockfileBefore = sha256File(lockfilePath)
