@@ -1,14 +1,14 @@
 ---
 title: "Task: Correct cold-checkout Action binding validation"
-status: active
+status: complete
 owner: "bhaskarbarma"
 id: T-cd99f6c1
 scope: "workspace"
 role: task
-lifecycle: active
+lifecycle: historical
 authority: canonical
 provenance: accepted
-view: current
+view: exception
 risk: standard
 proofSubject: task-closure
 proofBaseline: baseline-3ac68038aa10e8aa
@@ -19,7 +19,7 @@ lastUpdated: 2026-08-10
 
 ## Changelog
 
-- `2026-08-10`: Synchronized Task state `active` from Skopos.
+- `2026-08-10`: Synchronized Task state `complete` from Skopos.
 
 ## Goal
 
@@ -62,16 +62,16 @@ Correct cold-checkout Action binding validation
 
 ## Steps
 
-- [ ] **Record Task risk and detail before editing** (implementation, pending) — Confirm whether Task risk is light, standard, or high-impact. Keep the active Task current, use a Plan only for multi-Task direction, add a Decision for durable choices, and add or update a Finding for structural gaps.
-- [ ] **Review the current pattern in unisane-site** (implementation, pending) — Use the compact references to confirm the current scope, command surface, and docs entrypoints before editing code.
-- [ ] **Implement the smallest scoped change** (implementation, pending) — Carry out "Correct cold-checkout Action binding validation" inside the resolved scope before widening impact to adjacent areas.
-- [ ] **Sync docs and instruction surfaces if touched** (docs, pending) — Keep docs, instruction mirrors, and generated project knowledge aligned with the implementation.
+- [x] **Record Task risk and detail before editing** (implementation, complete) — Confirm whether Task risk is light, standard, or high-impact. Keep the active Task current, use a Plan only for multi-Task direction, add a Decision for durable choices, and add or update a Finding for structural gaps.
+- [x] **Review the current pattern in unisane-site** (implementation, complete) — Use the compact references to confirm the current scope, command surface, and docs entrypoints before editing code.
+- [x] **Implement the smallest scoped change** (implementation, complete) — Carry out "Correct cold-checkout Action binding validation" inside the resolved scope before widening impact to adjacent areas.
+- [x] **Sync docs and instruction surfaces if touched** (docs, complete) — Keep docs, instruction mirrors, and generated project knowledge aligned with the implementation.
 - [x] **Build the Site application** (action, complete) — Required by Guard quality.build.
 - [x] **Lint Site source** (action, complete) — Required by Guard quality.lint.
 - [x] **Test Site behavior** (action, complete) — Required by Guard quality.test.
 - [x] **Typecheck Site source** (action, complete) — Required by Guard quality.typecheck.
 - [x] **Verify standalone repository boundary and Git integrity** (action, complete) — Required by Guard repository.boundary.
-- [ ] **Verify cold checkout, frozen install, and CI command parity** (action, pending) — Required by Guard repository.cold-checkout.
+- [x] **Verify cold checkout, frozen install, and CI command parity** (action, complete) — Required by Guard repository.cold-checkout.
 - [x] **Verify local Site routes, semantics, SEO, and baselines** (action, complete) — Required by Guard site.local-readiness.
 - [x] **Verify Site source-safety behavior** (action, complete) — Required by Guard site.source-safety.
 
@@ -124,12 +124,12 @@ This machine-readable block is the durable source used to rebuild local Skopos s
   "schemaVersion": 1,
   "id": "T-cd99f6c1",
   "type": "task",
-  "status": "active",
+  "status": "durable",
   "generatedAt": "2026-08-10T21:18:55.051Z",
-  "updatedAt": "2026-08-10T21:24:13.066Z",
+  "updatedAt": "2026-08-10T21:29:07.882Z",
   "planIds": [],
   "childTasks": [],
-  "state": "active",
+  "state": "complete",
   "detail": "standard",
   "title": "Correct cold-checkout Action binding validation",
   "goal": "Correct cold-checkout Action binding validation",
@@ -209,28 +209,28 @@ This machine-readable block is the durable source used to rebuild local Skopos s
       "kind": "implementation",
       "title": "Record Task risk and detail before editing",
       "detail": "Confirm whether Task risk is light, standard, or high-impact. Keep the active Task current, use a Plan only for multi-Task direction, add a Decision for durable choices, and add or update a Finding for structural gaps.",
-      "status": "pending"
+      "status": "complete"
     },
     {
       "id": "step-review-current-pattern",
       "kind": "implementation",
       "title": "Review the current pattern in unisane-site",
       "detail": "Use the compact references to confirm the current scope, command surface, and docs entrypoints before editing code.",
-      "status": "pending"
+      "status": "complete"
     },
     {
       "id": "step-implement-scoped-change",
       "kind": "implementation",
       "title": "Implement the smallest scoped change",
       "detail": "Carry out \"Correct cold-checkout Action binding validation\" inside the resolved scope before widening impact to adjacent areas.",
-      "status": "pending"
+      "status": "complete"
     },
     {
       "id": "step-sync-knowledge",
       "kind": "docs",
       "title": "Sync docs and instruction surfaces if touched",
       "detail": "Keep docs, instruction mirrors, and generated project knowledge aligned with the implementation.",
-      "status": "pending"
+      "status": "complete"
     },
     {
       "id": "action-quality.build",
@@ -272,7 +272,7 @@ This machine-readable block is the durable source used to rebuild local Skopos s
       "kind": "action",
       "title": "Verify cold checkout, frozen install, and CI command parity",
       "detail": "Required by Guard repository.cold-checkout.",
-      "status": "pending"
+      "status": "complete"
     },
     {
       "id": "action-site.local-readiness",
@@ -619,7 +619,7 @@ This machine-readable block is the durable source used to rebuild local Skopos s
       "actionKind": "run-action",
       "actionId": "repository.cold-checkout",
       "blocking": false,
-      "status": "open"
+      "status": "complete"
     },
     {
       "id": "run-site.local-readiness",
