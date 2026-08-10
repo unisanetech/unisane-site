@@ -199,7 +199,12 @@ const stableProjection = (value) => ({
       ownerThresholds: value.baselines.performance.ownerThresholds,
       method: value.baselines.performance.method,
     },
-    bundle: value.baselines.bundle,
+    bundle: {
+      ...value.baselines.bundle,
+      routeHtml: value.baselines.bundle.routeHtml.map(
+        ({ route, htmlBytes }) => ({ route, htmlBytes }),
+      ),
+    },
     images: value.baselines.images,
   },
 })
@@ -853,7 +858,9 @@ const receipt = {
     timingInterpretation:
       'Observed local response timing is environment-specific and is not pass/fail without an owner threshold.',
     bundleInterpretation:
-      'Built JavaScript, CSS, and route HTML byte counts are deterministic comparison baselines, not approved budgets.',
+      'Built JavaScript and CSS byte/gzip counts plus raw route HTML byte counts are deterministic comparison baselines, not approved budgets.',
+    routeHtmlCompressionInterpretation:
+      'Route HTML gzip bytes are host-observed because same-source Next builds contain generated variance; they remain reported but are excluded from stable equality.',
     imageInterpretation:
       'Tracked public image byte counts, dimensions, and digests are inventory baselines, not rights or performance approval.',
   },
