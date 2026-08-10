@@ -9,6 +9,7 @@
   'timeoutMs': 900000,
   'inputs':
     [
+      '.node-version',
       'apps/web',
       'docs/reference/generated/site-local-readiness-baseline.json',
       'package.json',

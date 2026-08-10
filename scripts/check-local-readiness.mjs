@@ -29,6 +29,9 @@ const baselinePath = join(
   'site-local-readiness-baseline.json',
 )
 const writeBaseline = process.argv.includes('--write-baseline')
+const testSourceInputDigest = process.argv.includes(
+  '--test-source-input-digest',
+)
 const excludedDirectories = new Set([
   '.next',
   '.turbo',
@@ -129,7 +132,9 @@ const routeSet = new Set(routes)
 
 const inputFiles = [
   ...walk(webRoot),
+  join(siteRoot, '.node-version'),
   join(siteRoot, 'package.json'),
+  join(siteRoot, 'pnpm-lock.yaml'),
   join(siteRoot, 'pnpm-workspace.yaml'),
   join(siteRoot, 'turbo.json'),
   join(siteRoot, 'scripts', 'check-local-readiness.mjs'),
@@ -144,14 +149,109 @@ const inputFiles = [
   .sort((left, right) =>
     relative(siteRoot, left).localeCompare(relative(siteRoot, right)),
   )
-const sourceInputHash = createHash('sha256')
-for (const path of inputFiles) {
-  sourceInputHash.update(relative(siteRoot, path))
-  sourceInputHash.update('\0')
-  sourceInputHash.update(readFileSync(path))
-  sourceInputHash.update('\0')
+
+const createSourceInputDigest = (overrides = new Map()) => {
+  const sourceInputHash = createHash('sha256')
+  for (const path of inputFiles) {
+    sourceInputHash.update(relative(siteRoot, path))
+    sourceInputHash.update('\0')
+    sourceInputHash.update(overrides.get(path) ?? readFileSync(path))
+    sourceInputHash.update('\0')
+  }
+  return sourceInputHash.digest('hex')
 }
-const sourceInputDigest = sourceInputHash.digest('hex')
+
+const sourceInputDigest = createSourceInputDigest()
+const inputDigestMutationTargets = [
+  join(siteRoot, '.node-version'),
+  join(siteRoot, 'pnpm-lock.yaml'),
+]
+const inputDigestMutationRegression = inputDigestMutationTargets.map((path) => {
+  const mutatedBytes = Buffer.concat([
+    readFileSync(path),
+    Buffer.from('\0local-readiness-regression-byte'),
+  ])
+  const mutatedDigest = createSourceInputDigest(new Map([[path, mutatedBytes]]))
+  const changed = mutatedDigest !== sourceInputDigest
+  if (!changed) {
+    fail(
+      `source input digest did not change for an in-memory mutation of ${relative(siteRoot, path)}`,
+    )
+  }
+  return {
+    path: relative(siteRoot, path),
+    changed,
+    mutatedDigest,
+  }
+})
+
+const stableProjection = (value) => ({
+  schemaVersion: value.schemaVersion,
+  generatedBy: value.generatedBy,
+  sourceInputDigest: value.sourceInputDigest,
+  methodology: value.methodology,
+  environment: value.environment,
+  scope: value.scope,
+  assertions: value.assertions,
+  baselines: {
+    performance: {
+      evaluation: value.baselines.performance.evaluation,
+      ownerThresholds: value.baselines.performance.ownerThresholds,
+      method: value.baselines.performance.method,
+    },
+    bundle: value.baselines.bundle,
+    images: value.baselines.images,
+  },
+})
+
+const stableReceiptsEqual = (left, right) =>
+  JSON.stringify(stableProjection(left)) ===
+  JSON.stringify(stableProjection(right))
+
+if (testSourceInputDigest) {
+  if (!existsSync(baselinePath)) {
+    fail('local readiness baseline is missing')
+  } else {
+    const expected = JSON.parse(readFileSync(baselinePath, 'utf8'))
+    const currentCandidate = { ...expected, sourceInputDigest }
+    if (!stableReceiptsEqual(expected, currentCandidate)) {
+      fail(
+        'committed local readiness baseline is stale before the input-digest regression',
+      )
+    }
+    for (const result of inputDigestMutationRegression) {
+      const mutatedCandidate = {
+        ...currentCandidate,
+        sourceInputDigest: result.mutatedDigest,
+      }
+      if (stableReceiptsEqual(currentCandidate, mutatedCandidate)) {
+        fail(
+          `stable baseline comparison ignored an in-memory mutation of ${result.path}`,
+        )
+      }
+    }
+  }
+  console.log(
+    JSON.stringify(
+      {
+        result: failures.length === 0 ? 'pass' : 'fail',
+        mode: 'test-source-input-digest',
+        network: 'none',
+        repositoryMutation: 'none',
+        sourceInputDigest,
+        cases: inputDigestMutationRegression.map(({ path, changed }) => ({
+          path,
+          changed,
+          staleBaselineDetected: changed,
+        })),
+        failures,
+      },
+      null,
+      2,
+    ),
+  )
+  process.exit(failures.length === 0 ? 0 : 1)
+}
 
 const seoConfigSource = readFileSync(
   join(webRoot, 'lib', 'seo', 'config.ts'),
@@ -742,6 +842,14 @@ const receipt = {
     network: 'loopback-only; no external requests',
     runtimeWarmupRequestsPerRoute: 2,
     runtimeMeasuredRequestsPerRoute: 5,
+    sourceInputIdentity:
+      'SHA-256 over sorted repository-relative path, NUL, file bytes, and NUL for the app tree plus the checker, root package, lockfile, Node selector, workspace, and Turbo configuration.',
+    sourceInputMutationRegressionCommand:
+      'node scripts/check-local-readiness.mjs --test-source-input-digest',
+    environmentInterpretation:
+      'Node, package-manager, platform, and architecture values are host observations, not owner-approved thresholds or cross-platform proof.',
+    portabilityInterpretation:
+      'This local receipt does not establish cold-clone or cross-platform CI readiness.',
     timingInterpretation:
       'Observed local response timing is environment-specific and is not pass/fail without an owner threshold.',
     bundleInterpretation:
@@ -774,6 +882,9 @@ const receipt = {
   },
   assertions: {
     result: failures.length === 0 ? 'pass' : 'fail',
+    inputDigestMutationRegression: inputDigestMutationRegression.map(
+      ({ path, changed }) => ({ path, changed }),
+    ),
     routeCount: routes.length,
     routeAnalyses,
     loopbackMissingRouteStatus: loopback.missingRoute?.status ?? null,
@@ -814,25 +925,6 @@ const receipt = {
   },
 }
 
-const stableProjection = (value) => ({
-  schemaVersion: value.schemaVersion,
-  generatedBy: value.generatedBy,
-  sourceInputDigest: value.sourceInputDigest,
-  methodology: value.methodology,
-  environment: value.environment,
-  scope: value.scope,
-  assertions: value.assertions,
-  baselines: {
-    performance: {
-      evaluation: value.baselines.performance.evaluation,
-      ownerThresholds: value.baselines.performance.ownerThresholds,
-      method: value.baselines.performance.method,
-    },
-    bundle: value.baselines.bundle,
-    images: value.baselines.images,
-  },
-})
-
 if (writeBaseline && failures.length === 0) {
   writeFileSync(
     baselinePath,
@@ -845,10 +937,7 @@ if (writeBaseline && failures.length === 0) {
     )
   } else {
     const expected = JSON.parse(readFileSync(baselinePath, 'utf8'))
-    if (
-      JSON.stringify(stableProjection(expected)) !==
-      JSON.stringify(stableProjection(receipt))
-    ) {
+    if (!stableReceiptsEqual(expected, receipt)) {
       fail(
         'local readiness baseline is stale; inspect the change and run pnpm refresh:local-readiness-baseline when authorized',
       )
@@ -860,6 +949,9 @@ const summary = {
   result: failures.length === 0 ? 'pass' : 'fail',
   mode: writeBaseline ? 'write-baseline' : 'verify-baseline',
   sourceInputDigest,
+  inputDigestMutationRegression: inputDigestMutationRegression.map(
+    ({ path, changed }) => ({ path, changed }),
+  ),
   routeCount: routes.length,
   fragmentTargetCount: fragmentTargets.length,
   visitorJourneyCount: visitorJourneys.length,

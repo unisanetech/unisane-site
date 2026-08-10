@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "generatedBy": "scripts/check-local-readiness.mjs",
-  "sourceInputDigest": "049a576f20adb7cfc707b8652278bae71a04e17bbc51a64d29e79fa1ee506ae8",
+  "sourceInputDigest": "a46d05a894a84ad1d18ab5f6986bdb189638f59e520442be78f36210a8e2021a",
   "methodology": {
     "generationCommand": "pnpm refresh:local-readiness-baseline",
     "verificationCommand": "pnpm verify:local-readiness",
@@ -9,6 +9,10 @@
     "network": "loopback-only; no external requests",
     "runtimeWarmupRequestsPerRoute": 2,
     "runtimeMeasuredRequestsPerRoute": 5,
+    "sourceInputIdentity": "SHA-256 over sorted repository-relative path, NUL, file bytes, and NUL for the app tree plus the checker, root package, lockfile, Node selector, workspace, and Turbo configuration.",
+    "sourceInputMutationRegressionCommand": "node scripts/check-local-readiness.mjs --test-source-input-digest",
+    "environmentInterpretation": "Node, package-manager, platform, and architecture values are host observations, not owner-approved thresholds or cross-platform proof.",
+    "portabilityInterpretation": "This local receipt does not establish cold-clone or cross-platform CI readiness.",
     "timingInterpretation": "Observed local response timing is environment-specific and is not pass/fail without an owner threshold.",
     "bundleInterpretation": "Built JavaScript, CSS, and route HTML byte counts are deterministic comparison baselines, not approved budgets.",
     "imageInterpretation": "Tracked public image byte counts, dimensions, and digests are inventory baselines, not rights or performance approval."
@@ -82,6 +86,10 @@
   },
   "assertions": {
     "result": "pass",
+    "inputDigestMutationRegression": [
+      { "path": ".node-version", "changed": true },
+      { "path": "pnpm-lock.yaml", "changed": true }
+    ],
     "routeCount": 3,
     "routeAnalyses": [
       {
@@ -140,22 +148,22 @@
           "route": "/",
           "sampleCount": 5,
           "responseBytes": 187239,
-          "medianMilliseconds": 3.356,
-          "p95Milliseconds": 3.706
+          "medianMilliseconds": 4.97,
+          "p95Milliseconds": 5.374
         },
         {
           "route": "/services",
           "sampleCount": 5,
           "responseBytes": 43863,
-          "medianMilliseconds": 1.31,
-          "p95Milliseconds": 3.55
+          "medianMilliseconds": 1.784,
+          "p95Milliseconds": 2.584
         },
         {
           "route": "/work",
           "sampleCount": 5,
           "responseBytes": 57567,
-          "medianMilliseconds": 1.144,
-          "p95Milliseconds": 1.336
+          "medianMilliseconds": 1.735,
+          "p95Milliseconds": 1.919
         }
       ]
     },
@@ -173,9 +181,9 @@
         "cssBytes": 61370
       },
       "routeHtml": [
-        { "route": "/", "htmlBytes": 187239, "htmlGzipBytes": 36173 },
-        { "route": "/services", "htmlBytes": 43863, "htmlGzipBytes": 8569 },
-        { "route": "/work", "htmlBytes": 57567, "htmlGzipBytes": 8811 }
+        { "route": "/", "htmlBytes": 187239, "htmlGzipBytes": 36175 },
+        { "route": "/services", "htmlBytes": 43863, "htmlGzipBytes": 8574 },
+        { "route": "/work", "htmlBytes": 57567, "htmlGzipBytes": 8817 }
       ],
       "assets": [
         {
