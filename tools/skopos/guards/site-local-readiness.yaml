@@ -1,0 +1,29 @@
+{
+  'id': 'site.local-readiness',
+  'title': 'Site route and readiness changes require local readiness Evidence',
+  'description': 'Require real build-backed route, journey, static-target, semantic, SEO, and baseline proof without treating repository shape as behavioral evidence.',
+  'owner': 'site-maintainers',
+  'scope': ['workspace'],
+  'strength': 'required',
+  'appliesTo':
+    {
+      'paths':
+        [
+          'apps/web/app/**',
+          'apps/web/components/**',
+          'apps/web/lib/seo/**',
+          'apps/web/public/**',
+          'apps/web/package.json',
+          'docs/reference/generated/site-local-readiness-baseline.json',
+          'package.json',
+          'scripts/check-local-readiness.mjs',
+        ],
+      'phases': ['stabilization', 'closure'],
+      'risks': ['light', 'standard', 'high-impact'],
+    },
+  'requires':
+    {
+      'actionIds': ['site.local-readiness'],
+      'evidence': 'source-bound-action',
+    },
+}

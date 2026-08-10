@@ -1,0 +1,433 @@
+{
+  "schemaVersion": 1,
+  "generatedBy": "scripts/check-local-readiness.mjs",
+  "sourceInputDigest": "049a576f20adb7cfc707b8652278bae71a04e17bbc51a64d29e79fa1ee506ae8",
+  "methodology": {
+    "generationCommand": "pnpm refresh:local-readiness-baseline",
+    "verificationCommand": "pnpm verify:local-readiness",
+    "buildCommand": "pnpm build",
+    "network": "loopback-only; no external requests",
+    "runtimeWarmupRequestsPerRoute": 2,
+    "runtimeMeasuredRequestsPerRoute": 5,
+    "timingInterpretation": "Observed local response timing is environment-specific and is not pass/fail without an owner threshold.",
+    "bundleInterpretation": "Built JavaScript, CSS, and route HTML byte counts are deterministic comparison baselines, not approved budgets.",
+    "imageInterpretation": "Tracked public image byte counts, dimensions, and digests are inventory baselines, not rights or performance approval."
+  },
+  "environment": {
+    "node": "v24.13.0",
+    "packageManager": "pnpm@10.26.0",
+    "next": "16.0.10",
+    "platform": "darwin",
+    "architecture": "arm64"
+  },
+  "scope": {
+    "retainedRoutes": ["/", "/services", "/work"],
+    "visitorJourneys": [
+      { "route": "/", "fromHome": ["/"], "toHome": ["/"] },
+      {
+        "route": "/services",
+        "fromHome": ["/", "/services"],
+        "toHome": ["/services", "/"]
+      },
+      { "route": "/work", "fromHome": ["/", "/work"], "toHome": ["/work", "/"] }
+    ],
+    "fragmentTargets": [
+      { "sourceRoute": "/", "targetRoute": "/", "fragment": "process-section" },
+      { "sourceRoute": "/", "targetRoute": "/", "fragment": "process-section" },
+      { "sourceRoute": "/", "targetRoute": "/", "fragment": "process-section" },
+      {
+        "sourceRoute": "/services",
+        "targetRoute": "/",
+        "fragment": "process-section"
+      },
+      {
+        "sourceRoute": "/services",
+        "targetRoute": "/",
+        "fragment": "process-section"
+      },
+      {
+        "sourceRoute": "/services",
+        "targetRoute": "/",
+        "fragment": "process-section"
+      },
+      {
+        "sourceRoute": "/work",
+        "targetRoute": "/",
+        "fragment": "process-section"
+      },
+      {
+        "sourceRoute": "/work",
+        "targetRoute": "/",
+        "fragment": "process-section"
+      },
+      {
+        "sourceRoute": "/work",
+        "targetRoute": "/",
+        "fragment": "process-section"
+      }
+    ],
+    "frameworkErrorSurfaces": {
+      "customNotFoundSource": false,
+      "customErrorSource": false,
+      "customGlobalErrorSource": false,
+      "builtFrameworkNotFound": true,
+      "builtFrameworkGlobalError": true
+    },
+    "canonicalInput": {
+      "environmentVariable": "NEXT_PUBLIC_SITE_URL",
+      "source": "source-fallback-unapproved",
+      "observedValue": "https://www.unisane.com",
+      "ownerApproval": "required"
+    }
+  },
+  "assertions": {
+    "result": "pass",
+    "routeCount": 3,
+    "routeAnalyses": [
+      {
+        "route": "/",
+        "title": "Unisane | Full-stack Web & Product Development",
+        "descriptionBytes": 180,
+        "canonical": "https://www.unisane.com",
+        "robots": "index, follow",
+        "headingLevels": [1, 2, 3, 3, 3, 3, 3, 2, 2, 2, 3],
+        "mainCount": 1,
+        "navLabels": ["Primary navigation", "Mobile navigation"],
+        "imageCount": 42,
+        "buttonCount": 13,
+        "linkCount": 55
+      },
+      {
+        "route": "/services",
+        "title": "Services | Unisane Full-Stack Product Teams",
+        "descriptionBytes": 141,
+        "canonical": "https://www.unisane.com/services",
+        "robots": "index, follow",
+        "headingLevels": [1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3],
+        "mainCount": 1,
+        "navLabels": ["Primary navigation", "Mobile navigation"],
+        "imageCount": 0,
+        "buttonCount": 2,
+        "linkCount": 11
+      },
+      {
+        "route": "/work",
+        "title": "Work | Unisane Case Studies",
+        "descriptionBytes": 131,
+        "canonical": "https://www.unisane.com/work",
+        "robots": "index, follow",
+        "headingLevels": [1, 2, 2, 2, 2, 2, 2, 3],
+        "mainCount": 1,
+        "navLabels": ["Primary navigation", "Mobile navigation"],
+        "imageCount": 10,
+        "buttonCount": 2,
+        "linkCount": 16
+      }
+    ],
+    "loopbackMissingRouteStatus": 404,
+    "verifiedStaticTargetCount": 99
+  },
+  "baselines": {
+    "performance": {
+      "evaluation": "observed-not-evaluated",
+      "ownerThresholds": {
+        "medianMilliseconds": null,
+        "p95Milliseconds": null
+      },
+      "method": "Next production server on an ephemeral loopback port",
+      "routes": [
+        {
+          "route": "/",
+          "sampleCount": 5,
+          "responseBytes": 187239,
+          "medianMilliseconds": 3.356,
+          "p95Milliseconds": 3.706
+        },
+        {
+          "route": "/services",
+          "sampleCount": 5,
+          "responseBytes": 43863,
+          "medianMilliseconds": 1.31,
+          "p95Milliseconds": 3.55
+        },
+        {
+          "route": "/work",
+          "sampleCount": 5,
+          "responseBytes": 57567,
+          "medianMilliseconds": 1.144,
+          "p95Milliseconds": 1.336
+        }
+      ]
+    },
+    "bundle": {
+      "evaluation": "baseline-only",
+      "ownerThresholds": {
+        "totalBytes": null,
+        "totalGzipBytes": null,
+        "routeHtmlBytes": null
+      },
+      "totals": {
+        "bytes": 905244,
+        "gzipBytes": 280127,
+        "javascriptBytes": 843874,
+        "cssBytes": 61370
+      },
+      "routeHtml": [
+        { "route": "/", "htmlBytes": 187239, "htmlGzipBytes": 36173 },
+        { "route": "/services", "htmlBytes": 43863, "htmlGzipBytes": 8569 },
+        { "route": "/work", "htmlBytes": 57567, "htmlGzipBytes": 8811 }
+      ],
+      "assets": [
+        {
+          "path": "static/chunks/19a1455f0db11319.js",
+          "type": "js",
+          "bytes": 13918,
+          "gzipBytes": 5264
+        },
+        {
+          "path": "static/chunks/4e1aca99bba43598.js",
+          "type": "js",
+          "bytes": 10724,
+          "gzipBytes": 3819
+        },
+        {
+          "path": "static/chunks/534623852d177cfe.js",
+          "type": "js",
+          "bytes": 206471,
+          "gzipBytes": 71556
+        },
+        {
+          "path": "static/chunks/589a669da3c5d99f.js",
+          "type": "js",
+          "bytes": 85423,
+          "gzipBytes": 22776
+        },
+        {
+          "path": "static/chunks/79dc33e2bea3fec6.js",
+          "type": "js",
+          "bytes": 282,
+          "gzipBytes": 224
+        },
+        {
+          "path": "static/chunks/82bdb4072e4ec879.js",
+          "type": "js",
+          "bytes": 34301,
+          "gzipBytes": 11570
+        },
+        {
+          "path": "static/chunks/a6dad97d9634a72d.js",
+          "type": "js",
+          "bytes": 112594,
+          "gzipBytes": 39520
+        },
+        {
+          "path": "static/chunks/aa61e466b92f43e7.css",
+          "type": "css",
+          "bytes": 61370,
+          "gzipBytes": 10752
+        },
+        {
+          "path": "static/chunks/b64676c0b7771fb0.js",
+          "type": "js",
+          "bytes": 13918,
+          "gzipBytes": 5268
+        },
+        {
+          "path": "static/chunks/d1ad559990ad03eb.js",
+          "type": "js",
+          "bytes": 9120,
+          "gzipBytes": 3572
+        },
+        {
+          "path": "static/chunks/d620679d831a1434.js",
+          "type": "js",
+          "bytes": 27853,
+          "gzipBytes": 6895
+        },
+        {
+          "path": "static/chunks/d7222934e1d8b79b.js",
+          "type": "js",
+          "bytes": 98673,
+          "gzipBytes": 25470
+        },
+        {
+          "path": "static/chunks/e362616f1a5b0710.js",
+          "type": "js",
+          "bytes": 214814,
+          "gzipBytes": 67326
+        },
+        {
+          "path": "static/chunks/ea9c7f482f5a9832.js",
+          "type": "js",
+          "bytes": 5874,
+          "gzipBytes": 2232
+        },
+        {
+          "path": "static/chunks/turbopack-f0716bbef31321f3.js",
+          "type": "js",
+          "bytes": 9909,
+          "gzipBytes": 3883
+        }
+      ]
+    },
+    "images": {
+      "evaluation": "baseline-only-rights-unresolved",
+      "ownerThresholds": {
+        "totalBytes": null,
+        "largestAssetBytes": null,
+        "perAssetBytes": null
+      },
+      "count": 21,
+      "totals": { "bytes": 13145971, "largestBytes": 2666949 },
+      "assets": [
+        {
+          "path": "/images/cta/code-sample.png",
+          "bytes": 611726,
+          "sha256": "48be2dac87cba0eb03bfe489988c14b0baefb1fde9b307d8b38023d799a1f36e",
+          "width": 2112,
+          "height": 1726
+        },
+        {
+          "path": "/images/icons/android-chrome-192x192.png",
+          "bytes": 5555,
+          "sha256": "c47d688068fed6779330b13f6cb875fc38ab9972c75635dc15906e977eb6c9c9",
+          "width": 192,
+          "height": 192
+        },
+        {
+          "path": "/images/icons/android-chrome-512x512.png",
+          "bytes": 18868,
+          "sha256": "0cc7d0d746ae4682c146e46936ae618728235f292fa9f1a84290b9525b80d2fe",
+          "width": 512,
+          "height": 512
+        },
+        {
+          "path": "/images/icons/apple-touch-icon.png",
+          "bytes": 5137,
+          "sha256": "90939cfa0f0b08b7cbdc730036b88797da46158fb7bf223c951706494d2d1edc",
+          "width": 180,
+          "height": 180
+        },
+        {
+          "path": "/images/icons/favicon-16x16.png",
+          "bytes": 386,
+          "sha256": "f437784f83c2dbf3f7c3c72725bba27004d81bebaa39c6df94e8f46c90737887",
+          "width": 16,
+          "height": 16
+        },
+        {
+          "path": "/images/icons/favicon-32x32.png",
+          "bytes": 721,
+          "sha256": "4ad6e33207059a2beec9cd2762113324dc7f5b3c50bdd7cd963643960c8f470b",
+          "width": 32,
+          "height": 32
+        },
+        {
+          "path": "/images/icons/favicon.ico",
+          "bytes": 15406,
+          "sha256": "4d1445eb78130f8066e65a3eaddb783904e2e7447aaab18f627f74b75d1171f7",
+          "width": 16,
+          "height": 16
+        },
+        {
+          "path": "/images/portfolio/bill-generator.png",
+          "bytes": 795314,
+          "sha256": "fb2f3020fc2294ee201b643003a6cffe959facb587d7b9f4fcf113ef41112ddf",
+          "width": 2522,
+          "height": 1870
+        },
+        {
+          "path": "/images/portfolio/billquest.png",
+          "bytes": 1646547,
+          "sha256": "078714f258ac92c6a88dde9d08fc862ba28dda48cc344644da615c0f95c0a90a",
+          "width": 2902,
+          "height": 1962
+        },
+        {
+          "path": "/images/portfolio/examon.png",
+          "bytes": 545992,
+          "sha256": "c3103f1db7a723af0141bbd49caf409df175d3132778f5f71a422524507ecc76",
+          "width": 2520,
+          "height": 1962
+        },
+        {
+          "path": "/images/portfolio/logo/bill-generator.png",
+          "bytes": 11908,
+          "sha256": "4b5628aa5f7ae93dc885770aef34ffb3e9562180b35fdd1b2da5b59fd106755a",
+          "width": 436,
+          "height": 404
+        },
+        {
+          "path": "/images/portfolio/logo/billquest.png",
+          "bytes": 4682,
+          "sha256": "82afd46ea6b6a9c50157660c8a630ed8334ba221dbd2b7ec212e0b90a03041ba",
+          "width": 180,
+          "height": 180
+        },
+        {
+          "path": "/images/portfolio/logo/examon.png",
+          "bytes": 12182,
+          "sha256": "050296706f672b6bf96ce44f318003e14913f2d2dbbcaeffc25d2863229ad161",
+          "width": 388,
+          "height": 374
+        },
+        {
+          "path": "/images/portfolio/logo/rhythmo.png",
+          "bytes": 722420,
+          "sha256": "4d4abd0d9be1e7872be51fe34ac04bfb47ea4856526d70d7b2996aa0ac25a946",
+          "width": 966,
+          "height": 960
+        },
+        {
+          "path": "/images/portfolio/logo/zipper.png",
+          "bytes": 16995,
+          "sha256": "586def191b3474bcc0f1ca2421b1612a50aa5fb0a1ca3ba6d71fb9560cd349b1",
+          "width": 518,
+          "height": 508
+        },
+        {
+          "path": "/images/portfolio/rhythmo.png",
+          "bytes": 2666949,
+          "sha256": "a01c1a44474d237df94fb4b1cdda61c8122f514a7ec002846a0aafe491f17594",
+          "width": 2898,
+          "height": 1954
+        },
+        {
+          "path": "/images/portfolio/zipper.png",
+          "bytes": 1989375,
+          "sha256": "b9692138c50044e63ed71220387d6deedd676c87b85c0fd2c43cd8f8ef3c80c6",
+          "width": 2520,
+          "height": 1960
+        },
+        {
+          "path": "/images/proccess/build-and-validate.png",
+          "bytes": 953928,
+          "sha256": "f6fdaee9391660b9e7f240faea4a7930a1ee4917acee75ff03152a06991e5a2c",
+          "width": 1024,
+          "height": 1024
+        },
+        {
+          "path": "/images/proccess/design-and-architect.png",
+          "bytes": 1065945,
+          "sha256": "d17f2f57ca3dc861dfabafd36baf75489c8a562503e28fa4d1034e229df1bc69",
+          "width": 1024,
+          "height": 1024
+        },
+        {
+          "path": "/images/proccess/discover-and-align.png",
+          "bytes": 1074710,
+          "sha256": "1504afae5594426ea603ab94e07896119bfb7b8bc74fe26693751ce4ca211fbf",
+          "width": 1024,
+          "height": 1024
+        },
+        {
+          "path": "/images/proccess/launch-and-grow.png",
+          "bytes": 981225,
+          "sha256": "75684ea6397585dbe7e4be2d3de036db262dfe591746b73364465a748806cab0",
+          "width": 1024,
+          "height": 1024
+        }
+      ]
+    }
+  }
+}

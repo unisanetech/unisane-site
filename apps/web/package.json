@@ -5,11 +5,13 @@
   "type": "module",
   "scripts": {
     "build": "next build",
+    "check:local-readiness": "node ../../scripts/check-local-readiness.mjs",
     "dev": "next dev --turbopack",
     "lint": "eslint . --max-warnings 0",
     "lint:fix": "eslint . --fix",
+    "refresh:local-readiness-baseline": "node ../../scripts/check-local-readiness.mjs --write-baseline",
     "start": "next start",
-    "test": "node ../../scripts/check-source-safety.mjs",
+    "test": "node ../../scripts/check-source-safety.mjs && node ../../scripts/check-local-readiness.mjs",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {

@@ -1,8 +1,8 @@
-'use client';
+'use client'
 
-import { useHeaderSection } from '@/hooks/use-header-section';
-import { RotatingText } from './rotating-text';
-import { motion } from 'motion/react';
+import { useHeaderSection } from '@/hooks/use-header-section'
+import { RotatingText } from './rotating-text'
+import { motion } from 'motion/react'
 import {
   SiVercel,
   SiNetlify,
@@ -16,14 +16,14 @@ import {
   SiGithub,
   SiMongodb,
   SiPostgresql,
-} from 'react-icons/si';
+} from 'react-icons/si'
 
 export function HeroSection() {
   const sectionRef = useHeaderSection<HTMLDivElement>({
     background: 'bg-background',
     foreground: 'text-foreground',
     accentColor: 'text-primary',
-  });
+  })
   const brands = [
     { icon: SiVercel, name: 'Vercel' },
     { icon: SiNetlify, name: 'Netlify' },
@@ -37,7 +37,7 @@ export function HeroSection() {
     { icon: SiGithub, name: 'GitHub' },
     { icon: SiMongodb, name: 'MongoDB' },
     { icon: SiPostgresql, name: 'PostgreSQL' },
-  ];
+  ]
 
   return (
     <div
@@ -49,19 +49,21 @@ export function HeroSection() {
         <div className="container mx-auto flex min-h-0 flex-1 items-center justify-center px-2 sm:px-4">
           <div className="mx-auto flex w-full max-w-5xl flex-col items-center text-center">
             <div className="pb-6 sm:pb-8 lg:pb-12">
-              <h1 className="text-4xl leading-[1.1] font-bold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl 2xl:text-8xl">
-                <RotatingText />
-              </h1>
-              <h1 className="-mt-1 text-4xl leading-[1.1] font-bold tracking-tight sm:-mt-2 sm:text-5xl md:text-6xl lg:-mt-3 lg:text-7xl xl:text-8xl 2xl:text-8xl">
-                <span className="text-foreground">Web Development</span>
+              <h1>
+                <span className="block text-4xl leading-[1.1] font-bold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl 2xl:text-8xl">
+                  <RotatingText />
+                </span>
+                <span className="text-foreground -mt-1 block text-4xl leading-[1.1] font-bold tracking-tight sm:-mt-2 sm:text-5xl md:text-6xl lg:-mt-3 lg:text-7xl xl:text-8xl 2xl:text-8xl">
+                  Web Development
+                </span>
               </h1>
             </div>
 
             <div className="flex flex-col items-center gap-6 sm:gap-8 lg:gap-10">
               <p className="text-foreground/70 max-w-2xl px-4 text-sm leading-[1.6] sm:px-0 sm:text-base md:text-lg lg:text-xl">
-                Modern architecture, a reusable design system, and cloud-ready backends—so your
-                SaaS, store, or marketplace stays fast, secure, easy to scale, and backed by
-                continuous support.
+                Modern architecture, a reusable design system, and cloud-ready
+                backends—so your SaaS, store, or marketplace stays fast, secure,
+                easy to scale, and backed by continuous support.
               </p>
             </div>
           </div>
@@ -88,7 +90,9 @@ export function HeroSection() {
                   className="flex items-center gap-2 whitespace-nowrap opacity-60 transition-opacity hover:opacity-100"
                 >
                   <brand.icon className="h-4 w-4 shrink-0 sm:h-5 sm:w-5" />
-                  <span className="text-xs font-medium sm:text-sm">{brand.name}</span>
+                  <span className="text-xs font-medium sm:text-sm">
+                    {brand.name}
+                  </span>
                 </div>
               ))}
               {/* Second row (duplicate for seamless loop; hidden from a11y) */}
@@ -99,7 +103,9 @@ export function HeroSection() {
                   aria-hidden
                 >
                   <brand.icon className="h-4 w-4 shrink-0 sm:h-5 sm:w-5" />
-                  <span className="text-xs font-medium sm:text-sm">{brand.name}</span>
+                  <span className="text-xs font-medium sm:text-sm">
+                    {brand.name}
+                  </span>
                 </div>
               ))}
             </motion.div>
@@ -107,5 +113,5 @@ export function HeroSection() {
         </div>
       </div>
     </div>
-  );
+  )
 }

@@ -1,45 +1,49 @@
-'use client';
+'use client'
 
-import Link from 'next/link';
-import { useState } from 'react';
-import { Menu, X } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { useHeaderStore } from '@/stores/header-store';
-import { Logo } from '@/components/shared/logo';
-import { ThemeToggle } from '@/components/shared/theme-toggle';
+import Link from 'next/link'
+import { useState } from 'react'
+import { Menu, X } from 'lucide-react'
+import { Button } from '@/components/ui/button'
+import { useHeaderStore } from '@/stores/header-store'
+import { Logo } from '@/components/shared/logo'
+import { ThemeToggle } from '@/components/shared/theme-toggle'
 
 const navLinks = [
   { href: '/services', label: 'Services' },
   { href: '/work', label: 'Work' },
   { href: '/#process-section', label: 'Process' },
-];
+]
 
 export function SiteHeader() {
-  const [open, setOpen] = useState(false);
-  const theme = useHeaderStore((state) => state.theme);
-  const previousTheme = useHeaderStore((state) => state.previousTheme);
-  const animationKey = useHeaderStore((state) => state.animationKey);
-  const direction = useHeaderStore((state) => state.direction);
+  const [open, setOpen] = useState(false)
+  const theme = useHeaderStore((state) => state.theme)
+  const previousTheme = useHeaderStore((state) => state.previousTheme)
+  const animationKey = useHeaderStore((state) => state.animationKey)
+  const direction = useHeaderStore((state) => state.direction)
 
   const incomingClass =
-    direction === 'down' ? 'animate-header-slide-down' : 'animate-header-slide-up';
+    direction === 'down'
+      ? 'animate-header-slide-down'
+      : 'animate-header-slide-up'
   const outgoingClass =
     animationKey === 0
       ? ''
       : direction === 'down'
         ? 'animate-header-slide-down-out'
-        : 'animate-header-slide-up-out';
+        : 'animate-header-slide-up-out'
 
-  const isInverseTheme = theme.foreground.includes('white');
-  const borderClass = isInverseTheme ? 'border-white/10' : 'border-border';
+  const isInverseTheme = theme.foreground.includes('white')
+  const borderClass = isInverseTheme ? 'border-white/10' : 'border-border'
   const linkColorClass = isInverseTheme
     ? 'text-white/75 hover:text-white'
-    : 'text-muted-foreground hover:text-foreground';
+    : 'text-muted-foreground hover:text-foreground'
 
   return (
     <header className="sticky top-0 z-50 w-full overflow-hidden">
       <div className="absolute inset-0">
-        <div className={`absolute inset-0 ${previousTheme.background} ${outgoingClass}`.trim()} />
+        <div
+          className={`absolute inset-0 ${previousTheme.background} ${outgoingClass}`.trim()}
+        />
         <div
           key={`${animationKey}-${direction}`}
           className={`absolute inset-0 ${theme.background} ${incomingClass}`}
@@ -52,10 +56,20 @@ export function SiteHeader() {
         <div className="container m-auto flex h-14 items-center justify-between px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-6">
             <Link href="/" className="flex items-center gap-2">
-              <Logo key={animationKey} aria-hidden className={theme.accentColor} size={32} />
-              <span className="text-2xl font-semibold tracking-tight">Unisane</span>
+              <Logo
+                key={animationKey}
+                aria-hidden
+                className={theme.accentColor}
+                size={32}
+              />
+              <span className="text-2xl font-semibold tracking-tight">
+                Unisane
+              </span>
             </Link>
-            <nav className="hidden items-center gap-6 lg:flex">
+            <nav
+              aria-label="Primary navigation"
+              className="hidden items-center gap-6 lg:flex"
+            >
               {navLinks.map((item) => (
                 <Link
                   key={item.href}
@@ -85,7 +99,10 @@ export function SiteHeader() {
             open ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
           } overflow-hidden`}
         >
-          <nav className="flex flex-col gap-3 px-4 pt-3 pb-4 text-sm font-medium">
+          <nav
+            aria-label="Mobile navigation"
+            className="flex flex-col gap-3 px-4 pt-3 pb-4 text-sm font-medium"
+          >
             {navLinks.map((item) => (
               <Link
                 key={item.href}
@@ -104,5 +121,5 @@ export function SiteHeader() {
         </div>
       </div>
     </header>
-  );
+  )
 }

@@ -1,104 +1,109 @@
-'use client';
+'use client'
 
-import { useHeaderSection } from '@/hooks/use-header-section';
-import Image from 'next/image';
-import { useRef, useState } from 'react';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { PORTFOLIO_HIGHLIGHTS } from '@/lib/content/portfolio';
+import { useHeaderSection } from '@/hooks/use-header-section'
+import Image from 'next/image'
+import { useRef, useState } from 'react'
+import { ChevronLeft, ChevronRight } from 'lucide-react'
+import { Button } from '@/components/ui/button'
+import { PORTFOLIO_HIGHLIGHTS } from '@/lib/content/portfolio'
 
-const getDisplayUrl = (url: string) => url.replace(/^https?:\/\//, '').replace(/\/$/, '');
+const getDisplayUrl = (url: string) =>
+  url.replace(/^https?:\/\//, '').replace(/\/$/, '')
 
 export function PortfolioSection() {
   const sectionRef = useHeaderSection({
     background: 'bg-portfolio',
     foreground: 'text-white',
     accentColor: 'text-white',
-  });
+  })
 
   const showcaseItems = PORTFOLIO_HIGHLIGHTS.filter(
     (
       item,
     ): item is (typeof PORTFOLIO_HIGHLIGHTS)[number] &
-      Required<Pick<typeof item, 'url' | 'logo' | 'image' | 'imageBackground'>> =>
-      !item.isConfidential && Boolean(item.url && item.logo && item.image && item.imageBackground),
-  );
+      Required<
+        Pick<typeof item, 'url' | 'logo' | 'image' | 'imageBackground'>
+      > =>
+      !item.isConfidential &&
+      Boolean(item.url && item.logo && item.image && item.imageBackground),
+  )
 
-  const infiniteItems = [...showcaseItems, ...showcaseItems, ...showcaseItems];
+  const infiniteItems = [...showcaseItems, ...showcaseItems, ...showcaseItems]
 
-  const itemCount = showcaseItems.length;
+  const itemCount = showcaseItems.length
 
   // Start in the middle block so we can go both directions
-  const [currentIndex, setCurrentIndex] = useState(itemCount + 1);
-  const [hasTransition, setHasTransition] = useState(true);
-  const isResettingRef = useRef(false);
-  const pendingResetIndexRef = useRef<number | null>(null);
+  const [currentIndex, setCurrentIndex] = useState(itemCount + 1)
+  const [hasTransition, setHasTransition] = useState(true)
+  const isResettingRef = useRef(false)
+  const pendingResetIndexRef = useRef<number | null>(null)
 
-  const trackRef = useRef<HTMLDivElement | null>(null);
+  const trackRef = useRef<HTMLDivElement | null>(null)
 
-  const getRealIndex = (idx: number) => ((idx % itemCount) + itemCount) % itemCount;
+  const getRealIndex = (idx: number) =>
+    ((idx % itemCount) + itemCount) % itemCount
 
   const goToPrevious = () => {
-    if (isResettingRef.current) return;
-    const next = currentIndex - 1;
+    if (isResettingRef.current) return
+    const next = currentIndex - 1
     // if we're going to overflow past the left bound, remember where to snap after transition
     if (next < itemCount) {
-      pendingResetIndexRef.current = next + itemCount;
+      pendingResetIndexRef.current = next + itemCount
     }
-    setHasTransition(true);
-    setCurrentIndex(next);
-  };
+    setHasTransition(true)
+    setCurrentIndex(next)
+  }
 
   const goToNext = () => {
-    if (isResettingRef.current) return;
-    const next = currentIndex + 1;
+    if (isResettingRef.current) return
+    const next = currentIndex + 1
     // if we're going to overflow past the right bound, remember where to snap after transition
     if (next >= itemCount * 2) {
-      pendingResetIndexRef.current = next - itemCount;
+      pendingResetIndexRef.current = next - itemCount
     }
-    setHasTransition(true);
-    setCurrentIndex(next);
-  };
+    setHasTransition(true)
+    setCurrentIndex(next)
+  }
 
   const goToSlide = (realIndex: number) => {
-    if (isResettingRef.current) return;
+    if (isResettingRef.current) return
     // jump within the middle block to keep distance minimal
-    const target = itemCount + realIndex;
-    setHasTransition(true);
-    setCurrentIndex(target);
-  };
+    const target = itemCount + realIndex
+    setHasTransition(true)
+    setCurrentIndex(target)
+  }
 
   // Smooth wrap reset exactly when CSS transition ends
   const handleTransitionEnd = () => {
-    const target = pendingResetIndexRef.current;
-    if (target == null) return;
+    const target = pendingResetIndexRef.current
+    if (target == null) return
     // prevent user clicks while snapping
-    isResettingRef.current = true;
+    isResettingRef.current = true
 
     // 1) turn off transition
-    setHasTransition(false);
+    setHasTransition(false)
 
     // 2) on next frame, set the snapped index without animation
     requestAnimationFrame(() => {
-      setCurrentIndex(target);
+      setCurrentIndex(target)
 
       // 3) on the following frame, re-enable transition for future moves
       requestAnimationFrame(() => {
-        pendingResetIndexRef.current = null;
-        isResettingRef.current = false;
-        setHasTransition(true);
-      });
-    });
-  };
+        pendingResetIndexRef.current = null
+        isResettingRef.current = false
+        setHasTransition(true)
+      })
+    })
+  }
 
   // transform calc (unchanged)
   const getTransform = () => {
-    const slideWidthPercent = 65;
-    const gapPercent = 1;
-    const totalSlideWidth = slideWidthPercent + gapPercent;
-    const offset = 17.5; // centers 65% slide
-    return `translateX(calc(${offset}% - ${currentIndex * totalSlideWidth}%))`;
-  };
+    const slideWidthPercent = 65
+    const gapPercent = 1
+    const totalSlideWidth = slideWidthPercent + gapPercent
+    const offset = 17.5 // centers 65% slide
+    return `translateX(calc(${offset}% - ${currentIndex * totalSlideWidth}%))`
+  }
 
   return (
     <section
@@ -117,7 +122,8 @@ export function PortfolioSection() {
               <br />— live in production
             </h2>
             <p className="mt-2 max-w-2xl text-xs text-white/70 sm:text-sm md:text-base">
-              SaaS, e-commerce, and marketplaces—Next.js & Node, MongoDB, SEO, GTM & GA4 in place.
+              SaaS, e-commerce, and marketplaces—Next.js & Node, MongoDB, SEO,
+              GTM & GA4 in place.
             </p>
           </div>
         </div>
@@ -188,7 +194,9 @@ export function PortfolioSection() {
               ref={trackRef}
               onTransitionEnd={handleTransitionEnd}
               className={`flex gap-4 will-change-transform ${
-                hasTransition ? 'transition-transform duration-700 ease-out' : ''
+                hasTransition
+                  ? 'transition-transform duration-700 ease-out'
+                  : ''
               }`}
               style={{ transform: getTransform() }}
             >
@@ -268,7 +276,9 @@ export function PortfolioSection() {
                   onClick={() => goToSlide(index)}
                   disabled={isResettingRef.current}
                   className={`transition-colors hover:text-white/70 disabled:cursor-not-allowed disabled:opacity-50 ${
-                    getRealIndex(currentIndex) === index ? 'font-medium text-white' : ''
+                    getRealIndex(currentIndex) === index
+                      ? 'font-medium text-white'
+                      : ''
                   }`}
                 >
                   {item.name}
@@ -280,6 +290,8 @@ export function PortfolioSection() {
               <Button
                 variant="ghost"
                 size="icon"
+                type="button"
+                aria-label="Previous portfolio item"
                 onClick={goToPrevious}
                 disabled={isResettingRef.current}
                 className="size-7 rounded-full border border-white/10 bg-white/5 text-white transition-colors hover:border-white/20 hover:bg-white/20 disabled:cursor-not-allowed disabled:opacity-50 md:size-8 lg:size-9 xl:size-10"
@@ -289,6 +301,8 @@ export function PortfolioSection() {
               <Button
                 variant="ghost"
                 size="icon"
+                type="button"
+                aria-label="Next portfolio item"
                 onClick={goToNext}
                 disabled={isResettingRef.current}
                 className="size-7 rounded-full border border-white/10 bg-white/5 text-white transition-colors hover:border-white/20 hover:bg-white/20 disabled:cursor-not-allowed disabled:opacity-50 md:size-8 lg:size-9 xl:size-10"
@@ -300,5 +314,5 @@ export function PortfolioSection() {
         </div>
       </div>
     </section>
-  );
+  )
 }
