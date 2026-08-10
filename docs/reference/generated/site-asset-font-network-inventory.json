@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "generatedBy": "scripts/check-site-asset-inventory.mjs",
-  "sourceInputDigest": "20bd63305af8a3811972abe375755c42a2c8ee6002a916b1757d826cf8c6b057",
+  "sourceInputDigest": "17a75b37b2d30aaee33f65175d42a0698d496d181131d0bfc05f04ca35a0535f",
   "methodology": {
     "generationCommand": "node scripts/check-site-asset-inventory.mjs --write",
     "verificationCommand": "pnpm check:asset-inventory",
