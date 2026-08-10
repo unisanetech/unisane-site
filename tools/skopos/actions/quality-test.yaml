@@ -1,0 +1,63 @@
+{
+  "id": "quality.test",
+  "title": "Test Site behavior",
+  "description": "Run the project-owned test pipeline, including its declared build dependency and Site source-safety test.",
+  "category": "quality-check",
+  "scope": [
+    "workspace"
+  ],
+  "command": "pnpm test",
+  "cwd": ".",
+  "timeoutMs": 900000,
+  "inputs": [
+    "apps/web",
+    "package.json",
+    "pnpm-lock.yaml",
+    "pnpm-workspace.yaml",
+    "scripts/check-source-safety.mjs",
+    "turbo.json",
+    "vitest.config.mjs"
+  ],
+  "sourceExcludes": [],
+  "outputs": [
+    "apps/web/.next"
+  ],
+  "outputExcludes": [],
+  "affects": [
+    "apps/web/.next"
+  ],
+  "capabilities": {
+    "process": "required",
+    "network": "none",
+    "browser": "none",
+    "tools": [
+      "pnpm",
+      "node"
+    ],
+    "secrets": [],
+    "services": []
+  },
+  "effects": {
+    "workspace": "declared",
+    "artifacts": "none",
+    "external": "none"
+  },
+  "concurrency": "exclusive",
+  "workspaceMode": "overlay-safe",
+  "safety": "mutating",
+  "requiresApproval": true,
+  "whenToUse": "Require for Site behavioral source, test, package, dependency, lockfile, or build-graph changes.",
+  "phases": [
+    "stabilization",
+    "closure"
+  ],
+  "risks": [
+    "light",
+    "standard",
+    "high-impact"
+  ],
+  "recommendedAfter": [
+    "quality.build"
+  ],
+  "owner": "site-maintainers"
+}

@@ -1,0 +1,40 @@
+{
+  "id": "repository.boundary",
+  "title": "Repository-shape changes require boundary and integrity Evidence",
+  "description": "Select standalone boundary proof only for repository and governance surfaces; never use it as a substitute for Site behavioral proof.",
+  "owner": "site-maintainers",
+  "scope": [
+    "workspace"
+  ],
+  "strength": "required",
+  "appliesTo": {
+    "paths": [
+      ".gitattributes",
+      ".gitignore",
+      ".node-version",
+      "package.json",
+      "pnpm-lock.yaml",
+      "pnpm-workspace.yaml",
+      "scripts/check-repository-boundary.mjs",
+      "skopos.config.yaml",
+      "tools/skopos/**",
+      "docs/repository-provenance.json",
+      "docs/reference/generated/repository-*.json"
+    ],
+    "phases": [
+      "admission",
+      "stabilization",
+      "closure"
+    ],
+    "risks": [
+      "standard",
+      "high-impact"
+    ]
+  },
+  "requires": {
+    "actionIds": [
+      "repository.boundary"
+    ],
+    "evidence": "source-bound-action"
+  }
+}

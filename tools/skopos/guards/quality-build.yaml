@@ -1,0 +1,36 @@
+{
+  "id": "quality.build",
+  "title": "Site source and package changes require build Evidence",
+  "description": "Require the real production build for behavioral source and dependency or configuration changes.",
+  "owner": "site-maintainers",
+  "scope": [
+    "workspace"
+  ],
+  "strength": "required",
+  "appliesTo": {
+    "paths": [
+      "apps/web/**",
+      "package.json",
+      "pnpm-lock.yaml",
+      "pnpm-workspace.yaml",
+      "turbo.json",
+      "tsconfig.json",
+      "vitest.config.mjs"
+    ],
+    "phases": [
+      "stabilization",
+      "closure"
+    ],
+    "risks": [
+      "light",
+      "standard",
+      "high-impact"
+    ]
+  },
+  "requires": {
+    "actionIds": [
+      "quality.build"
+    ],
+    "evidence": "source-bound-action"
+  }
+}

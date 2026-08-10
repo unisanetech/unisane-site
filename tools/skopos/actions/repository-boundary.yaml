@@ -1,0 +1,61 @@
+{
+  "id": "repository.boundary",
+  "title": "Verify standalone repository boundary and Git integrity",
+  "description": "Prove local-candidate remote and ref hygiene, Git connectivity, parent-container isolation, target identity, and absence of sibling-source locators.",
+  "category": "quality-check",
+  "scope": [
+    "workspace"
+  ],
+  "command": "pnpm check:repository-boundary",
+  "cwd": ".",
+  "timeoutMs": 300000,
+  "inputs": [
+    ".gitattributes",
+    ".gitignore",
+    ".node-version",
+    "apps/web",
+    "package.json",
+    "pnpm-lock.yaml",
+    "pnpm-workspace.yaml",
+    "scripts/check-repository-boundary.mjs",
+    "skopos.config.yaml",
+    "tools/skopos"
+  ],
+  "sourceExcludes": [],
+  "outputs": [],
+  "outputExcludes": [],
+  "affects": [],
+  "capabilities": {
+    "process": "required",
+    "network": "none",
+    "browser": "none",
+    "tools": [
+      "pnpm",
+      "node",
+      "git"
+    ],
+    "secrets": [],
+    "services": []
+  },
+  "effects": {
+    "workspace": "none",
+    "artifacts": "none",
+    "external": "none"
+  },
+  "concurrency": "shared",
+  "workspaceMode": "overlay-safe",
+  "safety": "read-only",
+  "requiresApproval": false,
+  "whenToUse": "Require for repository identity, dependency boundary, Git integrity guard, or local authority declaration changes; it is not behavioral source proof.",
+  "phases": [
+    "admission",
+    "stabilization",
+    "closure"
+  ],
+  "risks": [
+    "standard",
+    "high-impact"
+  ],
+  "recommendedAfter": [],
+  "owner": "site-maintainers"
+}

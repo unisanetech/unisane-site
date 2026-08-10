@@ -1,0 +1,54 @@
+{
+  "id": "quality.lint",
+  "title": "Lint Site source",
+  "description": "Run the repository-owned lint proof for Site application and package or config changes.",
+  "category": "quality-check",
+  "scope": [
+    "workspace"
+  ],
+  "command": "pnpm lint",
+  "cwd": ".",
+  "timeoutMs": 900000,
+  "inputs": [
+    "apps/web",
+    "eslint.config.mjs",
+    "package.json",
+    "pnpm-lock.yaml",
+    "pnpm-workspace.yaml",
+    "turbo.json"
+  ],
+  "sourceExcludes": [],
+  "outputs": [],
+  "outputExcludes": [],
+  "affects": [],
+  "capabilities": {
+    "process": "required",
+    "network": "none",
+    "browser": "none",
+    "tools": [
+      "pnpm"
+    ],
+    "secrets": [],
+    "services": []
+  },
+  "effects": {
+    "workspace": "none",
+    "artifacts": "none",
+    "external": "none"
+  },
+  "concurrency": "shared",
+  "workspaceMode": "overlay-safe",
+  "safety": "read-only",
+  "requiresApproval": false,
+  "whenToUse": "Require for Site source, lint configuration, package, dependency, lockfile, or build-graph changes.",
+  "phases": [
+    "closure"
+  ],
+  "risks": [
+    "light",
+    "standard",
+    "high-impact"
+  ],
+  "recommendedAfter": [],
+  "owner": "site-maintainers"
+}

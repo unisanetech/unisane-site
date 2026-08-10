@@ -1,0 +1,36 @@
+{
+  "snapshotId": "S-9afa2a6000d7",
+  "taskId": "T-88c6a705",
+  "sessionId": "site-adoption-proof-20260810",
+  "actorId": "bhaskarbarma",
+  "baseRevision": "a5c4985d2f862b94a75a727131297cc21ba81cb9",
+  "paths": [
+    {
+      "path": "docs/00-start-here.md",
+      "digest": "9f0dc7c33e598e3c9eea48b6ac511ce23f08f792a8e82f7b399bbbe0b84bb4c4"
+    },
+    {
+      "path": "docs/architecture/00-repository-readiness-contract.md",
+      "digest": "ffa63583dfa6706b87d284b86b0d693a161e4840aad2c5cf6b5d27c3b9621f7d"
+    },
+    {
+      "path": "docs/overview.md",
+      "digest": "67b825183c366d654b22dacfdb31195908aa3fc05e65f2941707f02fe5fce984"
+    },
+    {
+      "path": "docs/standards/00-repository-readiness-contract.md",
+      "digest": "97254de249319aabdffe83cacf8e20f7660605695f54733493ac177869d97e19"
+    },
+    {
+      "path": "tools/skopos/actions",
+      "digest": "0767b2293cddd1544c4f09d24856dc40682089da4182bf614f826e71590d689d"
+    },
+    {
+      "path": "tools/skopos/guards",
+      "digest": "3037ded3bb8671c87754375b764af76ba95993f11df120633977a98b4cfd2c2d"
+    }
+  ],
+  "digest": "9afa2a6000d78b6d86df8912f2b895d186698345b61889f37840eb103782b490",
+  "createdAt": "2026-08-10T11:16:08.841Z",
+  "artifactPath": "docs/work/tasks/snapshots/T-88c6a705-S-9afa2a6000d7.json"
+}

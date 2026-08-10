@@ -1,0 +1,56 @@
+{
+  "id": "site.source-safety",
+  "title": "Verify Site source-safety behavior",
+  "description": "Prove retained routes have no unowned visitor submission flow, simulated success, broken static targets, unreachable runtime modules, or sibling-source locators.",
+  "category": "quality-check",
+  "scope": [
+    "workspace"
+  ],
+  "command": "pnpm check:source-safety",
+  "cwd": ".",
+  "timeoutMs": 120000,
+  "inputs": [
+    "apps/web",
+    "package.json",
+    "pnpm-lock.yaml",
+    "pnpm-workspace.yaml",
+    "README.md",
+    "scripts/check-source-safety.mjs"
+  ],
+  "sourceExcludes": [],
+  "outputs": [],
+  "outputExcludes": [],
+  "affects": [],
+  "capabilities": {
+    "process": "required",
+    "network": "none",
+    "browser": "none",
+    "tools": [
+      "pnpm",
+      "node"
+    ],
+    "secrets": [],
+    "services": []
+  },
+  "effects": {
+    "workspace": "none",
+    "artifacts": "none",
+    "external": "none"
+  },
+  "concurrency": "shared",
+  "workspaceMode": "overlay-safe",
+  "safety": "read-only",
+  "requiresApproval": false,
+  "whenToUse": "Require for any Site behavioral source, package, dependency, route, asset-reference, or source-safety rule change.",
+  "phases": [
+    "stabilization",
+    "closure"
+  ],
+  "risks": [
+    "light",
+    "standard",
+    "high-impact"
+  ],
+  "recommendedAfter": [],
+  "owner": "site-maintainers"
+}

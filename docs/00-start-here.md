@@ -2,10 +2,10 @@
 id: 'G-ea6d33f5d156'
 owner: 'site-maintainers'
 scope: workspace
-role: guide
+role: router
 lifecycle: active
 authority: canonical
-provenance: generated
+provenance: accepted
 view: current
 ---
 
@@ -18,7 +18,7 @@ approved cutover.
 ## Start here
 
 - [Site overview](overview.md)
-- [Repository readiness contract](architecture/00-repository-readiness-contract.md)
+- [Repository readiness contract](standards/00-repository-readiness-contract.md)
 - [Source and history inventory](reference/current-source-and-history-inventory.md)
 - [Source-safety disposition](reference/source-safety-disposition.md)
 - [Repository provenance](repository-provenance.json)

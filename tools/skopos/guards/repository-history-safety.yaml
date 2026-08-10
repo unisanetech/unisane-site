@@ -1,0 +1,32 @@
+{
+  "id": "repository.history-safety",
+  "title": "Provenance and extraction changes require complete-history Evidence",
+  "description": "Require the live reachable-history scan for provenance and extraction-integrity work without burdening ordinary source Tasks.",
+  "owner": "site-maintainers",
+  "scope": [
+    "workspace"
+  ],
+  "strength": "required",
+  "appliesTo": {
+    "paths": [
+      "docs/repository-filter-spec.json",
+      "docs/repository-provenance.json",
+      "docs/reference/generated/repository-extraction-integrity-receipt.json",
+      "docs/reference/generated/repository-filtered-history-checkpoint-receipt.json",
+      "scripts/check-history-safety.mjs"
+    ],
+    "phases": [
+      "stabilization",
+      "closure"
+    ],
+    "risks": [
+      "high-impact"
+    ]
+  },
+  "requires": {
+    "actionIds": [
+      "repository.history-safety"
+    ],
+    "evidence": "source-bound-action"
+  }
+}

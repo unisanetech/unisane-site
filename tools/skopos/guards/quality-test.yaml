@@ -1,0 +1,36 @@
+{
+  "id": "quality.test",
+  "title": "Site source and package changes require test Evidence",
+  "description": "Require repository-owned behavioral test proof independently of repository-shape checks.",
+  "owner": "site-maintainers",
+  "scope": [
+    "workspace"
+  ],
+  "strength": "required",
+  "appliesTo": {
+    "paths": [
+      "apps/web/**",
+      "package.json",
+      "pnpm-lock.yaml",
+      "pnpm-workspace.yaml",
+      "scripts/check-source-safety.mjs",
+      "turbo.json",
+      "vitest.config.mjs"
+    ],
+    "phases": [
+      "stabilization",
+      "closure"
+    ],
+    "risks": [
+      "light",
+      "standard",
+      "high-impact"
+    ]
+  },
+  "requires": {
+    "actionIds": [
+      "quality.test"
+    ],
+    "evidence": "source-bound-action"
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "id": "site.source-safety",
+  "title": "Behavioral Site changes require source-safety Evidence",
+  "description": "Prevent package or source Tasks from closing on repository-shape proof without the dedicated Site behavior contract.",
+  "owner": "site-maintainers",
+  "scope": [
+    "workspace"
+  ],
+  "strength": "required",
+  "appliesTo": {
+    "paths": [
+      "apps/web/**",
+      "package.json",
+      "pnpm-lock.yaml",
+      "pnpm-workspace.yaml",
+      "turbo.json",
+      "scripts/check-source-safety.mjs",
+      "README.md"
+    ],
+    "phases": [
+      "stabilization",
+      "closure"
+    ],
+    "risks": [
+      "light",
+      "standard",
+      "high-impact"
+    ]
+  },
+  "requires": {
+    "actionIds": [
+      "site.source-safety"
+    ],
+    "evidence": "source-bound-action"
+  }
+}

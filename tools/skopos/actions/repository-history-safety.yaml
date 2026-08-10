@@ -1,0 +1,56 @@
+{
+  "id": "repository.history-safety",
+  "title": "Scan complete reachable history safety",
+  "description": "Scan every blob reachable from approved local refs for high-confidence secret patterns, sensitive paths, and large-object reporting.",
+  "category": "quality-check",
+  "scope": [
+    "workspace"
+  ],
+  "command": "pnpm check:history-safety",
+  "cwd": ".",
+  "timeoutMs": 900000,
+  "inputs": [
+    "docs/repository-filter-spec.json",
+    "docs/repository-provenance.json",
+    "docs/reference/generated/repository-extraction-integrity-receipt.json",
+    "docs/reference/generated/repository-filtered-history-checkpoint-receipt.json",
+    "scripts/check-history-safety.mjs"
+  ],
+  "sourceExcludes": [],
+  "outputs": [],
+  "outputExcludes": [],
+  "affects": [],
+  "capabilities": {
+    "process": "required",
+    "network": "none",
+    "browser": "none",
+    "tools": [
+      "pnpm",
+      "node",
+      "git"
+    ],
+    "secrets": [],
+    "services": []
+  },
+  "effects": {
+    "workspace": "none",
+    "artifacts": "none",
+    "external": "none"
+  },
+  "concurrency": "shared",
+  "workspaceMode": "overlay-safe",
+  "safety": "read-only",
+  "requiresApproval": false,
+  "whenToUse": "Require for filtered-history, provenance, extraction-integrity, or public-history readiness work; it is not normal Site behavioral source proof.",
+  "phases": [
+    "stabilization",
+    "closure"
+  ],
+  "risks": [
+    "high-impact"
+  ],
+  "recommendedAfter": [
+    "repository.boundary"
+  ],
+  "owner": "site-maintainers"
+}

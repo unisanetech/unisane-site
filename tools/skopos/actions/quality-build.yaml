@@ -1,0 +1,62 @@
+{
+  "id": "quality.build",
+  "title": "Build the Site application",
+  "description": "Run the production build proof for behavioral source and dependency or configuration changes.",
+  "category": "quality-check",
+  "scope": [
+    "workspace"
+  ],
+  "command": "pnpm build",
+  "cwd": ".",
+  "timeoutMs": 900000,
+  "inputs": [
+    "apps/web",
+    "package.json",
+    "pnpm-lock.yaml",
+    "pnpm-workspace.yaml",
+    "turbo.json",
+    "tsconfig.json",
+    "vitest.config.mjs"
+  ],
+  "sourceExcludes": [],
+  "outputs": [
+    "apps/web/.next"
+  ],
+  "outputExcludes": [],
+  "affects": [
+    "apps/web/.next"
+  ],
+  "capabilities": {
+    "process": "required",
+    "network": "none",
+    "browser": "none",
+    "tools": [
+      "pnpm"
+    ],
+    "secrets": [],
+    "services": []
+  },
+  "effects": {
+    "workspace": "declared",
+    "artifacts": "none",
+    "external": "none"
+  },
+  "concurrency": "exclusive",
+  "workspaceMode": "overlay-safe",
+  "safety": "mutating",
+  "requiresApproval": true,
+  "whenToUse": "Require for Site behavioral source, route, asset, package, dependency, lockfile, or production-build configuration changes.",
+  "phases": [
+    "stabilization",
+    "closure"
+  ],
+  "risks": [
+    "light",
+    "standard",
+    "high-impact"
+  ],
+  "recommendedAfter": [
+    "quality.typecheck"
+  ],
+  "owner": "site-maintainers"
+}

@@ -1,0 +1,34 @@
+{
+  "id": "quality.lint",
+  "title": "Site source and package changes require lint Evidence",
+  "description": "Require static-quality proof for behavioral source and dependency or configuration changes.",
+  "owner": "site-maintainers",
+  "scope": [
+    "workspace"
+  ],
+  "strength": "required",
+  "appliesTo": {
+    "paths": [
+      "apps/web/**",
+      "eslint.config.mjs",
+      "package.json",
+      "pnpm-lock.yaml",
+      "pnpm-workspace.yaml",
+      "turbo.json"
+    ],
+    "phases": [
+      "closure"
+    ],
+    "risks": [
+      "light",
+      "standard",
+      "high-impact"
+    ]
+  },
+  "requires": {
+    "actionIds": [
+      "quality.lint"
+    ],
+    "evidence": "source-bound-action"
+  }
+}

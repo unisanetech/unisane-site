@@ -2,7 +2,7 @@
 id: 'DOC-2ff5327a5c01'
 owner: 'site-maintainers'
 scope: workspace
-role: architecture
+role: overview
 lifecycle: durable
 authority: supporting
 provenance: accepted
