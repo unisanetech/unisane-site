@@ -1,0 +1,30 @@
+{
+  'id': 'repository.cold-checkout',
+  'title': 'Repository and CI foundation changes require cold-checkout Evidence',
+  'description': 'Require an empty-store frozen install and the real registered CI command sequence; repository-shape proof never substitutes for behavioral source checks.',
+  'owner': 'site-maintainers',
+  'scope': ['workspace'],
+  'strength': 'required',
+  'appliesTo':
+    {
+      'paths':
+        [
+          '.github/workflows/**',
+          '.node-version',
+          'package.json',
+          'pnpm-lock.yaml',
+          'pnpm-workspace.yaml',
+          'scripts/check-cold-checkout.mjs',
+          'tools/skopos/actions/repository-cold-checkout.yaml',
+          'tools/skopos/guards/repository-cold-checkout.yaml',
+          'turbo.json',
+        ],
+      'phases': ['stabilization', 'closure'],
+      'risks': ['standard', 'high-impact'],
+    },
+  'requires':
+    {
+      'actionIds': ['repository.cold-checkout'],
+      'evidence': 'source-bound-action',
+    },
+}

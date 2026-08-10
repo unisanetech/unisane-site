@@ -15,10 +15,12 @@
   "private": true,
   "scripts": {
     "build": "turbo run build",
+    "check:cold-checkout": "node scripts/check-cold-checkout.mjs",
     "check:history-safety": "node scripts/check-history-safety.mjs",
     "check:local-readiness": "pnpm --filter @unisane-site/web check:local-readiness",
     "check:repository-boundary": "node scripts/check-repository-boundary.mjs",
     "check:source-safety": "node scripts/check-source-safety.mjs",
+    "ci:verify": "pnpm check:source-safety && pnpm typecheck && pnpm lint && pnpm build && pnpm test && pnpm verify:local-readiness && pnpm check:repository-boundary",
     "dev": "pnpm --filter @unisane-site/web dev",
     "lint": "turbo run lint",
     "refresh:local-readiness-baseline": "pnpm build && pnpm --filter @unisane-site/web refresh:local-readiness-baseline",
