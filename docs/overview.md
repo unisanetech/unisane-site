@@ -35,6 +35,10 @@ removes the generic package/config shells, removes every `@workspace/*` identity
 source alias, and owns one Node 24.13.0 / pnpm 10.26.0 workspace and lockfile. Clean
 install, source-safety, typecheck, lint, test, and production build proof is local only.
 
+Target-local Skopos adoption is activated and owns only this repository's local Tasks,
+Evidence, Readiness, and closure. It does not transfer writable Site source authority
+from the umbrella `dev` branch or authorize any external operation.
+
 The extraction object database was reduced from 110,009 stored objects to the 341
 objects reachable at the reviewed cleanup checkpoint, and the dangling
 `refs/remotes/origin/HEAD` residue was removed. The repo-local boundary check now fails
@@ -44,9 +48,9 @@ the 12 imported commits; `pnpm check:history-safety` remains the live authority 
 history reachable from the current local refs.
 
 The remaining Site content, brand surfaces, and assets stay behind owner/rights blockers.
-Accessibility, SEO, performance, preview/deployment, full public-history review,
-target-local Skopos adoption activation, legal, security, operations, domain, remote,
-public-release, and production-authority gates remain unresolved.
+Accessibility, SEO, performance, preview/deployment, full public-history review, legal,
+security, operations, domain, remote, public-release, and production-authority gates
+remain unresolved.
 
 ## Target Relationship
 

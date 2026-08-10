@@ -27,7 +27,9 @@ approved cutover.
 - [Extraction object-hygiene checkpoint](reference/generated/repository-extraction-integrity-receipt.json)
 
 The approved bootstrap owns `AGENTS.md`, `skopos.config.yaml`, and the local Scope.
-Existing-project adoption remains review-only until source-authority cutover.
+Reviewed existing-project adoption is activated for target-local Skopos Tasks, Evidence,
+Readiness, and closure only. It does not transfer source authority: the umbrella `dev`
+branch remains writable Site authority until a separately approved cutover.
 
 `pnpm check:repository-boundary` is the live repository boundary and Git integrity
 authority. `pnpm check:history-safety` is the live complete reachable-history safety

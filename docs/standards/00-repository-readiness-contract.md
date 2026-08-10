@@ -33,8 +33,9 @@ This contract applies, but does not replace, the accepted umbrella authorities:
   authority
 
 If this document conflicts with one of those canonical owners, the canonical owner wins
-and this contract must be corrected. The umbrella remains the only writable source and
-Skopos authority until cutover.
+and this contract must be corrected. The umbrella remains the only writable source
+authority until cutover; repo-local Skopos owns target-local Tasks, Evidence, Readiness,
+and closure only.
 
 ## Truth Discipline
 
@@ -260,25 +261,25 @@ unless a reviewed fixture explicitly owns them.
 `open` means the applicable gate cannot advance. A later-stage blocker does not claim an
 earlier technical shadow is publicly releasable.
 
-| ID       | Open blocker                                                                                                                         | Owner decision/evidence required                                                            | Earliest blocked gate                                              |
-| -------- | ------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------ |
-| SITE-B01 | closed in the local candidate: repository/app identity is `unisane-site` / `@unisane-site/web`, and retained roots are reconciled    | preserve the reviewed root inventory through cutover                                        | source convergence                                                 |
-| SITE-B02 | closed in the local candidate: the three required UI files are app-owned and no cross-repository source/package dependency exists      | any future shared UI use must consume an approved released coordinate                        | source convergence                                                 |
-| SITE-B03 | closed in the local candidate: target-local Node/pnpm/workspace/Turbo/config/lockfile authority passes clean isolated install          | preserve frozen-lock and contained-command proof                                             | source convergence                                                 |
-| SITE-B04 | no test suite, self-contained CI, accessibility, SEO, performance, privacy, link, security, or preview proof exists                  | implement owner-local commands and cold-clone CI                                            | local shadow                                                       |
-| SITE-B06 | brand, contact, social, legal-entity, portfolio, testimonial and quantified-outcome claims are unverified                            | authorized brand/content/legal evidence and explicit per-claim disposition                  | source convergence                                                 |
-| SITE-B07 | license, NOTICE, attribution, contributor and public-distribution terms are unapproved                                               | authorized legal decisions and enforcement evidence                                         | public remote/release                                              |
-| SITE-B08 | a high-confidence all-blob secret/sensitive-path scan passes, but approved public-history, privacy, customer, provider, and rights review remains incomplete | approved scans, review, redacted receipts, rotations/scrubs where required | local shadow |
-| SITE-B09 | 21 images dominate the tree; large-object necessity, optimization, provenance and rights are unresolved                              | per-asset owner, digest, rights, disposition and performance evidence                       | local shadow                                                       |
-| SITE-B10 | environment schema is undocumented and no safe example exists                                                                        | Site/provider owner matrix, placeholders, validation and secret boundary                    | local shadow                                                       |
-| SITE-B11 | analytics, consent, privacy, cookie, retention and data-subject ownership are unresolved                                             | approved product/privacy/security contract and tests                                        | public release/deployment                                          |
-| SITE-B12 | canonical domains, redirects, registrar/DNS ownership and recovery are unverified                                                    | Site requirements plus Infrastructure/provider desired-state and recovery evidence          | local shadow for domain claims; deployment for mutation            |
-| SITE-B13 | host, preview/production deployment, rollback, incidents, monitoring, SLO and cost ownership are unresolved                          | approved Site operations contract and preview proof                                         | local shadow for target shape; production deployment for operation |
-| SITE-B14 | target-local docs/AGENTS/Skopos foundation exists, but reviewed existing-project adoption and local Actions/Guards are not activated   | contained Memory assessment, reviewed adoption activation, and local Actions/Guards          | local shadow                                                       |
-| SITE-B15 | CODEOWNERS, recovery, vulnerability reporting, community/security policy and branch controls are unresolved                          | authenticated human/team and security-owner decisions                                       | remote authority                                                   |
-| SITE-B16 | placeholder static targets are removed and checked, but no declared visitor journey or accessibility/SEO/performance budgets exist   | source-bound visitor journey plus accessibility/SEO/performance evidence                    | local shadow                                                       |
-| SITE-B17 | no target remote or external organization authority is authorized                                                                    | separate authenticated owner/recovery/governance Task and approval                          | remote authority                                                   |
-| SITE-B18 | closed for the local candidate: frozen source, path-rename filter spec, commit-map digest, inventory digest, and zero-residue receipt are recorded | preserve receipts through any reviewed authority cutover | local shadow |
+| ID       | Open blocker                                                                                                                                                      | Owner decision/evidence required                                                                      | Earliest blocked gate                                              |
+| -------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------ |
+| SITE-B01 | closed in the local candidate: repository/app identity is `unisane-site` / `@unisane-site/web`, and retained roots are reconciled                                 | preserve the reviewed root inventory through cutover                                                  | source convergence                                                 |
+| SITE-B02 | closed in the local candidate: the three required UI files are app-owned and no cross-repository source/package dependency exists                                 | any future shared UI use must consume an approved released coordinate                                 | source convergence                                                 |
+| SITE-B03 | closed in the local candidate: target-local Node/pnpm/workspace/Turbo/config/lockfile authority passes clean isolated install                                     | preserve frozen-lock and contained-command proof                                                      | source convergence                                                 |
+| SITE-B04 | no test suite, self-contained CI, accessibility, SEO, performance, privacy, link, security, or preview proof exists                                               | implement owner-local commands and cold-clone CI                                                      | local shadow                                                       |
+| SITE-B06 | brand, contact, social, legal-entity, portfolio, testimonial and quantified-outcome claims are unverified                                                         | authorized brand/content/legal evidence and explicit per-claim disposition                            | source convergence                                                 |
+| SITE-B07 | license, NOTICE, attribution, contributor and public-distribution terms are unapproved                                                                            | authorized legal decisions and enforcement evidence                                                   | public remote/release                                              |
+| SITE-B08 | a high-confidence all-blob secret/sensitive-path scan passes, but approved public-history, privacy, customer, provider, and rights review remains incomplete      | approved scans, review, redacted receipts, rotations/scrubs where required                            | local shadow                                                       |
+| SITE-B09 | 21 images dominate the tree; large-object necessity, optimization, provenance and rights are unresolved                                                           | per-asset owner, digest, rights, disposition and performance evidence                                 | local shadow                                                       |
+| SITE-B10 | environment schema is undocumented and no safe example exists                                                                                                     | Site/provider owner matrix, placeholders, validation and secret boundary                              | local shadow                                                       |
+| SITE-B11 | analytics, consent, privacy, cookie, retention and data-subject ownership are unresolved                                                                          | approved product/privacy/security contract and tests                                                  | public release/deployment                                          |
+| SITE-B12 | canonical domains, redirects, registrar/DNS ownership and recovery are unverified                                                                                 | Site requirements plus Infrastructure/provider desired-state and recovery evidence                    | local shadow for domain claims; deployment for mutation            |
+| SITE-B13 | host, preview/production deployment, rollback, incidents, monitoring, SLO and cost ownership are unresolved                                                       | approved Site operations contract and preview proof                                                   | local shadow for target shape; production deployment for operation |
+| SITE-B14 | closed for target-local workflow readiness: reviewed existing-project adoption and seven local Action/Guard pairs are activated for local Tasks and Evidence only | preserve the reviewed adoption and capability receipts without transferring umbrella source authority | local shadow                                                       |
+| SITE-B15 | CODEOWNERS, recovery, vulnerability reporting, community/security policy and branch controls are unresolved                                                       | authenticated human/team and security-owner decisions                                                 | remote authority                                                   |
+| SITE-B16 | placeholder static targets are removed and checked, but no declared visitor journey or accessibility/SEO/performance budgets exist                                | source-bound visitor journey plus accessibility/SEO/performance evidence                              | local shadow                                                       |
+| SITE-B17 | no target remote or external organization authority is authorized                                                                                                 | separate authenticated owner/recovery/governance Task and approval                                    | remote authority                                                   |
+| SITE-B18 | closed for the local candidate: frozen source, path-rename filter spec, commit-map digest, inventory digest, and zero-residue receipt are recorded                | preserve receipts through any reviewed authority cutover                                              | local shadow                                                       |
 
 `SITE-B05` is closed for the current authoritative tree: the non-functional intake
 route/form, simulated success, visitor-field console emission, and every route CTA are
@@ -287,15 +288,15 @@ surface requires a new approved product/privacy/security contract and Task; this
 does not pre-approve one.
 
 The manifest still declares local-shadow admission blocked while `SITE-B04`,
-`SITE-B06`, `SITE-B08` through `SITE-B10`, `SITE-B12` through `SITE-B14`, or
-`SITE-B16` is open. `SITE-B07`, `SITE-B11`, `SITE-B15`, and `SITE-B17` remain
-explicit later-gate blockers.
+`SITE-B06`, `SITE-B08` through `SITE-B10`, `SITE-B12`, `SITE-B13`, or `SITE-B16`
+is open. `SITE-B07`, `SITE-B11`, `SITE-B15`, and `SITE-B17` remain explicit
+later-gate blockers.
 
 ## Safest Next Task
 
-After reviewer acceptance of this materialization, the safest next work is separate
-target-local Tasks for existing-project Skopos adoption and the still-missing
-accessibility/SEO/performance/preview, asset-rights, environment, and public-history
-proof. No successor work starts from this lane without review. Remote,
-legal/public-release, DNS/hosting mutation, deployment, and authority cutover remain
-later Tasks with explicit approval.
+After reviewer acceptance of this correction, the safest owner-independent next work is
+a target-local Task for deterministic visitor-journey, internal-link, accessibility,
+SEO, and performance proof that requires no external system or unresolved content
+decision. Claims, assets, legal, privacy, security, remote, deployment, DNS, analytics,
+public release, and authority cutover remain fail-closed later Tasks requiring explicit
+owner approval. No successor work starts from this lane without review.
