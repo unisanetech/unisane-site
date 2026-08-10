@@ -66,14 +66,14 @@ Correct cold-checkout Action binding validation
 - [ ] **Review the current pattern in unisane-site** (implementation, pending) — Use the compact references to confirm the current scope, command surface, and docs entrypoints before editing code.
 - [ ] **Implement the smallest scoped change** (implementation, pending) — Carry out "Correct cold-checkout Action binding validation" inside the resolved scope before widening impact to adjacent areas.
 - [ ] **Sync docs and instruction surfaces if touched** (docs, pending) — Keep docs, instruction mirrors, and generated project knowledge aligned with the implementation.
-- [ ] **Build the Site application** (action, pending) — Required by Guard quality.build.
-- [ ] **Lint Site source** (action, pending) — Required by Guard quality.lint.
-- [ ] **Test Site behavior** (action, pending) — Required by Guard quality.test.
-- [ ] **Typecheck Site source** (action, pending) — Required by Guard quality.typecheck.
-- [ ] **Verify standalone repository boundary and Git integrity** (action, pending) — Required by Guard repository.boundary.
+- [x] **Build the Site application** (action, complete) — Required by Guard quality.build.
+- [x] **Lint Site source** (action, complete) — Required by Guard quality.lint.
+- [x] **Test Site behavior** (action, complete) — Required by Guard quality.test.
+- [x] **Typecheck Site source** (action, complete) — Required by Guard quality.typecheck.
+- [x] **Verify standalone repository boundary and Git integrity** (action, complete) — Required by Guard repository.boundary.
 - [ ] **Verify cold checkout, frozen install, and CI command parity** (action, pending) — Required by Guard repository.cold-checkout.
-- [ ] **Verify local Site routes, semantics, SEO, and baselines** (action, pending) — Required by Guard site.local-readiness.
-- [ ] **Verify Site source-safety behavior** (action, pending) — Required by Guard site.source-safety.
+- [x] **Verify local Site routes, semantics, SEO, and baselines** (action, complete) — Required by Guard site.local-readiness.
+- [x] **Verify Site source-safety behavior** (action, complete) — Required by Guard site.source-safety.
 
 ## Actions And Guards
 
@@ -126,7 +126,7 @@ This machine-readable block is the durable source used to rebuild local Skopos s
   "type": "task",
   "status": "active",
   "generatedAt": "2026-08-10T21:18:55.051Z",
-  "updatedAt": "2026-08-10T21:18:55.051Z",
+  "updatedAt": "2026-08-10T21:24:13.066Z",
   "planIds": [],
   "childTasks": [],
   "state": "active",
@@ -237,35 +237,35 @@ This machine-readable block is the durable source used to rebuild local Skopos s
       "kind": "action",
       "title": "Build the Site application",
       "detail": "Required by Guard quality.build.",
-      "status": "pending"
+      "status": "complete"
     },
     {
       "id": "action-quality.lint",
       "kind": "action",
       "title": "Lint Site source",
       "detail": "Required by Guard quality.lint.",
-      "status": "pending"
+      "status": "complete"
     },
     {
       "id": "action-quality.test",
       "kind": "action",
       "title": "Test Site behavior",
       "detail": "Required by Guard quality.test.",
-      "status": "pending"
+      "status": "complete"
     },
     {
       "id": "action-quality.typecheck",
       "kind": "action",
       "title": "Typecheck Site source",
       "detail": "Required by Guard quality.typecheck.",
-      "status": "pending"
+      "status": "complete"
     },
     {
       "id": "action-repository.boundary",
       "kind": "action",
       "title": "Verify standalone repository boundary and Git integrity",
       "detail": "Required by Guard repository.boundary.",
-      "status": "pending"
+      "status": "complete"
     },
     {
       "id": "action-repository.cold-checkout",
@@ -279,14 +279,14 @@ This machine-readable block is the durable source used to rebuild local Skopos s
       "kind": "action",
       "title": "Verify local Site routes, semantics, SEO, and baselines",
       "detail": "Required by Guard site.local-readiness.",
-      "status": "pending"
+      "status": "complete"
     },
     {
       "id": "action-site.source-safety",
       "kind": "action",
       "title": "Verify Site source-safety behavior",
       "detail": "Required by Guard site.source-safety.",
-      "status": "pending"
+      "status": "complete"
     }
   ],
   "selectedActions": [
@@ -569,7 +569,7 @@ This machine-readable block is the durable source used to rebuild local Skopos s
       "actionKind": "run-action",
       "actionId": "quality.build",
       "blocking": false,
-      "status": "open"
+      "status": "complete"
     },
     {
       "id": "run-quality.lint",
@@ -579,7 +579,7 @@ This machine-readable block is the durable source used to rebuild local Skopos s
       "actionKind": "run-action",
       "actionId": "quality.lint",
       "blocking": false,
-      "status": "open"
+      "status": "complete"
     },
     {
       "id": "run-quality.test",
@@ -589,7 +589,7 @@ This machine-readable block is the durable source used to rebuild local Skopos s
       "actionKind": "run-action",
       "actionId": "quality.test",
       "blocking": false,
-      "status": "open"
+      "status": "complete"
     },
     {
       "id": "run-quality.typecheck",
@@ -599,7 +599,7 @@ This machine-readable block is the durable source used to rebuild local Skopos s
       "actionKind": "run-action",
       "actionId": "quality.typecheck",
       "blocking": false,
-      "status": "open"
+      "status": "complete"
     },
     {
       "id": "run-repository.boundary",
@@ -609,7 +609,7 @@ This machine-readable block is the durable source used to rebuild local Skopos s
       "actionKind": "run-action",
       "actionId": "repository.boundary",
       "blocking": false,
-      "status": "open"
+      "status": "complete"
     },
     {
       "id": "run-repository.cold-checkout",
@@ -629,7 +629,7 @@ This machine-readable block is the durable source used to rebuild local Skopos s
       "actionKind": "run-action",
       "actionId": "site.local-readiness",
       "blocking": false,
-      "status": "open"
+      "status": "complete"
     },
     {
       "id": "run-site.source-safety",
@@ -639,7 +639,7 @@ This machine-readable block is the durable source used to rebuild local Skopos s
       "actionKind": "run-action",
       "actionId": "site.source-safety",
       "blocking": false,
-      "status": "open"
+      "status": "complete"
     }
   ],
   "declaredOwnedPaths": [
