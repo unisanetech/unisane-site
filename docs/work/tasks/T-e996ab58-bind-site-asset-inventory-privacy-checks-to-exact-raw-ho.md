@@ -65,8 +65,8 @@ Bind Site asset-inventory privacy checks to exact raw hostname and basename valu
 - [x] **Review the current pattern in unisane-site** (implementation, complete) — Use the compact references to confirm the current scope, command surface, and docs entrypoints before editing code.
 - [x] **Implement the smallest scoped change** (implementation, complete) — Carry out "Bind Site asset-inventory privacy checks to exact raw hostname and basename values" inside the resolved scope before widening impact to adjacent areas.
 - [x] **Sync docs and instruction surfaces if touched** (docs, complete) — Keep docs, instruction mirrors, and generated project knowledge aligned with the implementation.
-- [ ] **Verify Site asset, font, and network inventory** (action, pending) — Required by Guard site.asset-inventory.
-- [ ] **Verify local Site routes, semantics, SEO, and baselines** (action, pending) — Required by Guard site.local-readiness.
+- [x] **Verify Site asset, font, and network inventory** (action, complete) — Required by Guard site.asset-inventory.
+- [x] **Verify local Site routes, semantics, SEO, and baselines** (action, complete) — Required by Guard site.local-readiness.
 
 ## Actions And Guards
 
@@ -101,7 +101,7 @@ This machine-readable block is the durable source used to rebuild local Skopos s
   "type": "task",
   "status": "active",
   "generatedAt": "2026-08-10T22:06:04.476Z",
-  "updatedAt": "2026-08-10T22:10:12.093Z",
+  "updatedAt": "2026-08-10T22:11:13.838Z",
   "planIds": [],
   "childTasks": [],
   "state": "active",
@@ -214,14 +214,14 @@ This machine-readable block is the durable source used to rebuild local Skopos s
       "kind": "action",
       "title": "Verify Site asset, font, and network inventory",
       "detail": "Required by Guard site.asset-inventory.",
-      "status": "pending"
+      "status": "complete"
     },
     {
       "id": "action-site.local-readiness",
       "kind": "action",
       "title": "Verify local Site routes, semantics, SEO, and baselines",
       "detail": "Required by Guard site.local-readiness.",
-      "status": "pending"
+      "status": "complete"
     }
   ],
   "selectedActions": [
@@ -347,7 +347,7 @@ This machine-readable block is the durable source used to rebuild local Skopos s
       "actionKind": "run-action",
       "actionId": "site.asset-inventory",
       "blocking": false,
-      "status": "open"
+      "status": "complete"
     },
     {
       "id": "run-site.local-readiness",
@@ -357,7 +357,7 @@ This machine-readable block is the durable source used to rebuild local Skopos s
       "actionKind": "run-action",
       "actionId": "site.local-readiness",
       "blocking": false,
-      "status": "open"
+      "status": "complete"
     }
   ],
   "declaredOwnedPaths": [
