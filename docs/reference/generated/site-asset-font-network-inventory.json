@@ -1,0 +1,971 @@
+{
+  "schemaVersion": 1,
+  "generatedBy": "scripts/check-site-asset-inventory.mjs",
+  "sourceInputDigest": "a2ce1e665e2f31d0b7297e683e82a0d9f14c1e02003b7780b8cb2d00a760bb75",
+  "methodology": {
+    "generationCommand": "node scripts/check-site-asset-inventory.mjs --write",
+    "verificationCommand": "node scripts/check-site-asset-inventory.mjs",
+    "trackedInputCommand": "git ls-files -z -- apps/web",
+    "scope": "tracked Site assets plus source/CSS references only",
+    "sourceExtensions": [
+      ".cjs",
+      ".css",
+      ".js",
+      ".jsx",
+      ".less",
+      ".mjs",
+      ".sass",
+      ".scss",
+      ".ts",
+      ".tsx"
+    ],
+    "customerLikeFilenames": "withheld as receipt-local opaque IDs under the existing portfolio/case-study asset boundary",
+    "externalTargets": "raw targets omitted; exact target and hostname SHA-256 digests retained",
+    "conclusions": "none: inventory does not decide rights, license, brand, privacy, provider, thresholds, publication, or optimization"
+  },
+  "assets": {
+    "count": 22,
+    "imageCount": 22,
+    "fontCount": 0,
+    "otherStaticCount": 0,
+    "customerLikeOpaqueCount": 10,
+    "totalBytes": 13161377,
+    "byMediaType": {
+      "image/png": 20,
+      "image/x-icon": 2
+    },
+    "entries": [
+      {
+        "assetId": "asset-4d1445eb78130f80",
+        "locator": {
+          "kind": "repository-path",
+          "value": "apps/web/app/favicon.ico"
+        },
+        "pathDisclosure": "repository-path",
+        "category": "image",
+        "mediaType": "image/x-icon",
+        "bytes": 15406,
+        "sha256": "4d1445eb78130f8066e65a3eaddb783904e2e7447aaab18f627f74b75d1171f7",
+        "dimensions": [
+          {
+            "width": 16,
+            "height": 16
+          },
+          {
+            "width": 32,
+            "height": 32
+          },
+          {
+            "width": 48,
+            "height": 48
+          }
+        ]
+      },
+      {
+        "assetId": "asset-48be2dac87cba0eb",
+        "locator": {
+          "kind": "repository-path",
+          "value": "apps/web/public/images/cta/code-sample.png"
+        },
+        "pathDisclosure": "repository-path",
+        "category": "image",
+        "mediaType": "image/png",
+        "bytes": 611726,
+        "sha256": "48be2dac87cba0eb03bfe489988c14b0baefb1fde9b307d8b38023d799a1f36e",
+        "dimensions": [
+          {
+            "width": 2112,
+            "height": 1726
+          }
+        ]
+      },
+      {
+        "assetId": "asset-c47d688068fed677",
+        "locator": {
+          "kind": "repository-path",
+          "value": "apps/web/public/images/icons/android-chrome-192x192.png"
+        },
+        "pathDisclosure": "repository-path",
+        "category": "image",
+        "mediaType": "image/png",
+        "bytes": 5555,
+        "sha256": "c47d688068fed6779330b13f6cb875fc38ab9972c75635dc15906e977eb6c9c9",
+        "dimensions": [
+          {
+            "width": 192,
+            "height": 192
+          }
+        ]
+      },
+      {
+        "assetId": "asset-0cc7d0d746ae4682",
+        "locator": {
+          "kind": "repository-path",
+          "value": "apps/web/public/images/icons/android-chrome-512x512.png"
+        },
+        "pathDisclosure": "repository-path",
+        "category": "image",
+        "mediaType": "image/png",
+        "bytes": 18868,
+        "sha256": "0cc7d0d746ae4682c146e46936ae618728235f292fa9f1a84290b9525b80d2fe",
+        "dimensions": [
+          {
+            "width": 512,
+            "height": 512
+          }
+        ]
+      },
+      {
+        "assetId": "asset-90939cfa0f0b08b7",
+        "locator": {
+          "kind": "repository-path",
+          "value": "apps/web/public/images/icons/apple-touch-icon.png"
+        },
+        "pathDisclosure": "repository-path",
+        "category": "image",
+        "mediaType": "image/png",
+        "bytes": 5137,
+        "sha256": "90939cfa0f0b08b7cbdc730036b88797da46158fb7bf223c951706494d2d1edc",
+        "dimensions": [
+          {
+            "width": 180,
+            "height": 180
+          }
+        ]
+      },
+      {
+        "assetId": "asset-f437784f83c2dbf3",
+        "locator": {
+          "kind": "repository-path",
+          "value": "apps/web/public/images/icons/favicon-16x16.png"
+        },
+        "pathDisclosure": "repository-path",
+        "category": "image",
+        "mediaType": "image/png",
+        "bytes": 386,
+        "sha256": "f437784f83c2dbf3f7c3c72725bba27004d81bebaa39c6df94e8f46c90737887",
+        "dimensions": [
+          {
+            "width": 16,
+            "height": 16
+          }
+        ]
+      },
+      {
+        "assetId": "asset-4ad6e33207059a2b",
+        "locator": {
+          "kind": "repository-path",
+          "value": "apps/web/public/images/icons/favicon-32x32.png"
+        },
+        "pathDisclosure": "repository-path",
+        "category": "image",
+        "mediaType": "image/png",
+        "bytes": 721,
+        "sha256": "4ad6e33207059a2beec9cd2762113324dc7f5b3c50bdd7cd963643960c8f470b",
+        "dimensions": [
+          {
+            "width": 32,
+            "height": 32
+          }
+        ]
+      },
+      {
+        "assetId": "asset-4d1445eb78130f80-2",
+        "locator": {
+          "kind": "repository-path",
+          "value": "apps/web/public/images/icons/favicon.ico"
+        },
+        "pathDisclosure": "repository-path",
+        "category": "image",
+        "mediaType": "image/x-icon",
+        "bytes": 15406,
+        "sha256": "4d1445eb78130f8066e65a3eaddb783904e2e7447aaab18f627f74b75d1171f7",
+        "dimensions": [
+          {
+            "width": 16,
+            "height": 16
+          },
+          {
+            "width": 32,
+            "height": 32
+          },
+          {
+            "width": 48,
+            "height": 48
+          }
+        ]
+      },
+      {
+        "assetId": "asset-fb2f3020fc2294ee",
+        "locator": {
+          "kind": "opaque-id",
+          "value": "customer-like-asset-001"
+        },
+        "pathDisclosure": "withheld-customer-like-filename",
+        "category": "image",
+        "mediaType": "image/png",
+        "bytes": 795314,
+        "sha256": "fb2f3020fc2294ee201b643003a6cffe959facb587d7b9f4fcf113ef41112ddf",
+        "dimensions": [
+          {
+            "width": 2522,
+            "height": 1870
+          }
+        ]
+      },
+      {
+        "assetId": "asset-078714f258ac92c6",
+        "locator": {
+          "kind": "opaque-id",
+          "value": "customer-like-asset-002"
+        },
+        "pathDisclosure": "withheld-customer-like-filename",
+        "category": "image",
+        "mediaType": "image/png",
+        "bytes": 1646547,
+        "sha256": "078714f258ac92c6a88dde9d08fc862ba28dda48cc344644da615c0f95c0a90a",
+        "dimensions": [
+          {
+            "width": 2902,
+            "height": 1962
+          }
+        ]
+      },
+      {
+        "assetId": "asset-c3103f1db7a723af",
+        "locator": {
+          "kind": "opaque-id",
+          "value": "customer-like-asset-003"
+        },
+        "pathDisclosure": "withheld-customer-like-filename",
+        "category": "image",
+        "mediaType": "image/png",
+        "bytes": 545992,
+        "sha256": "c3103f1db7a723af0141bbd49caf409df175d3132778f5f71a422524507ecc76",
+        "dimensions": [
+          {
+            "width": 2520,
+            "height": 1962
+          }
+        ]
+      },
+      {
+        "assetId": "asset-4b5628aa5f7ae93d",
+        "locator": {
+          "kind": "opaque-id",
+          "value": "customer-like-asset-004"
+        },
+        "pathDisclosure": "withheld-customer-like-filename",
+        "category": "image",
+        "mediaType": "image/png",
+        "bytes": 11908,
+        "sha256": "4b5628aa5f7ae93dc885770aef34ffb3e9562180b35fdd1b2da5b59fd106755a",
+        "dimensions": [
+          {
+            "width": 436,
+            "height": 404
+          }
+        ]
+      },
+      {
+        "assetId": "asset-82afd46ea6b6a9c5",
+        "locator": {
+          "kind": "opaque-id",
+          "value": "customer-like-asset-005"
+        },
+        "pathDisclosure": "withheld-customer-like-filename",
+        "category": "image",
+        "mediaType": "image/png",
+        "bytes": 4682,
+        "sha256": "82afd46ea6b6a9c50157660c8a630ed8334ba221dbd2b7ec212e0b90a03041ba",
+        "dimensions": [
+          {
+            "width": 180,
+            "height": 180
+          }
+        ]
+      },
+      {
+        "assetId": "asset-050296706f672b6b",
+        "locator": {
+          "kind": "opaque-id",
+          "value": "customer-like-asset-006"
+        },
+        "pathDisclosure": "withheld-customer-like-filename",
+        "category": "image",
+        "mediaType": "image/png",
+        "bytes": 12182,
+        "sha256": "050296706f672b6bf96ce44f318003e14913f2d2dbbcaeffc25d2863229ad161",
+        "dimensions": [
+          {
+            "width": 388,
+            "height": 374
+          }
+        ]
+      },
+      {
+        "assetId": "asset-4d4abd0d9be1e787",
+        "locator": {
+          "kind": "opaque-id",
+          "value": "customer-like-asset-007"
+        },
+        "pathDisclosure": "withheld-customer-like-filename",
+        "category": "image",
+        "mediaType": "image/png",
+        "bytes": 722420,
+        "sha256": "4d4abd0d9be1e7872be51fe34ac04bfb47ea4856526d70d7b2996aa0ac25a946",
+        "dimensions": [
+          {
+            "width": 966,
+            "height": 960
+          }
+        ]
+      },
+      {
+        "assetId": "asset-586def191b3474bc",
+        "locator": {
+          "kind": "opaque-id",
+          "value": "customer-like-asset-008"
+        },
+        "pathDisclosure": "withheld-customer-like-filename",
+        "category": "image",
+        "mediaType": "image/png",
+        "bytes": 16995,
+        "sha256": "586def191b3474bcc0f1ca2421b1612a50aa5fb0a1ca3ba6d71fb9560cd349b1",
+        "dimensions": [
+          {
+            "width": 518,
+            "height": 508
+          }
+        ]
+      },
+      {
+        "assetId": "asset-a01c1a44474d237d",
+        "locator": {
+          "kind": "opaque-id",
+          "value": "customer-like-asset-009"
+        },
+        "pathDisclosure": "withheld-customer-like-filename",
+        "category": "image",
+        "mediaType": "image/png",
+        "bytes": 2666949,
+        "sha256": "a01c1a44474d237df94fb4b1cdda61c8122f514a7ec002846a0aafe491f17594",
+        "dimensions": [
+          {
+            "width": 2898,
+            "height": 1954
+          }
+        ]
+      },
+      {
+        "assetId": "asset-b9692138c50044e6",
+        "locator": {
+          "kind": "opaque-id",
+          "value": "customer-like-asset-010"
+        },
+        "pathDisclosure": "withheld-customer-like-filename",
+        "category": "image",
+        "mediaType": "image/png",
+        "bytes": 1989375,
+        "sha256": "b9692138c50044e63ed71220387d6deedd676c87b85c0fd2c43cd8f8ef3c80c6",
+        "dimensions": [
+          {
+            "width": 2520,
+            "height": 1960
+          }
+        ]
+      },
+      {
+        "assetId": "asset-f6fdaee9391660b9",
+        "locator": {
+          "kind": "repository-path",
+          "value": "apps/web/public/images/proccess/build-and-validate.png"
+        },
+        "pathDisclosure": "repository-path",
+        "category": "image",
+        "mediaType": "image/png",
+        "bytes": 953928,
+        "sha256": "f6fdaee9391660b9e7f240faea4a7930a1ee4917acee75ff03152a06991e5a2c",
+        "dimensions": [
+          {
+            "width": 1024,
+            "height": 1024
+          }
+        ]
+      },
+      {
+        "assetId": "asset-d17f2f57ca3dc861",
+        "locator": {
+          "kind": "repository-path",
+          "value": "apps/web/public/images/proccess/design-and-architect.png"
+        },
+        "pathDisclosure": "repository-path",
+        "category": "image",
+        "mediaType": "image/png",
+        "bytes": 1065945,
+        "sha256": "d17f2f57ca3dc861dfabafd36baf75489c8a562503e28fa4d1034e229df1bc69",
+        "dimensions": [
+          {
+            "width": 1024,
+            "height": 1024
+          }
+        ]
+      },
+      {
+        "assetId": "asset-1504afae5594426e",
+        "locator": {
+          "kind": "repository-path",
+          "value": "apps/web/public/images/proccess/discover-and-align.png"
+        },
+        "pathDisclosure": "repository-path",
+        "category": "image",
+        "mediaType": "image/png",
+        "bytes": 1074710,
+        "sha256": "1504afae5594426ea603ab94e07896119bfb7b8bc74fe26693751ce4ca211fbf",
+        "dimensions": [
+          {
+            "width": 1024,
+            "height": 1024
+          }
+        ]
+      },
+      {
+        "assetId": "asset-75684ea6397585db",
+        "locator": {
+          "kind": "repository-path",
+          "value": "apps/web/public/images/proccess/launch-and-grow.png"
+        },
+        "pathDisclosure": "repository-path",
+        "category": "image",
+        "mediaType": "image/png",
+        "bytes": 981225,
+        "sha256": "75684ea6397585dbe7e4be2d3de036db262dfe591746b73364465a748806cab0",
+        "dimensions": [
+          {
+            "width": 1024,
+            "height": 1024
+          }
+        ]
+      }
+    ],
+    "references": [
+      {
+        "assetId": "asset-050296706f672b6b",
+        "sourcePath": "apps/web/lib/content/portfolio.ts",
+        "line": 68,
+        "column": 11,
+        "syntax": "source-literal"
+      },
+      {
+        "assetId": "asset-078714f258ac92c6",
+        "sourcePath": "apps/web/lib/content/portfolio.ts",
+        "line": 93,
+        "column": 12,
+        "syntax": "source-literal"
+      },
+      {
+        "assetId": "asset-1504afae5594426e",
+        "sourcePath": "apps/web/components/home/process-section.tsx",
+        "line": 67,
+        "column": 19,
+        "syntax": "source-literal"
+      },
+      {
+        "assetId": "asset-48be2dac87cba0eb",
+        "sourcePath": "apps/web/lib/seo/config.ts",
+        "line": 62,
+        "column": 14,
+        "syntax": "source-literal"
+      },
+      {
+        "assetId": "asset-48be2dac87cba0eb",
+        "sourcePath": "apps/web/lib/seo/config.ts",
+        "line": 71,
+        "column": 14,
+        "syntax": "source-literal"
+      },
+      {
+        "assetId": "asset-4b5628aa5f7ae93d",
+        "sourcePath": "apps/web/lib/content/portfolio.ts",
+        "line": 20,
+        "column": 11,
+        "syntax": "source-literal"
+      },
+      {
+        "assetId": "asset-4d1445eb78130f80",
+        "sourcePath": "apps/web/app/favicon.ico",
+        "line": null,
+        "column": null,
+        "syntax": "next-app-metadata-convention"
+      },
+      {
+        "assetId": "asset-4d4abd0d9be1e787",
+        "sourcePath": "apps/web/lib/content/portfolio.ts",
+        "line": 116,
+        "column": 11,
+        "syntax": "source-literal"
+      },
+      {
+        "assetId": "asset-586def191b3474bc",
+        "sourcePath": "apps/web/lib/content/portfolio.ts",
+        "line": 44,
+        "column": 11,
+        "syntax": "source-literal"
+      },
+      {
+        "assetId": "asset-75684ea6397585db",
+        "sourcePath": "apps/web/components/home/process-section.tsx",
+        "line": 91,
+        "column": 19,
+        "syntax": "source-literal"
+      },
+      {
+        "assetId": "asset-82afd46ea6b6a9c5",
+        "sourcePath": "apps/web/lib/content/portfolio.ts",
+        "line": 92,
+        "column": 11,
+        "syntax": "source-literal"
+      },
+      {
+        "assetId": "asset-a01c1a44474d237d",
+        "sourcePath": "apps/web/lib/content/portfolio.ts",
+        "line": 117,
+        "column": 12,
+        "syntax": "source-literal"
+      },
+      {
+        "assetId": "asset-b9692138c50044e6",
+        "sourcePath": "apps/web/lib/content/portfolio.ts",
+        "line": 45,
+        "column": 12,
+        "syntax": "source-literal"
+      },
+      {
+        "assetId": "asset-c3103f1db7a723af",
+        "sourcePath": "apps/web/lib/content/portfolio.ts",
+        "line": 69,
+        "column": 12,
+        "syntax": "source-literal"
+      },
+      {
+        "assetId": "asset-c3103f1db7a723af",
+        "sourcePath": "apps/web/lib/seo/config.ts",
+        "line": 144,
+        "column": 16,
+        "syntax": "source-literal"
+      },
+      {
+        "assetId": "asset-c3103f1db7a723af",
+        "sourcePath": "apps/web/lib/seo/config.ts",
+        "line": 155,
+        "column": 16,
+        "syntax": "source-literal"
+      },
+      {
+        "assetId": "asset-d17f2f57ca3dc861",
+        "sourcePath": "apps/web/components/home/process-section.tsx",
+        "line": 75,
+        "column": 19,
+        "syntax": "source-literal"
+      },
+      {
+        "assetId": "asset-f6fdaee9391660b9",
+        "sourcePath": "apps/web/components/home/process-section.tsx",
+        "line": 83,
+        "column": 19,
+        "syntax": "source-literal"
+      },
+      {
+        "assetId": "asset-fb2f3020fc2294ee",
+        "sourcePath": "apps/web/lib/content/portfolio.ts",
+        "line": 21,
+        "column": 12,
+        "syntax": "source-literal"
+      },
+      {
+        "assetId": "asset-fb2f3020fc2294ee",
+        "sourcePath": "apps/web/lib/seo/config.ts",
+        "line": 112,
+        "column": 16,
+        "syntax": "source-literal"
+      },
+      {
+        "assetId": "asset-fb2f3020fc2294ee",
+        "sourcePath": "apps/web/lib/seo/config.ts",
+        "line": 123,
+        "column": 16,
+        "syntax": "source-literal"
+      }
+    ]
+  },
+  "fonts": {
+    "assetIds": [],
+    "cssFontFaceDeclarations": [],
+    "cssFontFamilyDeclarations": [],
+    "sourceLoaderReferences": [],
+    "genericFamilyUtilities": [
+      {
+        "sourcePath": "apps/web/app/layout.tsx",
+        "line": 18,
+        "column": 24,
+        "utility": "font-sans"
+      }
+    ],
+    "interpretation": "mechanical-source-inventory-only; rights and selection remain unresolved"
+  },
+  "network": {
+    "referenceCount": 31,
+    "uniqueTargetCount": 31,
+    "references": [
+      {
+        "targetId": "network-target-001",
+        "targetDisclosure": "digest-only",
+        "targetSha256": "ddc6a11b6e0607cf0fced41dbc927d3f8e8cc05491223bb082beae0cd2b4bdef",
+        "sourcePath": "apps/web/components/home/tech-stack-section.tsx",
+        "line": 50,
+        "column": 12,
+        "syntax": "source-literal",
+        "scheme": "https",
+        "hostSha256": "3dc86e6666d7a5f236ea594bf10bb95726c2fa7538d7e755dc766aa1561e2feb"
+      },
+      {
+        "targetId": "network-target-002",
+        "targetDisclosure": "digest-only",
+        "targetSha256": "eb7997fa534a94dc3d8fee21cb75aa0b430b825be109834e4450033de1bbb555",
+        "sourcePath": "apps/web/components/home/tech-stack-section.tsx",
+        "line": 57,
+        "column": 12,
+        "syntax": "source-literal",
+        "scheme": "https",
+        "hostSha256": "3a0784cc7e6fc2eda776f1ab15f3a9552abe1225d336fc6109a12abfc4e61e77"
+      },
+      {
+        "targetId": "network-target-003",
+        "targetDisclosure": "digest-only",
+        "targetSha256": "595d2f97f0989f9d3500b443419a873f29a55ea6388b7e276ac9ac1058dcd5ec",
+        "sourcePath": "apps/web/components/home/tech-stack-section.tsx",
+        "line": 64,
+        "column": 12,
+        "syntax": "source-literal",
+        "scheme": "https",
+        "hostSha256": "e92666e1ab2a9654bc6c6028d2246fb499d4955ab6fdd3aac4a1d0bb6e362806"
+      },
+      {
+        "targetId": "network-target-004",
+        "targetDisclosure": "digest-only",
+        "targetSha256": "1f786a729d1f902a36d81a25df9baebd8d7fd065f59743c6bc679ef1b086dd1b",
+        "sourcePath": "apps/web/components/home/tech-stack-section.tsx",
+        "line": 71,
+        "column": 12,
+        "syntax": "source-literal",
+        "scheme": "https",
+        "hostSha256": "d05c9ca803b9119b61f294f3133831ec686f0f6c1a8c9a1c27b2ed443987de0e"
+      },
+      {
+        "targetId": "network-target-005",
+        "targetDisclosure": "digest-only",
+        "targetSha256": "722f1c5535fdcd19675be752438115d292be21edb3c6b21b33aa27f54590ef46",
+        "sourcePath": "apps/web/components/home/tech-stack-section.tsx",
+        "line": 78,
+        "column": 12,
+        "syntax": "source-literal",
+        "scheme": "https",
+        "hostSha256": "37eac25ecd4611088a987647e0aaede604421d91738fd9e7b8cc3eaa1fb1d3dd"
+      },
+      {
+        "targetId": "network-target-006",
+        "targetDisclosure": "digest-only",
+        "targetSha256": "843a793e92e9847ea8924cfa4215c455471458a017a1210d95cbb52f3a99fe5a",
+        "sourcePath": "apps/web/components/home/tech-stack-section.tsx",
+        "line": 85,
+        "column": 12,
+        "syntax": "source-literal",
+        "scheme": "https",
+        "hostSha256": "9baad27eab20fb984b38823e527a602452bb64f2d9cc14c3dd02089f173ac926"
+      },
+      {
+        "targetId": "network-target-007",
+        "targetDisclosure": "digest-only",
+        "targetSha256": "7c2e05eaeb44aeecdc2277c04adc2fe6ca4b66a218f1275e29c642642bb7acf2",
+        "sourcePath": "apps/web/components/home/tech-stack-section.tsx",
+        "line": 92,
+        "column": 12,
+        "syntax": "source-literal",
+        "scheme": "https",
+        "hostSha256": "4741979b08a6152fd0147014ce1721ed7c936c0fb2be2d6908a72b731952b078"
+      },
+      {
+        "targetId": "network-target-008",
+        "targetDisclosure": "digest-only",
+        "targetSha256": "71266c81157df78676ca4e6c1c34d011cdffed026f6805526d547dca46d5d415",
+        "sourcePath": "apps/web/components/home/tech-stack-section.tsx",
+        "line": 99,
+        "column": 12,
+        "syntax": "source-literal",
+        "scheme": "https",
+        "hostSha256": "a065b3ee60447fbf0e55dc4e608bbf303910d1f507b26226f3a8b9a0c9a2c6ae"
+      },
+      {
+        "targetId": "network-target-009",
+        "targetDisclosure": "digest-only",
+        "targetSha256": "536399044410546dcf6bab1d3036c15c20db9cc3a8280506bd56c80943a20c9e",
+        "sourcePath": "apps/web/components/home/tech-stack-section.tsx",
+        "line": 106,
+        "column": 12,
+        "syntax": "source-literal",
+        "scheme": "https",
+        "hostSha256": "e95e4cbfbfc5b6a47cb22dea8c45827fd097431a55810f136b99347af12f94e8"
+      },
+      {
+        "targetId": "network-target-010",
+        "targetDisclosure": "digest-only",
+        "targetSha256": "1d1b4e8372e57e891797958e91c93b73489e6aada2b1daf45a5bbab39d328da8",
+        "sourcePath": "apps/web/components/home/tech-stack-section.tsx",
+        "line": 113,
+        "column": 12,
+        "syntax": "source-literal",
+        "scheme": "https",
+        "hostSha256": "a9685e79ce47474cff464e798fa8db19efcf33661248470e5754f504b5c770aa"
+      },
+      {
+        "targetId": "network-target-011",
+        "targetDisclosure": "digest-only",
+        "targetSha256": "21eb8d2b8a560f67e14af1a9c4078967a03840fc96a86c2830ce946376c912ee",
+        "sourcePath": "apps/web/components/home/tech-stack-section.tsx",
+        "line": 120,
+        "column": 12,
+        "syntax": "source-literal",
+        "scheme": "https",
+        "hostSha256": "dffe49c73381c1a2befc81f6040217dcf1de07de70cc781dff135fc516dbf8ab"
+      },
+      {
+        "targetId": "network-target-012",
+        "targetDisclosure": "digest-only",
+        "targetSha256": "7f720c97a51526e4591f11395f543bab66c9dc624a50ee73a386258f967e52a5",
+        "sourcePath": "apps/web/components/home/tech-stack-section.tsx",
+        "line": 127,
+        "column": 12,
+        "syntax": "source-literal",
+        "scheme": "https",
+        "hostSha256": "1a06fc270b85b4d716f8f50be44900a6ed043e063342c115513c3876c83064da"
+      },
+      {
+        "targetId": "network-target-013",
+        "targetDisclosure": "digest-only",
+        "targetSha256": "04d39e8bd5d50dd5367f9de946d1aeb9d7d1fd1a237e1daa99c7e2d1e4d17dd7",
+        "sourcePath": "apps/web/components/home/tech-stack-section.tsx",
+        "line": 134,
+        "column": 12,
+        "syntax": "source-literal",
+        "scheme": "https",
+        "hostSha256": "bb438e1309fd5686c78f3282ad4de532d71227599a63f1cbd5494338e83e5f45"
+      },
+      {
+        "targetId": "network-target-014",
+        "targetDisclosure": "digest-only",
+        "targetSha256": "11217e97399022d963ebaf46f7eff4832e7abeb22aad7e0b24c37fe7470e69ed",
+        "sourcePath": "apps/web/components/home/tech-stack-section.tsx",
+        "line": 141,
+        "column": 12,
+        "syntax": "source-literal",
+        "scheme": "https",
+        "hostSha256": "c767835dcd3c15ea6918761e141998e6dd096be65ebba3cd2c0d42dd3b3db471"
+      },
+      {
+        "targetId": "network-target-015",
+        "targetDisclosure": "digest-only",
+        "targetSha256": "c54944ac30ee3982ff793b0d26c1aa4a246da27def49487e4a9c90888a9d9001",
+        "sourcePath": "apps/web/components/home/tech-stack-section.tsx",
+        "line": 148,
+        "column": 12,
+        "syntax": "source-literal",
+        "scheme": "https",
+        "hostSha256": "75939feefe0889cfa183ca395bd7bfbb9eb519aa4820e1f8701fb9fe07981692"
+      },
+      {
+        "targetId": "network-target-016",
+        "targetDisclosure": "digest-only",
+        "targetSha256": "e559114825bc6226b0e526b384ad4db91e43298a7f6dab1792338a920b256a89",
+        "sourcePath": "apps/web/components/home/tech-stack-section.tsx",
+        "line": 155,
+        "column": 12,
+        "syntax": "source-literal",
+        "scheme": "https",
+        "hostSha256": "1ffda32ad70e3cac6d6a04e2fbb00c062cc12d3a02796149e639c6d9a3e2774b"
+      },
+      {
+        "targetId": "network-target-017",
+        "targetDisclosure": "digest-only",
+        "targetSha256": "34b615cddf048269a457e8e2bd594da64c1b5decf2e48009b5c6152ea4905975",
+        "sourcePath": "apps/web/components/home/tech-stack-section.tsx",
+        "line": 162,
+        "column": 12,
+        "syntax": "source-literal",
+        "scheme": "https",
+        "hostSha256": "6b218b009a97f7ab5b8fb8f1094417f76ccbfb0b043242ee6a54b0db4be012e5"
+      },
+      {
+        "targetId": "network-target-018",
+        "targetDisclosure": "digest-only",
+        "targetSha256": "5e3893c90e60321d4ba2e62144c48a9212b229b6d8982af0d2bb777bfd3ad9f6",
+        "sourcePath": "apps/web/components/home/tech-stack-section.tsx",
+        "line": 169,
+        "column": 12,
+        "syntax": "source-literal",
+        "scheme": "https",
+        "hostSha256": "893c86a37689b089d92003699510f3da031d018c4080b1d2db7fa2a66b83f595"
+      },
+      {
+        "targetId": "network-target-019",
+        "targetDisclosure": "digest-only",
+        "targetSha256": "a6ad87b96b6f44b6b903d3db0d28b0f75e62c6ec246afd9e218723c6168baad3",
+        "sourcePath": "apps/web/components/home/tech-stack-section.tsx",
+        "line": 176,
+        "column": 12,
+        "syntax": "source-literal",
+        "scheme": "https",
+        "hostSha256": "74130461ec0faa56970890eeab7b3bee120d904dc3360c858b30556bfaa4bc68"
+      },
+      {
+        "targetId": "network-target-020",
+        "targetDisclosure": "digest-only",
+        "targetSha256": "09a8b930c8b79e7c313e5e741e1d59c39ae91bc1f10cdefa68b47bf77519be57",
+        "sourcePath": "apps/web/components/home/tech-stack-section.tsx",
+        "line": 183,
+        "column": 12,
+        "syntax": "source-literal",
+        "scheme": "https",
+        "hostSha256": "3aeb002460381c6f258e8395d3026f571f0d9a76488dcd837639b13aed316560"
+      },
+      {
+        "targetId": "network-target-021",
+        "targetDisclosure": "digest-only",
+        "targetSha256": "d9768b5192923d8e3e5bb1cdcc41421aca3c6b9c3fb1bf123a569b92ce085a86",
+        "sourcePath": "apps/web/components/home/tech-stack-section.tsx",
+        "line": 190,
+        "column": 12,
+        "syntax": "source-literal",
+        "scheme": "https",
+        "hostSha256": "02ed77d0dfecd6152145f242bd73cf8bc2263c1e857746b03fad6acac65488b6"
+      },
+      {
+        "targetId": "network-target-022",
+        "targetDisclosure": "digest-only",
+        "targetSha256": "5fef696626434b5472790b0b33e26821769cc0c9b5e022d68d1c1ffa19d9c584",
+        "sourcePath": "apps/web/components/home/tech-stack-section.tsx",
+        "line": 197,
+        "column": 12,
+        "syntax": "source-literal",
+        "scheme": "https",
+        "hostSha256": "b2cec97c4ab2309797bf15de3b70179fdb4f4e1d51e1b3551a431cafa587fb4f"
+      },
+      {
+        "targetId": "network-target-023",
+        "targetDisclosure": "digest-only",
+        "targetSha256": "0fb5b5874dd8b3f5bf88b59dbea8b520768a4fb86414461295cd7cfa72f549e7",
+        "sourcePath": "apps/web/components/home/tech-stack-section.tsx",
+        "line": 204,
+        "column": 12,
+        "syntax": "source-literal",
+        "scheme": "https",
+        "hostSha256": "ed3465371481b11740d496050d4d0f3e9608c6a90573b6b6520ac6dcd35bf52d"
+      },
+      {
+        "targetId": "network-target-024",
+        "targetDisclosure": "digest-only",
+        "targetSha256": "68fedf64924894e13bb99abb21c12be64ecfb0387bc39c7acd2c64cd5949932f",
+        "sourcePath": "apps/web/components/home/tech-stack-section.tsx",
+        "line": 211,
+        "column": 12,
+        "syntax": "source-literal",
+        "scheme": "https",
+        "hostSha256": "b59016c984ad10e69dc2cfa4c5b171e9d9684df248de6522e303d50a00e089f7"
+      },
+      {
+        "targetId": "network-target-025",
+        "targetDisclosure": "digest-only",
+        "targetSha256": "31c26f2e5260372acbd1639515c04c60b32f24a4ba09e1b7269140461b5f9a92",
+        "sourcePath": "apps/web/lib/content/portfolio.ts",
+        "line": 19,
+        "column": 11,
+        "syntax": "source-literal",
+        "scheme": "https",
+        "hostSha256": "d6089cf616f46653521e6884f9d5bd11089d4a74e8bfca86e4a6c6ef4258c31e"
+      },
+      {
+        "targetId": "network-target-026",
+        "targetDisclosure": "digest-only",
+        "targetSha256": "7c3aaeff0c605959bf0bfaddf97d856fdab6c35baf0c577351f8385682e0fffc",
+        "sourcePath": "apps/web/lib/content/portfolio.ts",
+        "line": 43,
+        "column": 11,
+        "syntax": "source-literal",
+        "scheme": "https",
+        "hostSha256": "750f92ff019ccbe80dc49e42b0dad15b86167902cc674a1c3e2be63aa8fd28b9"
+      },
+      {
+        "targetId": "network-target-027",
+        "targetDisclosure": "digest-only",
+        "targetSha256": "e0c3105d95af9b618b84102cb06a9afcd2bd26898282b182068df0b39ae0d27d",
+        "sourcePath": "apps/web/lib/content/portfolio.ts",
+        "line": 67,
+        "column": 11,
+        "syntax": "source-literal",
+        "scheme": "https",
+        "hostSha256": "10a26170b2062ff1c912ecd08fc49e027161f628f2808e26395199ec9f4cbf60"
+      },
+      {
+        "targetId": "network-target-028",
+        "targetDisclosure": "digest-only",
+        "targetSha256": "ce3351da790b2d6bc6cfd7e78f88b863acaae96bbec51f80745e07fa71a14e79",
+        "sourcePath": "apps/web/lib/content/portfolio.ts",
+        "line": 91,
+        "column": 11,
+        "syntax": "source-literal",
+        "scheme": "https",
+        "hostSha256": "b724586d8c512a148d1d6c18c0ce94ec024acc979a92a3b0c719b0e93941337e"
+      },
+      {
+        "targetId": "network-target-029",
+        "targetDisclosure": "digest-only",
+        "targetSha256": "4d174467873d3babde8561f887eb1e3f201014f9277b5b266edae68ac497ce02",
+        "sourcePath": "apps/web/lib/content/portfolio.ts",
+        "line": 115,
+        "column": 11,
+        "syntax": "source-literal",
+        "scheme": "https",
+        "hostSha256": "d5ca8f6156e642b0ef3074a87379b6409023e229f8cfddf09cd9f7e7d64a4890"
+      },
+      {
+        "targetId": "network-target-030",
+        "targetDisclosure": "digest-only",
+        "targetSha256": "df99e4961f2593866fbd7ba1833c2425f7d99d96da1341738a05c0cbb1e78357",
+        "sourcePath": "apps/web/lib/seo/config.ts",
+        "line": 42,
+        "column": 61,
+        "syntax": "source-literal",
+        "scheme": "https",
+        "hostSha256": "b129e5ec05ea4e83b2286acaf7aed7a3a48b2249ed7681536eccab660bef58e2"
+      },
+      {
+        "targetId": "network-target-031",
+        "targetDisclosure": "digest-only",
+        "targetSha256": "7023f3abc31286ac563a5337a93401371e5202f17a152bbeab6b99fa8571de2b",
+        "sourcePath": "apps/web/next-env.d.ts",
+        "line": 6,
+        "column": 8,
+        "syntax": "source-literal",
+        "scheme": "https",
+        "hostSha256": "3a0784cc7e6fc2eda776f1ab15f3a9552abe1225d336fc6109a12abfc4e61e77"
+      }
+    ],
+    "interpretation": "source/CSS literals only; no runtime traffic, provider approval, domain ownership, or publication conclusion"
+  },
+  "unresolvedOwnerDecisions": [
+    "asset necessity, provenance, rights, license, and disposition",
+    "font selection, provenance, rights, license, and delivery policy",
+    "network target necessity, ownership, privacy, security, and provider approval",
+    "performance, image, and bundle thresholds",
+    "public release and publication authority"
+  ]
+}
