@@ -1,14 +1,14 @@
 ---
 title: "Task: Bind Site asset-inventory privacy checks to exact raw hostname and basename values"
-status: active
+status: complete
 owner: "bhaskarbarma"
 id: T-e996ab58
 scope: "workspace"
 role: task
-lifecycle: active
+lifecycle: historical
 authority: canonical
 provenance: accepted
-view: current
+view: exception
 risk: high-impact
 proofSubject: task-closure
 proofBaseline: baseline-0498b766e9696030
@@ -19,7 +19,7 @@ lastUpdated: 2026-08-10
 
 ## Changelog
 
-- `2026-08-10`: Synchronized Task state `active` from Skopos.
+- `2026-08-10`: Synchronized Task state `complete` from Skopos.
 
 ## Goal
 
@@ -99,12 +99,12 @@ This machine-readable block is the durable source used to rebuild local Skopos s
   "schemaVersion": 1,
   "id": "T-e996ab58",
   "type": "task",
-  "status": "active",
+  "status": "durable",
   "generatedAt": "2026-08-10T22:06:04.476Z",
-  "updatedAt": "2026-08-10T22:11:13.838Z",
+  "updatedAt": "2026-08-10T22:14:35.181Z",
   "planIds": [],
   "childTasks": [],
-  "state": "active",
+  "state": "complete",
   "detail": "detailed",
   "title": "Bind Site asset-inventory privacy checks to exact raw hostname and basename values",
   "goal": "Bind Site asset-inventory privacy checks to exact raw hostname and basename values",

@@ -1,0 +1,24 @@
+{
+  "snapshotId": "S-86add69269b4",
+  "taskId": "T-e996ab58",
+  "sessionId": "4204f7d4-90f5-4213-afcf-ca20c4ba5395",
+  "actorId": "bhaskarbarma",
+  "baseRevision": "19ac227742d88a05070d04043e3d97ef788d7a84",
+  "paths": [
+    {
+      "path": "docs/reference/generated/site-asset-font-network-inventory.json",
+      "digest": "6e4472f9b2c289aae817a0d2c3ccac4b98fee4ef94467aa8c4ef1231e005a743"
+    },
+    {
+      "path": "docs/reference/generated/site-local-readiness-baseline.json",
+      "digest": "79bbd55f58a2cca8067f4ec7fa8499ed35cdb3cb0f79ecf5e50c880d5ae004aa"
+    },
+    {
+      "path": "scripts/check-site-asset-inventory.mjs",
+      "digest": "1b8203d81a1fbc92ec53f224379bb0df5a3e1ec6ca34a93e203ae6bd30708ba5"
+    }
+  ],
+  "digest": "86add69269b43c17025d6a47f207129abccee6fcb1c00a4d9104d4a632a3e4aa",
+  "createdAt": "2026-08-10T22:13:59.762Z",
+  "artifactPath": "docs/work/tasks/snapshots/T-e996ab58-S-86add69269b4.json"
+}
