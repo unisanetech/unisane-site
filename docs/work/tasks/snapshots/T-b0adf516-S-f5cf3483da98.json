@@ -1,0 +1,44 @@
+{
+  "snapshotId": "S-f5cf3483da98",
+  "taskId": "T-b0adf516",
+  "sessionId": "36e0ba95-509d-4060-84e8-9a633821e1ff",
+  "actorId": "bhaskarbarma",
+  "baseRevision": "40fc85f5507e45c5d859dd64018f454ebbd97ff1",
+  "paths": [
+    {
+      "path": "docs/00-start-here.md",
+      "digest": "d47da3a661b7b9441136c7515e5fd5f200db8e5672cbd46180c5c465264b5892"
+    },
+    {
+      "path": "docs/reference/generated/site-asset-font-network-inventory.json",
+      "digest": "98fd68946633d9d008395cdfddba24a16631ff5d5d339b61751b34b658dea5da"
+    },
+    {
+      "path": "docs/reference/generated/site-local-readiness-baseline.json",
+      "digest": "79bbd55f58a2cca8067f4ec7fa8499ed35cdb3cb0f79ecf5e50c880d5ae004aa"
+    },
+    {
+      "path": "docs/standards/00-repository-readiness-contract.md",
+      "digest": "0504905e74b0543cfbfdb0f9418bba05bf75adea79509ef7a9f88e7c6cb44657"
+    },
+    {
+      "path": "package.json",
+      "digest": "a51245b4c4cb064b440e13a35df9003fda2ecf7b82a27bd46aced6a4b6aa6613"
+    },
+    {
+      "path": "scripts/check-site-asset-inventory.mjs",
+      "digest": "e0590604032491b8b7fd387bc60f39054941de26443eac0e10763ac26c23f341"
+    },
+    {
+      "path": "tools/skopos/actions/site-asset-inventory.yaml",
+      "digest": "ad92163830c2e59650d9e8f38d15d2154db63bfd196022d4efb8bae8eb9f8837"
+    },
+    {
+      "path": "tools/skopos/guards/site-asset-inventory.yaml",
+      "digest": "174887d35d237c98b3a1dafe05a79d1d70273b474caef40455e63317717c45ab"
+    }
+  ],
+  "digest": "f5cf3483da98ac071d09ae5207f71e565185cd316db2e0dd6a6a3f5eeb7418a0",
+  "createdAt": "2026-08-10T22:01:30.117Z",
+  "artifactPath": "docs/work/tasks/snapshots/T-b0adf516-S-f5cf3483da98.json"
+}

@@ -1,14 +1,14 @@
 ---
 title: "Task: Make the Site asset inventory privacy-fail-closed and Task-enforced"
-status: active
+status: complete
 owner: "bhaskarbarma"
 id: T-b0adf516
 scope: "workspace"
 role: task
-lifecycle: active
+lifecycle: historical
 authority: canonical
 provenance: accepted
-view: current
+view: exception
 risk: high-impact
 proofSubject: task-closure
 proofBaseline: baseline-5b6ac55fff61a16b
@@ -19,7 +19,7 @@ lastUpdated: 2026-08-10
 
 ## Changelog
 
-- `2026-08-10`: Synchronized Task state `active` from Skopos.
+- `2026-08-10`: Synchronized Task state `complete` from Skopos.
 
 ## Goal
 
@@ -76,7 +76,7 @@ Make the Site asset inventory privacy-fail-closed and Task-enforced
 - [x] **Test Site behavior** (action, complete) — Required by Guard quality.test.
 - [x] **Typecheck Site source** (action, complete) — Required by Guard quality.typecheck.
 - [x] **Verify standalone repository boundary and Git integrity** (action, complete) — Required by Guard repository.boundary.
-- [ ] **Verify cold checkout, frozen install, and CI command parity** (action, pending) — Required by Guard repository.cold-checkout.
+- [x] **Verify cold checkout, frozen install, and CI command parity** (action, complete) — Required by Guard repository.cold-checkout.
 - [x] **Verify local Site routes, semantics, SEO, and baselines** (action, complete) — Required by Guard site.local-readiness.
 - [x] **Verify Site source-safety behavior** (action, complete) — Required by Guard site.source-safety.
 
@@ -130,12 +130,12 @@ This machine-readable block is the durable source used to rebuild local Skopos s
   "schemaVersion": 1,
   "id": "T-b0adf516",
   "type": "task",
-  "status": "active",
+  "status": "durable",
   "generatedAt": "2026-08-10T21:44:44.406Z",
-  "updatedAt": "2026-08-10T21:54:42.055Z",
+  "updatedAt": "2026-08-10T22:01:39.311Z",
   "planIds": [],
   "childTasks": [],
-  "state": "active",
+  "state": "complete",
   "detail": "detailed",
   "title": "Make the Site asset inventory privacy-fail-closed and Task-enforced",
   "goal": "Make the Site asset inventory privacy-fail-closed and Task-enforced",
@@ -281,7 +281,7 @@ This machine-readable block is the durable source used to rebuild local Skopos s
       "kind": "action",
       "title": "Verify cold checkout, frozen install, and CI command parity",
       "detail": "Required by Guard repository.cold-checkout.",
-      "status": "pending"
+      "status": "complete"
     },
     {
       "id": "action-site.local-readiness",
@@ -641,7 +641,7 @@ This machine-readable block is the durable source used to rebuild local Skopos s
       "actionKind": "run-action",
       "actionId": "repository.cold-checkout",
       "blocking": false,
-      "status": "open"
+      "status": "complete"
     },
     {
       "id": "run-site.local-readiness",
