@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "generatedBy": "scripts/check-local-readiness.mjs",
-  "sourceInputDigest": "a46d05a894a84ad1d18ab5f6986bdb189638f59e520442be78f36210a8e2021a",
+  "sourceInputDigest": "42e86c8573088ebb8547940b46311d696399477fc8401bc9ade10f25466a7802",
   "methodology": {
     "generationCommand": "pnpm refresh:local-readiness-baseline",
     "verificationCommand": "pnpm verify:local-readiness",
@@ -148,22 +148,22 @@
           "route": "/",
           "sampleCount": 5,
           "responseBytes": 187239,
-          "medianMilliseconds": 4.97,
-          "p95Milliseconds": 5.374
+          "medianMilliseconds": 3.303,
+          "p95Milliseconds": 3.341
         },
         {
           "route": "/services",
           "sampleCount": 5,
           "responseBytes": 43863,
-          "medianMilliseconds": 1.784,
-          "p95Milliseconds": 2.584
+          "medianMilliseconds": 1.263,
+          "p95Milliseconds": 2.349
         },
         {
           "route": "/work",
           "sampleCount": 5,
           "responseBytes": 57567,
-          "medianMilliseconds": 1.735,
-          "p95Milliseconds": 1.919
+          "medianMilliseconds": 1.102,
+          "p95Milliseconds": 1.201
         }
       ]
     },
@@ -181,9 +181,9 @@
         "cssBytes": 61370
       },
       "routeHtml": [
-        { "route": "/", "htmlBytes": 187239, "htmlGzipBytes": 36175 },
-        { "route": "/services", "htmlBytes": 43863, "htmlGzipBytes": 8574 },
-        { "route": "/work", "htmlBytes": 57567, "htmlGzipBytes": 8817 }
+        { "route": "/", "htmlBytes": 187239, "htmlGzipBytes": 36178 },
+        { "route": "/services", "htmlBytes": 43863, "htmlGzipBytes": 8571 },
+        { "route": "/work", "htmlBytes": 57567, "htmlGzipBytes": 8816 }
       ],
       "assets": [
         {
