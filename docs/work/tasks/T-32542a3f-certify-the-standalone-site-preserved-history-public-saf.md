@@ -71,9 +71,9 @@ Certify the standalone Site preserved-history public-safety checkpoint
 - [x] **Review the current pattern in unisane-site** (implementation, complete) — Use the compact references to confirm the current scope, command surface, and docs entrypoints before editing code.
 - [x] **Implement the smallest scoped change** (implementation, complete) — Carry out "Certify the standalone Site preserved-history public-safety checkpoint" inside the resolved scope before widening impact to adjacent areas.
 - [x] **Sync docs and instruction surfaces if touched** (docs, complete) — Keep docs, instruction mirrors, and generated project knowledge aligned with the implementation.
-- [ ] **Verify standalone repository boundary and Git integrity** (action, pending) — Required by Guard repository.boundary.
-- [ ] **Scan complete reachable history safety** (action, pending) — Required by Guard repository.history-safety.
-- [ ] **Verify Site asset, font, and network inventory** (action, pending) — Required by Guard site.asset-inventory.
+- [x] **Verify standalone repository boundary and Git integrity** (action, complete) — Required by Guard repository.boundary.
+- [x] **Scan complete reachable history safety** (action, complete) — Required by Guard repository.history-safety.
+- [x] **Verify Site asset, font, and network inventory** (action, complete) — Required by Guard site.asset-inventory.
 
 ## Actions And Guards
 
@@ -112,7 +112,7 @@ This machine-readable block is the durable source used to rebuild local Skopos s
   "type": "task",
   "status": "active",
   "generatedAt": "2026-08-11T12:08:11.689Z",
-  "updatedAt": "2026-08-11T12:24:17.082Z",
+  "updatedAt": "2026-08-11T12:32:56.577Z",
   "planIds": [],
   "childTasks": [],
   "state": "active",
@@ -225,21 +225,21 @@ This machine-readable block is the durable source used to rebuild local Skopos s
       "kind": "action",
       "title": "Verify standalone repository boundary and Git integrity",
       "detail": "Required by Guard repository.boundary.",
-      "status": "pending"
+      "status": "complete"
     },
     {
       "id": "action-repository.history-safety",
       "kind": "action",
       "title": "Scan complete reachable history safety",
       "detail": "Required by Guard repository.history-safety.",
-      "status": "pending"
+      "status": "complete"
     },
     {
       "id": "action-site.asset-inventory",
       "kind": "action",
       "title": "Verify Site asset, font, and network inventory",
       "detail": "Required by Guard site.asset-inventory.",
-      "status": "pending"
+      "status": "complete"
     }
   ],
   "selectedActions": [
@@ -399,7 +399,7 @@ This machine-readable block is the durable source used to rebuild local Skopos s
       "actionKind": "run-action",
       "actionId": "repository.boundary",
       "blocking": false,
-      "status": "open"
+      "status": "complete"
     },
     {
       "id": "run-repository.history-safety",
@@ -409,7 +409,7 @@ This machine-readable block is the durable source used to rebuild local Skopos s
       "actionKind": "run-action",
       "actionId": "repository.history-safety",
       "blocking": false,
-      "status": "open"
+      "status": "complete"
     },
     {
       "id": "run-site.asset-inventory",
@@ -419,7 +419,7 @@ This machine-readable block is the durable source used to rebuild local Skopos s
       "actionKind": "run-action",
       "actionId": "site.asset-inventory",
       "blocking": false,
-      "status": "open"
+      "status": "complete"
     }
   ],
   "ownershipExpansions": [
