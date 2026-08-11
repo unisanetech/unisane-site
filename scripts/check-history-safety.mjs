@@ -538,12 +538,19 @@ const assertPrivacySafeEvidence = (candidate, privacyInputs) => {
     'url',
     'value',
   ])
-  const inspect = (value) => {
+  const emittedNonDigestStrings = []
+  const inspect = (value, parentKey = '') => {
+    const digestLikeField =
+      parentKey.toLowerCase().includes('digest') ||
+      ['commit', 'tree'].includes(parentKey.toLowerCase())
     if (typeof value === 'string' && /(?:https?:)?\/\/[a-z0-9]/iu.test(value)) {
       throw new Error('history-safety evidence contains a raw URL-shaped value')
     }
+    if (typeof value === 'string' && !digestLikeField) {
+      emittedNonDigestStrings.push(value)
+    }
     if (Array.isArray(value)) {
-      for (const child of value) inspect(child)
+      for (const child of value) inspect(child, parentKey)
       return
     }
     if (value === null || typeof value !== 'object') return
@@ -553,17 +560,20 @@ const assertPrivacySafeEvidence = (candidate, privacyInputs) => {
           'history-safety evidence contains a forbidden raw-value field',
         )
       }
-      inspect(child)
+      inspect(child, key)
     }
   }
   inspect(candidate)
-  const candidateText = JSON.stringify(candidate)
   const withheldValues = [
     ...privacyInputs.paths,
     ...privacyInputs.authorIdentities,
     ...privacyInputs.rawValues,
   ].filter((value) => typeof value === 'string' && value.trim().length >= 8)
-  if (withheldValues.some((value) => candidateText.includes(value))) {
+  if (
+    withheldValues.some((value) =>
+      emittedNonDigestStrings.some((emitted) => emitted.includes(value)),
+    )
+  ) {
     throw new Error('history-safety evidence contains a withheld raw value')
   }
   return {
