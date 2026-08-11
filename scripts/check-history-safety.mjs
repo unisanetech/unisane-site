@@ -1,6 +1,14 @@
 import { execFileSync } from 'node:child_process'
 import { createHash } from 'node:crypto'
-import { existsSync, readFileSync, writeFileSync } from 'node:fs'
+import {
+  existsSync,
+  mkdirSync,
+  mkdtempSync,
+  readFileSync,
+  rmSync,
+  writeFileSync,
+} from 'node:fs'
+import { tmpdir } from 'node:os'
 import { extname, join } from 'node:path'
 import process from 'node:process'
 
@@ -52,20 +60,21 @@ if (
 
 const sha256 = (value) => createHash('sha256').update(value).digest('hex')
 const read = (path) => readFileSync(join(repositoryRoot, path))
-const git = (...args) =>
+const gitAt = (cwd, ...args) =>
   execFileSync('git', args, {
-    cwd: repositoryRoot,
+    cwd,
     encoding: 'utf8',
     maxBuffer: 64 * 1024 * 1024,
     stdio: ['ignore', 'pipe', 'pipe'],
   }).trim()
-const gitBuffer = (...args) =>
+const gitBufferAt = (cwd, ...args) =>
   execFileSync('git', args, {
-    cwd: repositoryRoot,
+    cwd,
     encoding: 'buffer',
     maxBuffer: contentScanLimitBytes + 1024 * 1024,
     stdio: ['ignore', 'pipe', 'pipe'],
   })
+const git = (...args) => gitAt(repositoryRoot, ...args)
 
 const topLevel = git('rev-parse', '--show-toplevel')
 if (topLevel !== repositoryRoot) {
@@ -227,16 +236,38 @@ const summariseSignals = (signals) => {
   }
 }
 
-const inspectBlob = ({ object, path, size, buffer }) => {
+const inspectBlobContent = ({ object, size, buffer }) => {
+  const binary = Boolean(buffer?.includes(0))
+  const unscannedOversizedRisk = size > contentScanLimitBytes
+  const secretSignals = []
+  const reviewSignals = []
+  if (buffer && !binary && !unscannedOversizedRisk) {
+    const content = buffer.toString('utf8')
+    secretSignals.push(
+      ...collectPatternSignals(content, secretClassifiers, object, ''),
+    )
+    reviewSignals.push(
+      ...collectPatternSignals(content, reviewClassifiers, object, ''),
+    )
+  }
+  return {
+    object,
+    size,
+    contentBinary: binary,
+    large: size >= largeObjectThresholdBytes,
+    unscannedOversizedRisk,
+    secretSignals,
+    reviewSignals,
+  }
+}
+
+const inspectPathAssociation = ({ object, path, content }) => {
   const pathDigest = sha256(path)
   const category = pathCategory(path)
   const binary =
-    Boolean(buffer?.includes(0)) ||
-    binaryExtensions.has(extname(path).toLowerCase())
+    content.contentBinary || binaryExtensions.has(extname(path).toLowerCase())
   const generatedOutputRisk = generatedOutputPathPattern.test(path)
-  const sensitivePathRisk = sensitivePathPattern.test(path) && size > 0
-  const unscannedOversizedRisk = size > contentScanLimitBytes
-  const secretSignals = []
+  const sensitivePathRisk = sensitivePathPattern.test(path) && content.size > 0
   const reviewSignals = []
   if (path && customerLikePathPattern.test(path)) {
     reviewSignals.push({
@@ -254,56 +285,77 @@ const inspectBlob = ({ object, path, size, buffer }) => {
       valueDigest: pathDigest,
     })
   }
-  if (buffer && !binary && !unscannedOversizedRisk) {
-    const content = buffer.toString('utf8')
-    secretSignals.push(
-      ...collectPatternSignals(content, secretClassifiers, object, pathDigest),
-    )
-    reviewSignals.push(
-      ...collectPatternSignals(content, reviewClassifiers, object, pathDigest),
-    )
-  }
   return {
     object,
     pathDigest,
-    size,
+    size: content.size,
     category,
     binary,
-    large: size >= largeObjectThresholdBytes,
     generatedOutputRisk,
     sensitivePathRisk,
-    unscannedOversizedRisk,
-    secretSignals,
     reviewSignals,
   }
 }
 
-const parseObjectRows = (revisionArguments) => {
-  const output = git('rev-list', '--objects', ...revisionArguments)
+const parseObjectIds = (revisionArguments, scanRoot = repositoryRoot) => {
+  const output = gitAt(scanRoot, 'rev-list', '--objects', ...revisionArguments)
   if (!output) return []
-  const rows = []
   const seen = new Set()
   for (const line of output.split('\n')) {
     const separator = line.indexOf(' ')
     const object = separator === -1 ? line : line.slice(0, separator)
-    if (seen.has(object)) continue
     seen.add(object)
-    rows.push({
-      object,
-      path: separator === -1 ? '' : line.slice(separator + 1),
-    })
   }
-  return rows
+  return [...seen]
 }
 
-const scanHistory = (revisionArguments) => {
-  const objectRows = parseObjectRows(revisionArguments)
+const enumerateBlobPathAssociations = (
+  revisionArguments,
+  scanRoot = repositoryRoot,
+) => {
+  const commitOutput = gitAt(scanRoot, 'rev-list', ...revisionArguments)
+  const commits = commitOutput ? commitOutput.split('\n').filter(Boolean) : []
+  const treeIds = [
+    ...new Set(
+      commits.map((commit) => gitAt(scanRoot, 'rev-parse', `${commit}^{tree}`)),
+    ),
+  ].sort()
+  const associations = new Map()
+  for (const tree of treeIds) {
+    const output = gitBufferAt(scanRoot, 'ls-tree', '-r', '-z', tree)
+    for (const entry of output.toString('utf8').split('\0').filter(Boolean)) {
+      const tab = entry.indexOf('\t')
+      if (tab === -1) throw new Error('unexpected git ls-tree entry')
+      const metadata = entry.slice(0, tab).split(' ')
+      const [mode, type, object] = metadata
+      if (!mode || !type || !object) {
+        throw new Error('incomplete git ls-tree entry')
+      }
+      if (type !== 'blob') continue
+      const path = entry.slice(tab + 1)
+      const key = `${object}\0${path}`
+      associations.set(key, { object, path })
+    }
+  }
+  return {
+    uniqueCommitTreeCount: treeIds.length,
+    associations: [...associations.values()].sort(
+      (left, right) =>
+        left.object.localeCompare(right.object) ||
+        left.path.localeCompare(right.path),
+    ),
+  }
+}
+
+const scanHistory = (revisionArguments, scanRoot = repositoryRoot) => {
+  const objectIds = parseObjectIds(revisionArguments, scanRoot)
   const inspectedBlobs = []
+  const contentByObject = new Map()
   let treeCount = 0
   let commitObjectCount = 0
   let tagObjectCount = 0
-  for (const row of objectRows) {
-    const type = git('cat-file', '-t', row.object)
+  for (const object of objectIds) {
+    const type = gitAt(scanRoot, 'cat-file', '-t', object)
     if (type === 'tree') {
       treeCount += 1
       continue
@@ -317,25 +369,73 @@ const scanHistory = (revisionArguments) => {
       continue
     }
     if (type !== 'blob') continue
-    const size = Number(git('cat-file', '-s', row.object))
+    const size = Number(gitAt(scanRoot, 'cat-file', '-s', object))
     const buffer =
       size <= contentScanLimitBytes
-        ? gitBuffer('cat-file', '-p', row.object)
+        ? gitBufferAt(scanRoot, 'cat-file', '-p', object)
         : null
-    inspectedBlobs.push(inspectBlob({ ...row, size, buffer }))
+    const inspected = inspectBlobContent({ object, size, buffer })
+    inspectedBlobs.push(inspected)
+    contentByObject.set(object, inspected)
   }
 
+  const associationEnumeration = enumerateBlobPathAssociations(
+    revisionArguments,
+    scanRoot,
+  )
+  const inspectedAssociations = associationEnumeration.associations.map(
+    (association) => {
+      const content = contentByObject.get(association.object)
+      if (!content) {
+        throw new Error('reachable tree references an unscanned blob object')
+      }
+      return inspectPathAssociation({ ...association, content })
+    },
+  )
   const secretSignals = inspectedBlobs.flatMap((blob) => blob.secretSignals)
-  const reviewSignals = inspectedBlobs.flatMap((blob) => blob.reviewSignals)
+  const reviewSignals = [
+    ...inspectedBlobs.flatMap((blob) => blob.reviewSignals),
+    ...inspectedAssociations.flatMap(
+      (association) => association.reviewSignals,
+    ),
+  ]
+  const contentSignalAssociations = inspectedAssociations.flatMap(
+    (association) => {
+      const content = contentByObject.get(association.object)
+      return [...content.secretSignals, ...content.reviewSignals].map(
+        (signal) => ({
+          category: signal.category,
+          object: association.object,
+          pathDigest: association.pathDigest,
+          valueDigest: signal.valueDigest,
+        }),
+      )
+    },
+  )
   const largeObjects = inspectedBlobs
     .filter((blob) => blob.large)
-    .map((blob) => ({
-      objectDigest: blob.object,
-      pathDigest: blob.pathDigest,
-      bytes: blob.size,
-      category: blob.category,
-      binary: blob.binary,
-    }))
+    .map((blob) => {
+      const associations = inspectedAssociations.filter(
+        (association) => association.object === blob.object,
+      )
+      return {
+        objectDigest: blob.object,
+        bytes: blob.size,
+        pathAssociationCount: associations.length,
+        pathAssociationSetDigest: sha256(
+          associations
+            .map((association) => association.pathDigest)
+            .sort()
+            .join('\n'),
+        ),
+        categories: [
+          ...new Set(associations.map(({ category }) => category)),
+        ].sort(),
+        binary:
+          blob.contentBinary ||
+          associations.some((association) => association.binary),
+      }
+    })
     .sort(
       (left, right) =>
         right.bytes - left.bytes ||
@@ -343,24 +443,39 @@ const scanHistory = (revisionArguments) => {
     )
   const binaryCategories = [
     ...new Set(
-      inspectedBlobs.filter((blob) => blob.binary).map((blob) => blob.category),
+      inspectedAssociations
+        .filter((association) => association.binary)
+        .map((association) => association.category),
     ),
   ]
     .sort((left, right) => left.localeCompare(right))
     .map((category) => ({
       category,
-      count: inspectedBlobs.filter(
-        (blob) => blob.binary && blob.category === category,
-      ).length,
+      count: new Set(
+        inspectedAssociations
+          .filter(
+            (association) =>
+              association.binary && association.category === category,
+          )
+          .map((association) => association.object),
+      ).size,
     }))
+  const sensitiveAssociations = inspectedAssociations.filter(
+    (association) => association.sensitivePathRisk,
+  )
+  const generatedAssociations = inspectedAssociations.filter(
+    (association) => association.generatedOutputRisk,
+  )
   const blockers = {
     highConfidenceSecretOccurrenceCount: secretSignals.length,
-    sensitivePathBlobCount: inspectedBlobs.filter(
-      (blob) => blob.sensitivePathRisk,
-    ).length,
-    generatedOutputBlobCount: inspectedBlobs.filter(
-      (blob) => blob.generatedOutputRisk,
-    ).length,
+    sensitivePathAssociationCount: sensitiveAssociations.length,
+    sensitivePathBlobCount: new Set(
+      sensitiveAssociations.map((association) => association.object),
+    ).size,
+    generatedOutputPathAssociationCount: generatedAssociations.length,
+    generatedOutputBlobCount: new Set(
+      generatedAssociations.map((association) => association.object),
+    ).size,
     unscannedOversizedBlobCount: inspectedBlobs.filter(
       (blob) => blob.unscannedOversizedRisk,
     ).length,
@@ -369,16 +484,19 @@ const scanHistory = (revisionArguments) => {
     (total, value) => total + value,
     0,
   )
-  const authorIdentities = git(
+  const authorIdentities = gitAt(
+    scanRoot,
     'log',
     ...revisionArguments,
     '--format=%aN <%aE>',
   )
     .split('\n')
     .filter(Boolean)
-  const commitCount = Number(git('rev-list', '--count', ...revisionArguments))
+  const commitCount = Number(
+    gitAt(scanRoot, 'rev-list', '--count', ...revisionArguments),
+  )
   const mergeCommitCount = Number(
-    git('rev-list', '--count', '--merges', ...revisionArguments),
+    gitAt(scanRoot, 'rev-list', '--count', '--merges', ...revisionArguments),
   )
   const report = {
     commitCount,
@@ -387,7 +505,7 @@ const scanHistory = (revisionArguments) => {
     authorIdentitySetDigest: sha256(
       [...new Set(authorIdentities)].sort().join('\n'),
     ),
-    objectCount: objectRows.length,
+    objectCount: objectIds.length,
     commitObjectCount,
     treeCount,
     tagObjectCount,
@@ -396,23 +514,37 @@ const scanHistory = (revisionArguments) => {
       (total, blob) => total + blob.size,
       0,
     ),
-    objectSetDigest: sha256(
-      objectRows
-        .map((row) => row.object)
-        .sort()
-        .join('\n'),
-    ),
+    objectSetDigest: sha256(objectIds.sort().join('\n')),
+    pathAssociations: {
+      count: inspectedAssociations.length,
+      blobCount: new Set(
+        inspectedAssociations.map((association) => association.object),
+      ).size,
+      uniqueCommitTreeCount: associationEnumeration.uniqueCommitTreeCount,
+      setDigest: sha256(
+        inspectedAssociations
+          .map(
+            (association) => `${association.object}\0${association.pathDigest}`,
+          )
+          .sort()
+          .join('\n'),
+      ),
+    },
     pathStateDigest: sha256(
-      inspectedBlobs
+      inspectedAssociations
         .map(
-          (blob) =>
-            `${blob.object}\0${blob.pathDigest}\0${blob.size}\0${blob.category}`,
+          (association) =>
+            `${association.object}\0${association.pathDigest}\0${association.size}\0${association.category}`,
         )
         .sort()
         .join('\n'),
     ),
     binary: {
-      count: inspectedBlobs.filter((blob) => blob.binary).length,
+      count: new Set(
+        inspectedAssociations
+          .filter((association) => association.binary)
+          .map((association) => association.object),
+      ).size,
       categories: binaryCategories,
     },
     largeObjects: {
@@ -426,13 +558,25 @@ const scanHistory = (revisionArguments) => {
     },
     reviewSignals: summariseSignals(reviewSignals),
     secretSignals: summariseSignals(secretSignals),
+    contentSignalPathAssociations: {
+      count: contentSignalAssociations.length,
+      setDigest: sha256(
+        contentSignalAssociations
+          .map(
+            (signal) =>
+              `${signal.object}\0${signal.pathDigest}\0${signal.category}\0${signal.valueDigest}`,
+          )
+          .sort()
+          .join('\n'),
+      ),
+    },
     blockers,
     result: blockerCount === 0 ? 'pass' : 'fail',
   }
   return {
     report,
     privacyInputs: {
-      paths: objectRows.map((row) => row.path).filter(Boolean),
+      paths: associationEnumeration.associations.map(({ path }) => path),
       authorIdentities,
       rawValues: [...secretSignals, ...reviewSignals]
         .filter(
@@ -585,39 +729,44 @@ const assertPrivacySafeEvidence = (candidate, privacyInputs) => {
 
 const runPrivacyFixtures = () => {
   const fixtureObject = sha256('history-safety-fixture-object').slice(0, 40)
-  const inspectText = (path, fragments) =>
-    inspectBlob({
+  const inspectTextContent = (fragments) =>
+    inspectBlobContent({
       object: fixtureObject,
-      path,
       size: Buffer.byteLength(fragments.join('')),
       buffer: Buffer.from(fragments.join('')),
     })
+  const inspectTextPath = (path, fragments) => {
+    const content = inspectTextContent(fragments)
+    return inspectPathAssociation({ object: fixtureObject, path, content })
+  }
   const fixtures = [
     {
       name: 'constructed-secret-value',
-      inspected: inspectText('fixture.txt', ['AK', 'IA', 'A'.repeat(16)]),
+      inspected: inspectTextContent(['AK', 'IA', 'A'.repeat(16)]),
       expected: (result) => result.secretSignals.length === 1,
       outcome: 'rejected',
     },
     {
       name: 'constructed-sensitive-path',
-      inspected: inspectText(['fixture/', 'cred', 'entials.json'].join(''), [
-        'x',
-      ]),
+      inspected: inspectTextPath(
+        ['fixture/', 'cred', 'entials.json'].join(''),
+        ['x'],
+      ),
       expected: (result) => result.sensitivePathRisk,
       outcome: 'rejected',
     },
     {
       name: 'constructed-generated-output-path',
-      inspected: inspectText(['.', 'next', '/cache/output.js'].join(''), ['x']),
+      inspected: inspectTextPath(['.', 'next', '/cache/output.js'].join(''), [
+        'x',
+      ]),
       expected: (result) => result.generatedOutputRisk,
       outcome: 'rejected',
     },
     {
       name: 'constructed-oversized-object',
-      inspected: inspectBlob({
+      inspected: inspectBlobContent({
         object: fixtureObject,
-        path: 'fixture.bin',
         size: contentScanLimitBytes + 1,
         buffer: null,
       }),
@@ -626,11 +775,7 @@ const runPrivacyFixtures = () => {
     },
     {
       name: 'constructed-customer-contact-value',
-      inspected: inspectText('fixture.txt', [
-        'person',
-        '@',
-        'customer.invalid',
-      ]),
+      inspected: inspectTextContent(['person', '@', 'customer.invalid']),
       expected: (result) =>
         result.reviewSignals.some(
           (signal) => signal.category === 'email-like-value',
@@ -639,7 +784,7 @@ const runPrivacyFixtures = () => {
     },
     {
       name: 'constructed-provider-target-value',
-      inspected: inspectText('fixture.txt', [
+      inspected: inspectTextContent([
         'https',
         '://',
         'provider.invalid/account',
@@ -679,7 +824,47 @@ const runPrivacyFixtures = () => {
     if (!rejected) throw new Error(`${fixture.name} fixture was emitted`)
     return { name: fixture.name, result: 'rejected' }
   })
-  return [...classifierResults, ...valueFixtures]
+  const fixtureRoot = mkdtempSync(
+    join(tmpdir(), 'unisane-site-history-associations-'),
+  )
+  let associationFixture
+  try {
+    gitAt(fixtureRoot, 'init', '--quiet')
+    gitAt(fixtureRoot, 'config', 'user.name', 'History Safety Fixture')
+    gitAt(fixtureRoot, 'config', 'user.email', 'fixture@invalid.example')
+    const sharedContent = 'fixture-shared-blob\n'
+    writeFileSync(join(fixtureRoot, 'a-benign.json'), sharedContent)
+    writeFileSync(
+      join(fixtureRoot, ['cred', 'entials.json'].join('')),
+      sharedContent,
+    )
+    mkdirSync(join(fixtureRoot, 'z', 'build'), { recursive: true })
+    writeFileSync(join(fixtureRoot, 'z', 'build', 'output.json'), sharedContent)
+    gitAt(fixtureRoot, 'add', '.')
+    gitAt(fixtureRoot, 'commit', '--quiet', '-m', 'fixture')
+    const fixtureScan = scanHistory(['HEAD'], fixtureRoot).report
+    const fixturePassed =
+      fixtureScan.blobCount === 1 &&
+      fixtureScan.pathAssociations.count === 3 &&
+      fixtureScan.pathAssociations.blobCount === 1 &&
+      fixtureScan.blockers.sensitivePathAssociationCount === 1 &&
+      fixtureScan.blockers.sensitivePathBlobCount === 1 &&
+      fixtureScan.blockers.generatedOutputPathAssociationCount === 1 &&
+      fixtureScan.blockers.generatedOutputBlobCount === 1 &&
+      fixtureScan.result === 'fail'
+    if (!fixturePassed) {
+      throw new Error(
+        'shared-blob path-association fixture was not rejected as required',
+      )
+    }
+    associationFixture = {
+      name: 'shared-blob-multiple-path-associations',
+      result: 'rejected',
+    }
+  } finally {
+    rmSync(fixtureRoot, { recursive: true, force: true })
+  }
+  return [...classifierResults, ...valueFixtures, associationFixture]
 }
 
 const certificateInputs = certificateInputSpecs.map(({ inputId, path }) => {
