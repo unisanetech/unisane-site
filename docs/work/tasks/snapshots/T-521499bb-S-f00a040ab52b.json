@@ -1,0 +1,24 @@
+{
+  "snapshotId": "S-f00a040ab52b",
+  "taskId": "T-521499bb",
+  "sessionId": "0d744efc-80e8-4122-95fc-a2e52902435c",
+  "actorId": "bhaskarbarma",
+  "baseRevision": "0c6b45fc3f1c57fd735fc63b6bcaacb7825b9f7a",
+  "paths": [
+    {
+      "path": "docs/reference/generated/repository-public-history-safety-checkpoint-receipt.json",
+      "digest": "723baeecdb8b9aaf74a4e7b117d02682c5aa5995025f036f78978452b1a8f006"
+    },
+    {
+      "path": "docs/standards/00-repository-readiness-contract.md",
+      "digest": "3d0c03c13e979ce0a935416b1e62f40fa30c4eff7b7dddbfb2ce733f2704c972"
+    },
+    {
+      "path": "scripts/check-history-safety.mjs",
+      "digest": "fc329e38b0b46acadb6dc54a6361e2e7f57cf6097eb3ba978f4491a6156e1671"
+    }
+  ],
+  "digest": "f00a040ab52bd0cdf2db7670fc660b9b6e4472c2cc5ee3213ea084c79ea9d50c",
+  "createdAt": "2026-08-11T12:54:23.865Z",
+  "artifactPath": "docs/work/tasks/snapshots/T-521499bb-S-f00a040ab52b.json"
+}

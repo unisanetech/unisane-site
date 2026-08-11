@@ -1,14 +1,14 @@
 ---
 title: "Task: Make Site history path-association safety fail closed"
-status: active
+status: complete
 owner: "bhaskarbarma"
 id: T-521499bb
 scope: "workspace"
 role: task
-lifecycle: active
+lifecycle: historical
 authority: canonical
 provenance: accepted
-view: current
+view: exception
 risk: high-impact
 proofSubject: task-closure
 proofBaseline: baseline-c2e9ad4133dd62c4
@@ -19,7 +19,7 @@ lastUpdated: 2026-08-11
 
 ## Changelog
 
-- `2026-08-11`: Synchronized Task state `active` from Skopos.
+- `2026-08-11`: Synchronized Task state `complete` from Skopos.
 
 ## Goal
 
@@ -67,9 +67,9 @@ Make Site history path-association safety fail closed
 - [x] **Review the current pattern in unisane-site** (implementation, complete) — Use the compact references to confirm the current scope, command surface, and docs entrypoints before editing code.
 - [x] **Implement the smallest scoped change** (implementation, complete) — Carry out "Make Site history path-association safety fail closed" inside the resolved scope before widening impact to adjacent areas.
 - [x] **Sync docs and instruction surfaces if touched** (docs, complete) — Keep docs, instruction mirrors, and generated project knowledge aligned with the implementation.
-- [ ] **Verify standalone repository boundary and Git integrity** (action, pending) — Required by Guard repository.boundary.
-- [ ] **Scan complete reachable history safety** (action, pending) — Required by Guard repository.history-safety.
-- [ ] **Verify Site asset, font, and network inventory** (action, pending) — Required by Guard site.asset-inventory.
+- [x] **Verify standalone repository boundary and Git integrity** (action, complete) — Required by Guard repository.boundary.
+- [x] **Scan complete reachable history safety** (action, complete) — Required by Guard repository.history-safety.
+- [x] **Verify Site asset, font, and network inventory** (action, complete) — Required by Guard site.asset-inventory.
 
 ## Actions And Guards
 
@@ -106,12 +106,12 @@ This machine-readable block is the durable source used to rebuild local Skopos s
   "schemaVersion": 1,
   "id": "T-521499bb",
   "type": "task",
-  "status": "active",
+  "status": "durable",
   "generatedAt": "2026-08-11T12:43:41.835Z",
-  "updatedAt": "2026-08-11T12:50:23.863Z",
+  "updatedAt": "2026-08-11T12:55:03.023Z",
   "planIds": [],
   "childTasks": [],
-  "state": "active",
+  "state": "complete",
   "detail": "detailed",
   "title": "Make Site history path-association safety fail closed",
   "goal": "Make Site history path-association safety fail closed",
@@ -221,21 +221,21 @@ This machine-readable block is the durable source used to rebuild local Skopos s
       "kind": "action",
       "title": "Verify standalone repository boundary and Git integrity",
       "detail": "Required by Guard repository.boundary.",
-      "status": "pending"
+      "status": "complete"
     },
     {
       "id": "action-repository.history-safety",
       "kind": "action",
       "title": "Scan complete reachable history safety",
       "detail": "Required by Guard repository.history-safety.",
-      "status": "pending"
+      "status": "complete"
     },
     {
       "id": "action-site.asset-inventory",
       "kind": "action",
       "title": "Verify Site asset, font, and network inventory",
       "detail": "Required by Guard site.asset-inventory.",
-      "status": "pending"
+      "status": "complete"
     }
   ],
   "selectedActions": [
@@ -394,7 +394,7 @@ This machine-readable block is the durable source used to rebuild local Skopos s
       "actionKind": "run-action",
       "actionId": "repository.boundary",
       "blocking": false,
-      "status": "open"
+      "status": "complete"
     },
     {
       "id": "run-repository.history-safety",
@@ -404,7 +404,7 @@ This machine-readable block is the durable source used to rebuild local Skopos s
       "actionKind": "run-action",
       "actionId": "repository.history-safety",
       "blocking": false,
-      "status": "open"
+      "status": "complete"
     },
     {
       "id": "run-site.asset-inventory",
@@ -414,7 +414,7 @@ This machine-readable block is the durable source used to rebuild local Skopos s
       "actionKind": "run-action",
       "actionId": "site.asset-inventory",
       "blocking": false,
-      "status": "open"
+      "status": "complete"
     }
   ],
   "declaredOwnedPaths": [
