@@ -1,20 +1,25 @@
 {
   "id": "repository.history-safety",
   "title": "Scan complete reachable history safety",
-  "description": "Scan every blob reachable from approved local refs for high-confidence secret patterns, sensitive paths, and large-object reporting.",
+  "description": "Verify the privacy-safe preserved-history checkpoint certificate and scan every blob reachable from approved local refs for secret, private/customer, provider/network, generated-output, binary, and large-object risks.",
   "category": "quality-check",
-  "scope": [
-    "workspace"
-  ],
+  "scope": ["workspace"],
   "command": "pnpm check:history-safety",
   "cwd": ".",
   "timeoutMs": 900000,
   "inputs": [
+    "docs/00-start-here.md",
     "docs/repository-filter-spec.json",
     "docs/repository-provenance.json",
+    "docs/reference/current-source-and-history-inventory.md",
     "docs/reference/generated/repository-extraction-integrity-receipt.json",
     "docs/reference/generated/repository-filtered-history-checkpoint-receipt.json",
-    "scripts/check-history-safety.mjs"
+    "docs/reference/generated/repository-public-history-safety-checkpoint-receipt.json",
+    "docs/standards/00-repository-readiness-contract.md",
+    "package.json",
+    "scripts/check-history-safety.mjs",
+    "tools/skopos/actions/repository-history-safety.yaml",
+    "tools/skopos/guards/repository-history-safety.yaml"
   ],
   "sourceExcludes": [],
   "outputs": [],
@@ -24,11 +29,7 @@
     "process": "required",
     "network": "none",
     "browser": "none",
-    "tools": [
-      "pnpm",
-      "node",
-      "git"
-    ],
+    "tools": ["pnpm", "node", "git"],
     "secrets": [],
     "services": []
   },
@@ -41,16 +42,9 @@
   "workspaceMode": "overlay-safe",
   "safety": "read-only",
   "requiresApproval": false,
-  "whenToUse": "Require for filtered-history, provenance, extraction-integrity, or public-history readiness work; it is not normal Site behavioral source proof.",
-  "phases": [
-    "stabilization",
-    "closure"
-  ],
-  "risks": [
-    "high-impact"
-  ],
-  "recommendedAfter": [
-    "repository.boundary"
-  ],
+  "whenToUse": "Require for filtered-history, provenance, extraction-integrity, checkpoint-certificate, or public-history readiness work; it is not normal Site behavioral source proof.",
+  "phases": ["stabilization", "closure"],
+  "risks": ["high-impact"],
+  "recommendedAfter": ["repository.boundary"],
   "owner": "site-maintainers"
 }

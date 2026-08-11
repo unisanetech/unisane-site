@@ -1,32 +1,30 @@
 {
   "id": "repository.history-safety",
   "title": "Provenance and extraction changes require complete-history Evidence",
-  "description": "Require the live reachable-history scan for provenance and extraction-integrity work without burdening ordinary source Tasks.",
+  "description": "Require the privacy-safe checkpoint certificate and live reachable-history scan for provenance, extraction-integrity, and public-history work without burdening ordinary source Tasks.",
   "owner": "site-maintainers",
-  "scope": [
-    "workspace"
-  ],
+  "scope": ["workspace"],
   "strength": "required",
   "appliesTo": {
     "paths": [
+      "docs/00-start-here.md",
       "docs/repository-filter-spec.json",
       "docs/repository-provenance.json",
+      "docs/reference/current-source-and-history-inventory.md",
       "docs/reference/generated/repository-extraction-integrity-receipt.json",
       "docs/reference/generated/repository-filtered-history-checkpoint-receipt.json",
-      "scripts/check-history-safety.mjs"
+      "docs/reference/generated/repository-public-history-safety-checkpoint-receipt.json",
+      "docs/standards/00-repository-readiness-contract.md",
+      "package.json",
+      "scripts/check-history-safety.mjs",
+      "tools/skopos/actions/repository-history-safety.yaml",
+      "tools/skopos/guards/repository-history-safety.yaml"
     ],
-    "phases": [
-      "stabilization",
-      "closure"
-    ],
-    "risks": [
-      "high-impact"
-    ]
+    "phases": ["stabilization", "closure"],
+    "risks": ["high-impact"]
   },
   "requires": {
-    "actionIds": [
-      "repository.history-safety"
-    ],
+    "actionIds": ["repository.history-safety"],
     "evidence": "source-bound-action"
   }
 }

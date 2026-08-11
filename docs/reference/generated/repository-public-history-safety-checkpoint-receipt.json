@@ -1,0 +1,206 @@
+{
+  "schemaVersion": 1,
+  "receiptKind": "public-history-safety-checkpoint",
+  "scope": "all objects reachable from the exact approved local Site checkpoint",
+  "checkpoint": {
+    "commit": "0c208a072a3d28b820f566f3ad6841aeb1c0b9ca",
+    "tree": "b455013a87c8adac10cf5ee5201981f98c4195df"
+  },
+  "sourceBinding": {
+    "certificateInputDigest": "7ee7a483eb924316980532b8dd41c1056459fe84de85fd649a4517efc6a605eb",
+    "inputs": [
+      {
+        "inputId": "checker",
+        "digest": "ff56b33c439fbaffd1a2852e9e738b008d1a6c4518dac9b2655756c4e9857f98"
+      },
+      {
+        "inputId": "filter-spec",
+        "digest": "8b26eb576f5d0313412b869360cb4ca76afca426cf8f3f48a714034c26b1e347"
+      },
+      {
+        "inputId": "provenance",
+        "digest": "b45bda40313ef3e44e59ed2ae4c34f54e80a47067cb0d5f3b66e421c78d9c07f"
+      },
+      {
+        "inputId": "source-history-inventory",
+        "digest": "086d0415663dcad130e13def6bdd99ed0564b2c892243e7e8dde3176604bbf84"
+      },
+      {
+        "inputId": "extraction-integrity-receipt",
+        "digest": "eb5350986cf19a68a1853064235748495357c31adae0bc17163830e4352c119b"
+      },
+      {
+        "inputId": "filtered-history-checkpoint",
+        "digest": "ea0c98a1931e052b304ca08c8f9887092cf708fd8dd4bf008132df1dd61bef76"
+      }
+    ]
+  },
+  "thresholds": {
+    "largeObjectBytes": 1048576,
+    "failClosedUnscannedObjectBytes": 16777216
+  },
+  "history": {
+    "commitCount": 34,
+    "mergeCommitCount": 0,
+    "authorIdentityCount": 1,
+    "authorIdentitySetDigest": "2100bcb7085a77fada11cc8451226228f7e137806c63f7a4e344922977a45e32",
+    "objectCount": 599,
+    "commitObjectCount": 34,
+    "treeCount": 260,
+    "tagObjectCount": 0,
+    "blobCount": 305,
+    "totalBlobBytes": 15307740,
+    "objectSetDigest": "ba2bfb43a6a46710f3fb869eb10fe0f87df7a166e48260c53829386e202602f3",
+    "pathStateDigest": "e7d6dcd9ed7ba4e4e2632c9af2523a853901616219213b057a99945f0bc5493f",
+    "binary": {
+      "count": 21,
+      "categories": [
+        {
+          "category": "image",
+          "count": 21
+        }
+      ]
+    },
+    "largeObjects": {
+      "thresholdBytes": 1048576,
+      "count": 5,
+      "totalBytes": 8443526,
+      "entries": [
+        {
+          "objectDigest": "961da92f1bb3e1569ef0fd7f802023d22d38a8b0",
+          "pathDigest": "59576bb9386260e539a08265d0b9763a06c4f8ce6b628254d4d816f98303d63c",
+          "bytes": 2666949,
+          "category": "image",
+          "binary": true
+        },
+        {
+          "objectDigest": "24d598caa3d031c59c89b71defba90b8898eb12e",
+          "pathDigest": "667754df3c0800ed95019f4ca5a92d8d2356d02c53921b2d5cf1514da670a2e0",
+          "bytes": 1989375,
+          "category": "image",
+          "binary": true
+        },
+        {
+          "objectDigest": "8f14076ad981f2e4f3047660abff20e598d2293a",
+          "pathDigest": "91867c9b6f60cf77050c50cd6215d8d93f149f806fd0b287112eb80fa80f6350",
+          "bytes": 1646547,
+          "category": "image",
+          "binary": true
+        },
+        {
+          "objectDigest": "2750c3345a183f88baba777a7b21af628b488d5c",
+          "pathDigest": "db5ec281aa6ece85a53a11423c45ad525cb14d08e79c7fbd3eeec62f48fd2da7",
+          "bytes": 1074710,
+          "category": "image",
+          "binary": true
+        },
+        {
+          "objectDigest": "481b92133e10d82e3de94da89678ff1ceb866da2",
+          "pathDigest": "8cede33088feaa318a2e96bf1b2bb32e796d55a6b52a86e446c69e992424db26",
+          "bytes": 1065945,
+          "category": "image",
+          "binary": true
+        }
+      ]
+    },
+    "reviewSignals": {
+      "occurrenceCount": 852,
+      "blobCount": 102,
+      "categoryCount": 5,
+      "categories": [
+        {
+          "category": "customer-like-path",
+          "occurrenceCount": 10,
+          "blobCount": 10,
+          "signalSetDigest": "ebab898fe93d2c97ba4fee243845a9ebcc4e94ec3d06770dbdfec48b3e8c77a2"
+        },
+        {
+          "category": "customer-or-testimonial-language",
+          "occurrenceCount": 495,
+          "blobCount": 53,
+          "signalSetDigest": "81ee903cd661cd0463f107d401c1517fb4346044f6e65bbf4e1b407563e0c569"
+        },
+        {
+          "category": "email-like-value",
+          "occurrenceCount": 11,
+          "blobCount": 6,
+          "signalSetDigest": "5b2b4f4e1fbb7335d6272c5185cde7d24d27582d2875ef840e4a894f00e4c8ff"
+        },
+        {
+          "category": "phone-like-value",
+          "occurrenceCount": 245,
+          "blobCount": 45,
+          "signalSetDigest": "70c612e5a146d5b689119a7c6660f3fcdd724432a7e69154370594ebcfb6ebba"
+        },
+        {
+          "category": "raw-network-or-provider-target",
+          "occurrenceCount": 91,
+          "blobCount": 32,
+          "signalSetDigest": "c35448378083db057ff042f167a39cb36de7b44b89ac42b5040e466d9b399ca4"
+        }
+      ]
+    },
+    "secretSignals": {
+      "occurrenceCount": 0,
+      "blobCount": 0,
+      "categoryCount": 0,
+      "categories": []
+    },
+    "blockers": {
+      "highConfidenceSecretOccurrenceCount": 0,
+      "sensitivePathBlobCount": 0,
+      "generatedOutputBlobCount": 0,
+      "unscannedOversizedBlobCount": 0
+    },
+    "result": "pass"
+  },
+  "privacyAudit": {
+    "rawSensitiveValuesEmitted": false,
+    "rawLocatorsEmitted": false,
+    "rawUrlShapedValuesEmitted": false
+  },
+  "privacyFixtures": [
+    {
+      "name": "constructed-secret-value",
+      "result": "rejected"
+    },
+    {
+      "name": "constructed-sensitive-path",
+      "result": "rejected"
+    },
+    {
+      "name": "constructed-generated-output-path",
+      "result": "rejected"
+    },
+    {
+      "name": "constructed-oversized-object",
+      "result": "rejected"
+    },
+    {
+      "name": "constructed-customer-contact-value",
+      "result": "detected"
+    },
+    {
+      "name": "constructed-provider-target-value",
+      "result": "detected"
+    },
+    {
+      "name": "constructed-raw-locator-output",
+      "result": "rejected"
+    },
+    {
+      "name": "constructed-raw-provider-output",
+      "result": "rejected"
+    }
+  ],
+  "liveCompleteHistoryAuthority": {
+    "command": "pnpm check:history-safety",
+    "scope": "all objects reachable from current approved local heads and tags",
+    "note": "The committed receipt is checkpoint-scoped; the live command is the non-self-referential current-history authority."
+  },
+  "conclusions": {
+    "technicalCheckpoint": "pass",
+    "publicRelease": "not-authorized",
+    "rightsLicenseProviderDeploymentAuthority": "unresolved"
+  }
+}

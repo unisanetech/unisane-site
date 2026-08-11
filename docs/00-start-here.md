@@ -25,6 +25,7 @@ approved cutover.
 - [Generated foundation receipt](reference/generated/repository-foundation-receipt.json)
 - [Filtered-history checkpoint receipt](reference/generated/repository-filtered-history-checkpoint-receipt.json)
 - [Extraction object-hygiene checkpoint](reference/generated/repository-extraction-integrity-receipt.json)
+- [Public-history safety checkpoint](reference/generated/repository-public-history-safety-checkpoint-receipt.json)
 - [Site asset, font, and network inventory](reference/generated/site-asset-font-network-inventory.json)
 
 The approved bootstrap owns `AGENTS.md`, `skopos.config.yaml`, and the local Scope.
@@ -34,8 +35,11 @@ branch remains writable Site authority until a separately approved cutover.
 
 `pnpm check:repository-boundary` is the live repository boundary and Git integrity
 authority. `pnpm check:history-safety` is the live complete reachable-history safety
-authority; the committed filtered-history receipt covers only the pre-materialization
-filtered checkpoint and avoids a self-referential final-history claim.
+authority. The committed public-history safety receipt binds the exact approved local
+checkpoint and preserved-provenance inputs; it records only hashes, counts, and
+categories. It is not a self-referential final-history receipt, so the live command
+continues to scan every object reachable from current approved local refs. The earlier
+filtered-history receipt remains limited to its pre-materialization checkpoint.
 `pnpm check:asset-inventory` verifies the privacy-safe mechanical
 asset, font, and source/CSS network-reference receipt. That receipt records no rights,
 provider, privacy, performance-threshold, publication, or release conclusion.
