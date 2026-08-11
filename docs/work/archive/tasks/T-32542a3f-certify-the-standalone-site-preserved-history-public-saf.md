@@ -1,14 +1,14 @@
 ---
 title: "Task: Certify the standalone Site preserved-history public-safety checkpoint"
-status: active
+status: complete
 owner: "bhaskarbarma"
 id: T-32542a3f
 scope: "workspace"
 role: task
-lifecycle: active
+lifecycle: historical
 authority: canonical
 provenance: accepted
-view: current
+view: exception
 risk: high-impact
 proofSubject: task-closure
 proofBaseline: baseline-b1abcfb92d39f431
@@ -19,7 +19,7 @@ lastUpdated: 2026-08-11
 
 ## Changelog
 
-- `2026-08-11`: Synchronized Task state `active` from Skopos.
+- `2026-08-11`: Synchronized Task state `complete` from Skopos.
 
 ## Goal
 
@@ -110,12 +110,12 @@ This machine-readable block is the durable source used to rebuild local Skopos s
   "schemaVersion": 1,
   "id": "T-32542a3f",
   "type": "task",
-  "status": "active",
+  "status": "durable",
   "generatedAt": "2026-08-11T12:08:11.689Z",
-  "updatedAt": "2026-08-11T12:32:56.577Z",
+  "updatedAt": "2026-08-11T12:36:06.879Z",
   "planIds": [],
   "childTasks": [],
-  "state": "active",
+  "state": "complete",
   "detail": "detailed",
   "title": "Certify the standalone Site preserved-history public-safety checkpoint",
   "goal": "Certify the standalone Site preserved-history public-safety checkpoint",

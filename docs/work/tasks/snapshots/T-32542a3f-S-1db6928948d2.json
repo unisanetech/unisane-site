@@ -1,0 +1,40 @@
+{
+  "snapshotId": "S-1db6928948d2",
+  "taskId": "T-32542a3f",
+  "sessionId": "36144148-7aa2-4c97-b344-a8a6f5e51600",
+  "actorId": "bhaskarbarma",
+  "baseRevision": "29fe7225e81aa474f0482a883f58b0776bd9e83b",
+  "paths": [
+    {
+      "path": "docs/00-start-here.md",
+      "digest": "c2a7f9417571d3890c48120c865a52cec2ba7de911a69b3e9d3ad7b6c50904b7"
+    },
+    {
+      "path": "docs/reference/generated/repository-public-history-safety-checkpoint-receipt.json",
+      "digest": "859a226d7d16197dabc2d1ccabc7f5c90ba32359ddea62655cdea0d4d805984f"
+    },
+    {
+      "path": "docs/standards/00-repository-readiness-contract.md",
+      "digest": "d5941dbe73c62377b8c570783462e526999ac8b0a0d85ed8aa760df5700b3048"
+    },
+    {
+      "path": "docs/work/archive/tasks/T-d08a84ea-certify-the-standalone-site-preserved-history-public-saf.md",
+      "digest": "e4a3204e2d3d4819517d10bb16263ddea5f6464c4d255d2f53c110044499b43d"
+    },
+    {
+      "path": "scripts/check-history-safety.mjs",
+      "digest": "61f85d3ba4ef8d433b11865eadca33a9799225f78947710be14bcda0eb32c5ba"
+    },
+    {
+      "path": "tools/skopos/actions/repository-history-safety.yaml",
+      "digest": "c9a36112ec8cfb0f1ec10f097ec4395a02cfa467ff1e45ac81e810b1c9d6a824"
+    },
+    {
+      "path": "tools/skopos/guards/repository-history-safety.yaml",
+      "digest": "543f108bc6d5529e51e8ee985fe5111dfac73c87dce7a901afb9aef296a25acd"
+    }
+  ],
+  "digest": "1db6928948d23272a8df4f98039a5330a06a0ed862ac5e80f157f946b2eacc8c",
+  "createdAt": "2026-08-11T12:35:31.148Z",
+  "artifactPath": "docs/work/tasks/snapshots/T-32542a3f-S-1db6928948d2.json"
+}
