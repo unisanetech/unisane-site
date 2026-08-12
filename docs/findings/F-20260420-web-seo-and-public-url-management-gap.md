@@ -1,6 +1,7 @@
 ---
 id: 'F-dab91fc12e24'
 owner: 'unisane'
+repository: blocked
 scope: workspace
 role: finding
 lifecycle: active
