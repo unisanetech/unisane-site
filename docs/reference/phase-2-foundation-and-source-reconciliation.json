@@ -1,0 +1,185 @@
+{
+  "schemaVersion": 1,
+  "receiptKind": "phase-2-foundation-and-source-reconciliation",
+  "recordedAt": "2026-08-24T19:43:06Z",
+  "taskId": "T-e1dd0664",
+  "result": "pass",
+  "sourceReconciliation": {
+    "sourcePath": "unisane-landing/**",
+    "originalExtractionCommit": "e3cb9c768c1b3b96c059269b2a68d0db1624b9bc",
+    "currentUmbrellaCommit": "d637206f234132325fa88f064cdc27d4b00d3645",
+    "filteredTipCommit": "310d9cb98a2f5303cbfe46e499652719eed697d8",
+    "originalExtractionTree": "3af7eac9ba02a08aeb6c27a8789179b1dcb408a8",
+    "currentUmbrellaTree": "3af7eac9ba02a08aeb6c27a8789179b1dcb408a8",
+    "filteredTipTree": "3af7eac9ba02a08aeb6c27a8789179b1dcb408a8",
+    "originalExtractionFileCount": 82,
+    "currentUmbrellaFileCount": 82,
+    "filteredTipFileCount": 82,
+    "changedPathCount": 0,
+    "sourceCurrent": true,
+    "sourceExtractionPerformed": false,
+    "historyRewritePerformed": false,
+    "interpretation": "The current umbrella Site source is object-identical to the immutable extraction source and filtered tip, so Phase 2 requires foundation reconciliation only."
+  },
+  "candidateCheckpoint": {
+    "path": "/Users/bhaskarbarma/Desktop/TOP/unisane-repositories/unisane-site",
+    "commit": "84fb651b6f64e0022b10322e45c9d2ac356372ee",
+    "tree": "0969a2907d56c3865c49321f6e1951ce3655e899",
+    "trackedFileCount": 127,
+    "status": "clean-before-reconciliation"
+  },
+  "immutableExtractionProvenance": {
+    "disposition": "preserved-unchanged",
+    "repositoryProvenance": {
+      "path": "docs/repository-provenance.json",
+      "sha256": "b45bda40313ef3e44e59ed2ae4c34f54e80a47067cb0d5f3b66e421c78d9c07f"
+    },
+    "repositoryFilterSpec": {
+      "path": "docs/repository-filter-spec.json",
+      "sha256": "8b26eb576f5d0313412b869360cb4ca76afca426cf8f3f48a714034c26b1e347"
+    }
+  },
+  "repositorySystemBaseline": {
+    "umbrellaCommit": "d637206f234132325fa88f064cdc27d4b00d3645",
+    "manifestPath": "unisane-infrastructure/repository-system/manifests/unisane-site.json",
+    "manifestSha256": "bc58cd7290ddae082c3cd5f2ed973cad9c208d87872c7e9702c4b916e0ca942f",
+    "manifestObjectDigest": "66ba7ea6c2d408bceae58b0e81cb3c7215f1fc5e04bbae77cdcb88665d5399e3",
+    "profilePath": "unisane-infrastructure/repository-system/profiles/public-site.json",
+    "profileSha256": "065a88ba3f3b22ec2eb59ea4e58964d4545d597d0755428ab9e317c9c2534cb4",
+    "profileObjectDigest": "20ac761b45c7e4ccf26855930b182b26e358e0bdfe42e260654ea3cd507b4981",
+    "materializerPath": "unisane-infrastructure/repository-system/src/repository-system.mjs",
+    "materializerSha256": "39eebc38dea9720caad27f5f2839c26862ae1784e8ed002cf80bf1522c3468fa",
+    "contentDigest": "b61a1e568a973170ee3d83c319c24ba3ee1c3300b404a847a808554e0b45f8c4",
+    "serializedReceiptSha256": "b8b3f6210dcb303ab70758b11c7691aa0eb06ed272b1a43376f6003abb577c3f"
+  },
+  "historicalFoundationCheckpoint": {
+    "path": "docs/reference/generated/repository-foundation-receipt.json",
+    "sha256": "cb210228bdc19da6f1d08eeb7719629796a20a0e671681c2c6be0084228e113e",
+    "contentDigest": "ac16275ec873d5860a3266df047a4d91664231cd266f2138e2ee181155e909fe",
+    "disposition": "preserved-historical-materialization-checkpoint"
+  },
+  "targetFoundationProjection": {
+    "algorithm": "SHA-256 of stable JSON for sorted records containing path, current-baseline SHA-256 or null, target SHA-256, and disposition",
+    "digest": "b84ccd6396133da15916b13f1de4e7d054097423deb4dd012b8a94b636c8ff28",
+    "fileCount": 18,
+    "baselineExactCount": 11,
+    "targetOwnedReplacementCount": 6,
+    "targetOwnedResolverLockCount": 1,
+    "baselineExactPaths": [
+      ".editorconfig",
+      ".gitattributes",
+      ".node-version",
+      "AGENTS.md",
+      "eslint.config.mjs",
+      "prettier.config.mjs",
+      "SECURITY.md",
+      "skopos.config.yaml",
+      "tools/skopos/scopes.yaml",
+      "tsconfig.json",
+      "vitest.config.mjs"
+    ],
+    "targetOwnedReplacements": [
+      {
+        "path": ".gitignore",
+        "baselineSha256": "a6ca78af27de1794ce07accb9f7b580a9207412609d1e7902f480b38b81584e5",
+        "targetSha256": "2248d118f6f5758046c9e39b1696a8ebd68406842444661cca257733cf227377",
+        "reason": "Preserve Site-specific generated, build, and local-tool exclusions."
+      },
+      {
+        "path": "docs/00-start-here.md",
+        "baselineSha256": "aeb47f6463a0065cf6adb844ef9a32ed70d04abe7a2840fea0240f605da95c3c",
+        "targetSha256": "2470488ac8e23dfe85ff8480228d4f162c91cbc6f6ba742d063c1d8e6f99440a",
+        "reason": "Preserve the Site authority and readiness router and add this reconciliation receipt."
+      },
+      {
+        "path": "package.json",
+        "baselineSha256": "67718a1ff345ae01c7b1035c0a8ff7efbf2301f7415ff74ed5439c64f31d27bf",
+        "targetSha256": "8db1a8a4fb528aaa01f559ade0afaae2fdbd256d59ba38a178b7dae7f506f243",
+        "reason": "Preserve Site-specific scripts, package metadata, package-manager selection, and development dependencies."
+      },
+      {
+        "path": "pnpm-workspace.yaml",
+        "baselineSha256": "60ce4d1dbf137701a4683d171391c51662700c2f3e32a7caab8b2efc22540e65",
+        "targetSha256": "bea704eb6f74a5c026718988f9080741b79ef74d5f423b0f917aa30e7b55fa31",
+        "reason": "Preserve the exact Site workspace package boundary."
+      },
+      {
+        "path": "README.md",
+        "baselineSha256": "82abdb156c9e98b6510b4801f65f59428055e8e2ee43660d9ff4ab24cad40a35",
+        "targetSha256": "e3779798ba37605fd8aebf011087af63ded2761e88dc83213e4b4a01b6d2c84e",
+        "reason": "Preserve the Site-specific candidate authority and local workflow description."
+      },
+      {
+        "path": "turbo.json",
+        "baselineSha256": "65dc5cd61e8b72ee9438b7fe2fc557098c1fb0b46c3edac171bb7ced50b56bfd",
+        "targetSha256": "e7a9788b1a5e625c5ad5b7f046cda1ca51098ebc44a26c640332da6eacfe468e",
+        "reason": "Preserve the target's exact typecheck task name and Site build-output semantics."
+      }
+    ],
+    "targetOwnedResolverLock": {
+      "path": "pnpm-lock.yaml",
+      "baselineSha256": null,
+      "targetSha256": "b42d0d028c8da63097ca6ca1772cc54965c0b010ff7c2d72db8d308a075aedd4",
+      "reason": "Preserve the committed resolver output for the exact Site package graph."
+    },
+    "interpretation": "Current repository-system files are retained where exact. Site-owned package, lockfile, workspace, Turbo, router, README, and ignore choices are recorded as intentional replacements rather than overwritten."
+  },
+  "boundedInputReceipts": [
+    {
+      "kind": "site-asset-font-network-inventory",
+      "path": "docs/reference/generated/site-asset-font-network-inventory.json",
+      "sha256": "aa27e3173e3e0dfe454e34b0c1dd6611ab18b77454a431cdd815045d3b5b87a0",
+      "sourceInputDigest": "17a75b37b2d30aaee33f65175d42a0698d496d181131d0bfc05f04ca35a0535f",
+      "verificationCommand": "pnpm check:asset-inventory",
+      "verificationResult": "pass",
+      "reused": true,
+      "summary": {
+        "trackedImageCount": 22,
+        "trackedFontCount": 0,
+        "customerLikeOpaqueAssetCount": 10,
+        "trackedAssetBytes": 13161377,
+        "httpsReferenceCount": 31,
+        "uniqueNetworkTargetCount": 31
+      }
+    },
+    {
+      "kind": "site-local-readiness-baseline",
+      "path": "docs/reference/generated/site-local-readiness-baseline.json",
+      "sha256": "b5460a178eda77b3679c36e1658da9620e0f2f2e5c8821d141405a84b1309bfe",
+      "sourceInputDigest": "d0ee1f256577d0f2efec1d0952e0619aa23d3852065883584d54359564027c7a",
+      "verificationCommand": "node scripts/check-local-readiness.mjs --test-source-input-digest",
+      "verificationResult": "pass",
+      "reused": true,
+      "summary": {
+        "retainedRoutes": [
+          "/",
+          "/services",
+          "/work"
+        ],
+        "network": "loopback-only",
+        "canonicalAuthority": "source-fallback-unapproved",
+        "performanceThresholds": null,
+        "bundleThresholds": null,
+        "imageThresholds": null
+      }
+    }
+  ],
+  "controls": {
+    "sourceExtraction": false,
+    "historyRewrite": false,
+    "remoteInspection": false,
+    "registryInspection": false,
+    "networkAccess": false,
+    "externalProviderMutation": false,
+    "externalMutations": []
+  },
+  "remainingOwnerBlockers": [
+    "asset necessity, provenance, rights, license, and disposition",
+    "font selection, provenance, rights, license, and delivery policy",
+    "network target necessity, ownership, privacy, security, and provider approval",
+    "canonical domain approval",
+    "performance, bundle, and image thresholds",
+    "legal, public release, and public distribution authority",
+    "deployment, security, recovery, CODEOWNERS, DNS, hosting, and analytics authority"
+  ]
+}

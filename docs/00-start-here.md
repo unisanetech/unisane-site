@@ -27,6 +27,7 @@ approved cutover.
 - [Extraction object-hygiene checkpoint](reference/generated/repository-extraction-integrity-receipt.json)
 - [Public-history safety checkpoint](reference/generated/repository-public-history-safety-checkpoint-receipt.json)
 - [Site asset, font, and network inventory](reference/generated/site-asset-font-network-inventory.json)
+- [Phase 2 foundation and source reconciliation](reference/phase-2-foundation-and-source-reconciliation.json)
 
 The approved bootstrap owns `AGENTS.md`, `skopos.config.yaml`, and the local Scope.
 Reviewed existing-project adoption is activated for target-local Skopos Tasks, Evidence,
