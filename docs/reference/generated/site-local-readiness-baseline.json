@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "generatedBy": "scripts/check-local-readiness.mjs",
-  "sourceInputDigest": "d0ee1f256577d0f2efec1d0952e0619aa23d3852065883584d54359564027c7a",
+  "sourceInputDigest": "669c1e2c26f37a314897969876090c38928205a8e414a2d99d74b9703d67d631",
   "methodology": {
     "generationCommand": "pnpm refresh:local-readiness-baseline",
     "verificationCommand": "pnpm verify:local-readiness",
@@ -9,7 +9,7 @@
     "network": "loopback-only; no external requests",
     "runtimeWarmupRequestsPerRoute": 2,
     "runtimeMeasuredRequestsPerRoute": 5,
-    "sourceInputIdentity": "SHA-256 over sorted repository-relative path, NUL, file bytes, and NUL for the app tree plus the checker, root package, lockfile, Node selector, workspace, and Turbo configuration.",
+    "sourceInputIdentity": "SHA-256 over sorted repository-relative path, NUL, file bytes, and NUL for the app tree plus the environment-variable contract, checker, root package, lockfile, Node selector, workspace, and Turbo configuration.",
     "sourceInputMutationRegressionCommand": "node scripts/check-local-readiness.mjs --test-source-input-digest",
     "environmentInterpretation": "Node, package-manager, platform, and architecture values are host observations, not owner-approved thresholds or cross-platform proof.",
     "portabilityInterpretation": "This local receipt does not establish cold-clone or cross-platform CI readiness.",
@@ -83,12 +83,24 @@
       "source": "source-fallback-unapproved",
       "observedValue": "https://www.unisane.com",
       "ownerApproval": "required"
+    },
+    "environmentSchema": {
+      "path": "docs/reference/site-environment-variable-contract.json",
+      "variableCount": 1,
+      "publicVariableNames": ["NEXT_PUBLIC_SITE_URL"],
+      "safePlaceholder": "https://example.invalid",
+      "approvedValueState": "unresolved",
+      "validationResult": "pass"
     }
   },
   "assertions": {
     "result": "pass",
     "inputDigestMutationRegression": [
       { "path": ".node-version", "changed": true },
+      {
+        "path": "docs/reference/site-environment-variable-contract.json",
+        "changed": true
+      },
       { "path": "pnpm-lock.yaml", "changed": true }
     ],
     "routeCount": 3,
@@ -149,22 +161,22 @@
           "route": "/",
           "sampleCount": 5,
           "responseBytes": 187239,
-          "medianMilliseconds": 3.101,
-          "p95Milliseconds": 3.312
+          "medianMilliseconds": 3.487,
+          "p95Milliseconds": 3.906
         },
         {
           "route": "/services",
           "sampleCount": 5,
           "responseBytes": 43863,
-          "medianMilliseconds": 1.214,
-          "p95Milliseconds": 1.634
+          "medianMilliseconds": 1.146,
+          "p95Milliseconds": 1.368
         },
         {
           "route": "/work",
           "sampleCount": 5,
           "responseBytes": 57567,
-          "medianMilliseconds": 1.143,
-          "p95Milliseconds": 1.189
+          "medianMilliseconds": 1.162,
+          "p95Milliseconds": 1.319
         }
       ]
     },

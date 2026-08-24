@@ -28,6 +28,12 @@ const baselinePath = join(
   'generated',
   'site-local-readiness-baseline.json',
 )
+const environmentSchemaPath = join(
+  siteRoot,
+  'docs',
+  'reference',
+  'site-environment-variable-contract.json',
+)
 const writeBaseline = process.argv.includes('--write-baseline')
 const testSourceInputDigest = process.argv.includes(
   '--test-source-input-digest',
@@ -54,6 +60,70 @@ const walk = (directory) => {
 }
 
 const sha256 = (value) => createHash('sha256').update(value).digest('hex')
+
+let environmentSchema
+try {
+  environmentSchema = JSON.parse(readFileSync(environmentSchemaPath, 'utf8'))
+} catch (error) {
+  fail(
+    `Site environment-variable contract is unreadable: ${error instanceof Error ? error.message : String(error)}`,
+  )
+  environmentSchema = { variables: [] }
+}
+
+const environmentVariables = Array.isArray(environmentSchema.variables)
+  ? environmentSchema.variables
+  : []
+const siteUrlVariable = environmentVariables.find(
+  (entry) => entry?.name === 'NEXT_PUBLIC_SITE_URL',
+)
+if (environmentSchema.schemaVersion !== 1) {
+  fail('Site environment-variable contract schemaVersion must be 1')
+}
+if (environmentSchema.repository !== 'unisane-site') {
+  fail('Site environment-variable contract repository must be unisane-site')
+}
+if (environmentVariables.length !== 1 || !siteUrlVariable) {
+  fail(
+    'Site environment-variable contract must declare only NEXT_PUBLIC_SITE_URL',
+  )
+}
+if (siteUrlVariable?.secret !== false) {
+  fail('NEXT_PUBLIC_SITE_URL must be declared public, not secret')
+}
+if (siteUrlVariable?.approvedValueState !== 'unresolved') {
+  fail(
+    'NEXT_PUBLIC_SITE_URL must remain unresolved until its domain owner approves it',
+  )
+}
+if (
+  siteUrlVariable?.requirements?.publicRelease !==
+    'owner-approved-value-required' ||
+  siteUrlVariable?.requirements?.productionDeployment !==
+    'owner-approved-provider-value-required'
+) {
+  fail(
+    'NEXT_PUBLIC_SITE_URL must remain fail-closed for release and deployment',
+  )
+}
+try {
+  const placeholder = new URL(siteUrlVariable?.safePlaceholder)
+  if (
+    placeholder.protocol !== 'https:' ||
+    placeholder.hostname !== 'example.invalid' ||
+    placeholder.username ||
+    placeholder.password ||
+    placeholder.pathname !== '/' ||
+    placeholder.search ||
+    placeholder.hash
+  ) {
+    fail(
+      'NEXT_PUBLIC_SITE_URL safe placeholder must be the reserved https://example.invalid origin',
+    )
+  }
+} catch {
+  fail('NEXT_PUBLIC_SITE_URL safe placeholder must be an absolute URL')
+}
 
 const normaliseRoute = (route) => {
   if (route === '/') return route
@@ -133,6 +203,7 @@ const routeSet = new Set(routes)
 const inputFiles = [
   ...walk(webRoot),
   join(siteRoot, '.node-version'),
+  environmentSchemaPath,
   join(siteRoot, 'package.json'),
   join(siteRoot, 'pnpm-lock.yaml'),
   join(siteRoot, 'pnpm-workspace.yaml'),
@@ -164,6 +235,7 @@ const createSourceInputDigest = (overrides = new Map()) => {
 const sourceInputDigest = createSourceInputDigest()
 const inputDigestMutationTargets = [
   join(siteRoot, '.node-version'),
+  environmentSchemaPath,
   join(siteRoot, 'pnpm-lock.yaml'),
 ]
 const inputDigestMutationRegression = inputDigestMutationTargets.map((path) => {
@@ -848,7 +920,7 @@ const receipt = {
     runtimeWarmupRequestsPerRoute: 2,
     runtimeMeasuredRequestsPerRoute: 5,
     sourceInputIdentity:
-      'SHA-256 over sorted repository-relative path, NUL, file bytes, and NUL for the app tree plus the checker, root package, lockfile, Node selector, workspace, and Turbo configuration.',
+      'SHA-256 over sorted repository-relative path, NUL, file bytes, and NUL for the app tree plus the environment-variable contract, checker, root package, lockfile, Node selector, workspace, and Turbo configuration.',
     sourceInputMutationRegressionCommand:
       'node scripts/check-local-readiness.mjs --test-source-input-digest',
     environmentInterpretation:
@@ -885,6 +957,17 @@ const receipt = {
         : 'source-fallback-unapproved',
       observedValue: canonicalInputValue,
       ownerApproval: 'required',
+    },
+    environmentSchema: {
+      path: relative(siteRoot, environmentSchemaPath),
+      variableCount: environmentVariables.length,
+      publicVariableNames: environmentVariables
+        .filter((entry) => entry?.secret === false)
+        .map((entry) => entry.name)
+        .sort(),
+      safePlaceholder: siteUrlVariable?.safePlaceholder ?? null,
+      approvedValueState: siteUrlVariable?.approvedValueState ?? null,
+      validationResult: failures.length === 0 ? 'pass' : 'fail',
     },
   },
   assertions: {

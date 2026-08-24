@@ -1,5 +1,5 @@
 {
-  "contentDigest": "ac16275ec873d5860a3266df047a4d91664231cd266f2138e2ee181155e909fe",
+  "contentDigest": "b61a1e568a973170ee3d83c319c24ba3ee1c3300b404a847a808554e0b45f8c4",
   "externalMutations": [],
   "files": [
     {
@@ -35,10 +35,6 @@
       "sha256": "67718a1ff345ae01c7b1035c0a8ff7efbf2301f7415ff74ed5439c64f31d27bf"
     },
     {
-      "path": "pnpm-lock.yaml",
-      "sha256": "ed2dc02ee73028a149cbd4823dbcdbb84cdbe7bef85f06c0e09978335592f4ae"
-    },
-    {
       "path": "pnpm-workspace.yaml",
       "sha256": "60ce4d1dbf137701a4683d171391c51662700c2f3e32a7caab8b2efc22540e65"
     },
@@ -68,7 +64,7 @@
     },
     {
       "path": "turbo.json",
-      "sha256": "3bb5eadd59644b82a69623b1d467f278487ee23ad4dcd1a2dc4e16a30e167e1d"
+      "sha256": "65dc5cd61e8b72ee9438b7fe2fc557098c1fb0b46c3edac171bb7ced50b56bfd"
     },
     {
       "path": "vitest.config.mjs",
@@ -160,9 +156,23 @@
       "declared": "blocked"
     }
   },
-  "manifestDigest": "66ba7ea6c2d408bceae58b0e81cb3c7215f1fc5e04bbae77cdcb88665d5399e3",
+  "manifestDigest": "52b7a33e25ae34e08ca7e815edcfafbb83f0a17d56bb1120e89dc8cfbd375817",
   "profile": "public-site",
   "profileDigest": "20ac761b45c7e4ccf26855930b182b26e358e0bdfe42e260654ea3cd507b4981",
   "repository": "unisane-site",
-  "schemaVersion": 1
+  "schemaVersion": 1,
+  "workspaceFoundation": {
+    "commandContract": null,
+    "configurationDispositions": {},
+    "lockfile": {
+      "authority": "materialized-package-graph",
+      "criterion": "materialized-package-graph-admitted",
+      "rationale": "Generate a real lockfile only from the admitted materialized package graph; the repository foundation never emits a placeholder.",
+      "state": "blocked"
+    },
+    "packages": [
+      "apps/*",
+      "packages/*"
+    ]
+  }
 }

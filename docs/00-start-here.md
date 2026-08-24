@@ -27,6 +27,7 @@ approved cutover.
 - [Extraction object-hygiene checkpoint](reference/generated/repository-extraction-integrity-receipt.json)
 - [Public-history safety checkpoint](reference/generated/repository-public-history-safety-checkpoint-receipt.json)
 - [Site asset, font, and network inventory](reference/generated/site-asset-font-network-inventory.json)
+- [Site environment-variable contract](reference/site-environment-variable-contract.json)
 - [Phase 2 foundation and source reconciliation](reference/phase-2-foundation-and-source-reconciliation.json)
 
 The approved bootstrap owns `AGENTS.md`, `skopos.config.yaml`, and the local Scope.
@@ -44,3 +45,6 @@ filtered-history receipt remains limited to its pre-materialization checkpoint.
 `pnpm check:asset-inventory` verifies the privacy-safe mechanical
 asset, font, and source/CSS network-reference receipt. That receipt records no rights,
 provider, privacy, performance-threshold, publication, or release conclusion.
+`scripts/check-local-readiness.mjs` also validates the one public Site environment input
+against the target-owned contract. Its reserved placeholder is local documentation only;
+the canonical domain and provider value remain unapproved.

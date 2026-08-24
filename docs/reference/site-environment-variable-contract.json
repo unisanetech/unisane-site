@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "contractKind": "site-environment-variables",
+  "repository": "unisane-site",
+  "variables": [
+    {
+      "name": "NEXT_PUBLIC_SITE_URL",
+      "purpose": "Sets the public canonical origin used by Site metadata and route canonicals.",
+      "exposure": "public-build-and-runtime",
+      "secret": false,
+      "requirements": {
+        "local": "optional-safe-placeholder-or-source-fallback",
+        "publicRelease": "owner-approved-value-required",
+        "productionDeployment": "owner-approved-provider-value-required"
+      },
+      "safePlaceholder": "https://example.invalid",
+      "validation": {
+        "scheme": "https",
+        "originOnly": true,
+        "credentialsAllowed": false
+      },
+      "valueOwner": "site-maintainers",
+      "providerOwner": "site-operators",
+      "rotationOwner": "site-operators",
+      "approvedValueState": "unresolved"
+    }
+  ],
+  "controls": {
+    "recordsSecretValues": false,
+    "recordsProviderIdentifiers": false,
+    "approvesCanonicalDomain": false,
+    "authorizesProviderMutation": false
+  }
+}

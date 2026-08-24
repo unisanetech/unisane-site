@@ -56,7 +56,8 @@
     "path": "docs/reference/generated/repository-foundation-receipt.json",
     "sha256": "cb210228bdc19da6f1d08eeb7719629796a20a0e671681c2c6be0084228e113e",
     "contentDigest": "ac16275ec873d5860a3266df047a4d91664231cd266f2138e2ee181155e909fe",
-    "disposition": "preserved-historical-materialization-checkpoint"
+    "candidateCommit": "00c79aaec5d8506e9a7fc331c73d38da990087d8",
+    "disposition": "preserved-in-candidate-history-and-superseded-by-localGateClosure.foundationReceipt"
   },
   "targetFoundationProjection": {
     "algorithm": "SHA-256 of stable JSON for sorted records containing path, current-baseline SHA-256 or null, target SHA-256, and disposition",
@@ -151,11 +152,7 @@
       "verificationResult": "pass",
       "reused": true,
       "summary": {
-        "retainedRoutes": [
-          "/",
-          "/services",
-          "/work"
-        ],
+        "retainedRoutes": ["/", "/services", "/work"],
         "network": "loopback-only",
         "canonicalAuthority": "source-fallback-unapproved",
         "performanceThresholds": null,
@@ -181,5 +178,113 @@
     "performance, bundle, and image thresholds",
     "legal, public release, and public distribution authority",
     "deployment, security, recovery, CODEOWNERS, DNS, hosting, and analytics authority"
-  ]
+  ],
+  "localGateClosure": {
+    "recordedAt": "2026-08-24T21:44:03Z",
+    "taskId": "T-9f90953b",
+    "result": "pass",
+    "umbrellaBaseline": {
+      "commit": "253eaa7e319b1b9af38ded9cbaa51401a7c22edc",
+      "sourcePath": "unisane-landing/**",
+      "sourceTree": "3af7eac9ba02a08aeb6c27a8789179b1dcb408a8",
+      "sourceFileCount": 82,
+      "manifestPath": "unisane-infrastructure/repository-system/manifests/unisane-site.json",
+      "manifestSha256": "bc58cd7290ddae082c3cd5f2ed973cad9c208d87872c7e9702c4b916e0ca942f",
+      "profilePath": "unisane-infrastructure/repository-system/profiles/public-site.json",
+      "profileSha256": "065a88ba3f3b22ec2eb59ea4e58964d4545d597d0755428ab9e317c9c2534cb4"
+    },
+    "candidateCheckpointBeforeClosure": {
+      "commit": "00c79aaec5d8506e9a7fc331c73d38da990087d8",
+      "tree": "d81cf0ece0ba902160858bf1d4cfd7dd7c3daa11",
+      "status": "clean"
+    },
+    "sourceAndProvenance": {
+      "filteredTip": "310d9cb98a2f5303cbfe46e499652719eed697d8",
+      "filteredTipTree": "3af7eac9ba02a08aeb6c27a8789179b1dcb408a8",
+      "filteredTipFileCount": 82,
+      "sourceCurrent": true,
+      "repositoryProvenancePreserved": true,
+      "repositoryFilterSpecPreserved": true,
+      "sourceExtractionPerformed": false,
+      "historyRewritePerformed": false
+    },
+    "resolvedLocalGates": [
+      {
+        "gate": "source-current",
+        "result": "pass",
+        "evidence": "The umbrella source and preserved filtered tip remain object-identical."
+      },
+      {
+        "gate": "manifest-product-reference-digest",
+        "result": "pass",
+        "path": "docs/00-start-here.md",
+        "sha256": "d1a086cba634b789f6dc1820108d66ae223890a5a497c1bcae3998734ab4cd62",
+        "handoff": "Exact digest supplied to the umbrella manifest owner."
+      },
+      {
+        "gate": "environment-schema",
+        "result": "pass",
+        "path": "docs/reference/site-environment-variable-contract.json",
+        "sha256": "905877f4e9962e84192defe4c2e28ec8d09b566a597152fdd61e7c6180d8ee40",
+        "interpretation": "The one public input is documented and checked with a reserved placeholder while the canonical/provider value remains owner-controlled."
+      },
+      {
+        "gate": "local-readiness-source-binding",
+        "result": "pass",
+        "path": "docs/reference/generated/site-local-readiness-baseline.json",
+        "sha256": "15a594fb0f635b659a89e445e38c15f3bfadad921e25e5dfd4aea1c3d3e27207",
+        "sourceInputDigest": "669c1e2c26f37a314897969876090c38928205a8e414a2d99d74b9703d67d631",
+        "network": "loopback-only"
+      },
+      {
+        "gate": "foundation-local-shape",
+        "result": "pass",
+        "evidence": "Repository identity, contained workspace, lockfile, target-local tooling, source boundary, and immutable extraction provenance remain reconciled."
+      }
+    ],
+    "foundationReceipt": {
+      "path": "docs/reference/generated/repository-foundation-receipt.json",
+      "sha256": "9ccb7a9301d0f90c8c7a68349e625b7bcdda9e985c7670cb1abfbe1a075d2a07",
+      "manifestDigest": "52b7a33e25ae34e08ca7e815edcfafbb83f0a17d56bb1120e89dc8cfbd375817",
+      "profileDigest": "20ac761b45c7e4ccf26855930b182b26e358e0bdfe42e260654ea3cd507b4981",
+      "contentDigest": "b61a1e568a973170ee3d83c319c24ba3ee1c3300b404a847a808554e0b45f8c4",
+      "materializationInput": {
+        "kind": "temporary-exact-copy-of-canonical-manifest-with-approved-router-digest",
+        "sha256": "87541a899a5d026a9c096a531930960ca13053e91c9837655668696a8a336c32",
+        "routerDigest": "d1a086cba634b789f6dc1820108d66ae223890a5a497c1bcae3998734ab4cd62",
+        "canonicalUpdateOwner": "umbrella-migration-coordinator"
+      },
+      "foundationGate": "ready",
+      "localShadowGate": "blocked-external-owner-gates-remain",
+      "externalMutations": []
+    },
+    "remainingExternalOwnerGates": [
+      {
+        "id": "site-content-rights-and-legal",
+        "requires": "Authorized brand, content, customer/privacy, asset/font provenance and rights, scanner review, license, NOTICE, contributor, and public-distribution decisions."
+      },
+      {
+        "id": "site-domain-network-and-provider",
+        "requires": "Authorized canonical domain/redirect, tracked network-target necessity, privacy/security, registrar/DNS, and provider-value decisions."
+      },
+      {
+        "id": "site-quality-and-preview",
+        "requires": "Owner-approved accessibility, SEO, performance, bundle, and image budgets plus cross-platform/provider CI and protected preview evidence."
+      },
+      {
+        "id": "site-governance-and-operations",
+        "requires": "Authenticated owner/recovery/CODEOWNERS/security/branch-control decisions and remote, hosting, analytics, deployment, rollback, incident, monitoring, SLO, and cost authority."
+      }
+    ],
+    "locallyDecidableGateCountRemaining": 0,
+    "controls": {
+      "remoteInspection": false,
+      "remoteMutation": false,
+      "networkAccess": false,
+      "registryAccess": false,
+      "deploymentMutation": false,
+      "providerMutation": false,
+      "externalMutations": []
+    }
+  }
 }
