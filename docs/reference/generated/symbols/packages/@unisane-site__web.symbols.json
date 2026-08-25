@@ -1,0 +1,470 @@
+{
+  "schemaVersion": 1,
+  "source": {
+    "packageManifest": "apps/web/package.json",
+    "sourceRoot": "apps/web"
+  },
+  "summary": {
+    "package": "@unisane-site/web",
+    "owner": "site-apps/web",
+    "packageDir": "apps/web",
+    "sourceFileCount": 24,
+    "symbolCount": 36,
+    "functionCount": 36,
+    "publicFunctionCount": 22,
+    "internalFunctionCount": 14,
+    "serviceLayerFunctionCount": 0
+  },
+  "owner": "unisane-site",
+  "status": "generated",
+  "generatorScript": "scripts/commands/references/generate-symbol-reference.mjs",
+  "generatorVersion": 1,
+  "sourceCommit": "workspace",
+  "sourceFiles": [
+    "apps/web",
+    "apps/web/package.json"
+  ],
+  "records": [
+    {
+      "name": "RootLayout",
+      "kind": "function",
+      "package": "@unisane-site/web",
+      "owner": "site-apps/web",
+      "file": "apps/web/app/layout.tsx",
+      "exported": true,
+      "tags": [
+        "public"
+      ],
+      "signatureShort": "RootLayout({ children, })",
+      "layer": "package-layer"
+    },
+    {
+      "name": "Home",
+      "kind": "function",
+      "package": "@unisane-site/web",
+      "owner": "site-apps/web",
+      "file": "apps/web/app/page.tsx",
+      "exported": true,
+      "tags": [
+        "public"
+      ],
+      "signatureShort": "Home()",
+      "layer": "package-layer"
+    },
+    {
+      "name": "ServicesPage",
+      "kind": "function",
+      "package": "@unisane-site/web",
+      "owner": "site-apps/web",
+      "file": "apps/web/app/services/page.tsx",
+      "exported": true,
+      "tags": [
+        "public"
+      ],
+      "signatureShort": "ServicesPage()",
+      "layer": "package-layer"
+    },
+    {
+      "name": "WorkPage",
+      "kind": "function",
+      "package": "@unisane-site/web",
+      "owner": "site-apps/web",
+      "file": "apps/web/app/work/page.tsx",
+      "exported": true,
+      "tags": [
+        "public"
+      ],
+      "signatureShort": "WorkPage()",
+      "layer": "package-layer"
+    },
+    {
+      "name": "HeroSection",
+      "kind": "function",
+      "package": "@unisane-site/web",
+      "owner": "site-apps/web",
+      "file": "apps/web/components/home/hero-section.tsx",
+      "exported": true,
+      "tags": [
+        "public"
+      ],
+      "signatureShort": "HeroSection()",
+      "layer": "package-layer"
+    },
+    {
+      "name": "getDisplayUrl",
+      "kind": "const-function",
+      "package": "@unisane-site/web",
+      "owner": "site-apps/web",
+      "file": "apps/web/components/home/portfolio-section.tsx",
+      "exported": false,
+      "tags": [],
+      "signatureShort": "getDisplayUrl(url)",
+      "layer": "package-layer"
+    },
+    {
+      "name": "PortfolioSection",
+      "kind": "function",
+      "package": "@unisane-site/web",
+      "owner": "site-apps/web",
+      "file": "apps/web/components/home/portfolio-section.tsx",
+      "exported": true,
+      "tags": [
+        "public"
+      ],
+      "signatureShort": "PortfolioSection()",
+      "layer": "package-layer"
+    },
+    {
+      "name": "cx",
+      "kind": "function",
+      "package": "@unisane-site/web",
+      "owner": "site-apps/web",
+      "file": "apps/web/components/home/process-section.tsx",
+      "exported": false,
+      "tags": [],
+      "signatureShort": "cx(parts)",
+      "layer": "package-layer"
+    },
+    {
+      "name": "PlaceholderMedia",
+      "kind": "function",
+      "package": "@unisane-site/web",
+      "owner": "site-apps/web",
+      "file": "apps/web/components/home/process-section.tsx",
+      "exported": false,
+      "tags": [],
+      "signatureShort": "PlaceholderMedia({ label })",
+      "layer": "package-layer"
+    },
+    {
+      "name": "ProcessImage",
+      "kind": "function",
+      "package": "@unisane-site/web",
+      "owner": "site-apps/web",
+      "file": "apps/web/components/home/process-section.tsx",
+      "exported": false,
+      "tags": [],
+      "signatureShort": "ProcessImage({ src, alt })",
+      "layer": "package-layer"
+    },
+    {
+      "name": "ProcessSection",
+      "kind": "function",
+      "package": "@unisane-site/web",
+      "owner": "site-apps/web",
+      "file": "apps/web/components/home/process-section.tsx",
+      "exported": true,
+      "tags": [
+        "public"
+      ],
+      "signatureShort": "ProcessSection({ className, id = \"process-section\", eyebrow = \"How we build\", title = \"Plan, build, launch—then scale\", description = \"Clear architecture, a reusable design syst...",
+      "layer": "package-layer"
+    },
+    {
+      "name": "usePrefersReducedMotion",
+      "kind": "function",
+      "package": "@unisane-site/web",
+      "owner": "site-apps/web",
+      "file": "apps/web/components/home/process-section.tsx",
+      "exported": false,
+      "tags": [],
+      "signatureShort": "usePrefersReducedMotion()",
+      "layer": "package-layer"
+    },
+    {
+      "name": "getVariant",
+      "kind": "const-function",
+      "package": "@unisane-site/web",
+      "owner": "site-apps/web",
+      "file": "apps/web/components/home/rotating-text.tsx",
+      "exported": false,
+      "tags": [],
+      "signatureShort": "getVariant(index): Variant",
+      "layer": "package-layer"
+    },
+    {
+      "name": "RotatingText",
+      "kind": "function",
+      "package": "@unisane-site/web",
+      "owner": "site-apps/web",
+      "file": "apps/web/components/home/rotating-text.tsx",
+      "exported": true,
+      "tags": [
+        "public"
+      ],
+      "signatureShort": "RotatingText()",
+      "layer": "package-layer"
+    },
+    {
+      "name": "useCurrentVariant",
+      "kind": "function",
+      "package": "@unisane-site/web",
+      "owner": "site-apps/web",
+      "file": "apps/web/components/home/rotating-text.tsx",
+      "exported": true,
+      "tags": [
+        "public"
+      ],
+      "signatureShort": "useCurrentVariant()",
+      "layer": "package-layer"
+    },
+    {
+      "name": "ServicesSection",
+      "kind": "function",
+      "package": "@unisane-site/web",
+      "owner": "site-apps/web",
+      "file": "apps/web/components/home/services-section.tsx",
+      "exported": true,
+      "tags": [
+        "public"
+      ],
+      "signatureShort": "ServicesSection()",
+      "layer": "package-layer"
+    },
+    {
+      "name": "TechStackSection",
+      "kind": "function",
+      "package": "@unisane-site/web",
+      "owner": "site-apps/web",
+      "file": "apps/web/components/home/tech-stack-section.tsx",
+      "exported": true,
+      "tags": [
+        "public"
+      ],
+      "signatureShort": "TechStackSection()",
+      "layer": "package-layer"
+    },
+    {
+      "name": "FooterColumn",
+      "kind": "function",
+      "package": "@unisane-site/web",
+      "owner": "site-apps/web",
+      "file": "apps/web/components/layouts/footer.tsx",
+      "exported": false,
+      "tags": [],
+      "signatureShort": "FooterColumn({ title, links, })",
+      "layer": "package-layer"
+    },
+    {
+      "name": "SiteFooter",
+      "kind": "function",
+      "package": "@unisane-site/web",
+      "owner": "site-apps/web",
+      "file": "apps/web/components/layouts/footer.tsx",
+      "exported": true,
+      "tags": [
+        "public"
+      ],
+      "signatureShort": "SiteFooter()",
+      "layer": "package-layer"
+    },
+    {
+      "name": "SiteHeader",
+      "kind": "function",
+      "package": "@unisane-site/web",
+      "owner": "site-apps/web",
+      "file": "apps/web/components/layouts/main-header.tsx",
+      "exported": true,
+      "tags": [
+        "public"
+      ],
+      "signatureShort": "SiteHeader()",
+      "layer": "package-layer"
+    },
+    {
+      "name": "PageLayout",
+      "kind": "function",
+      "package": "@unisane-site/web",
+      "owner": "site-apps/web",
+      "file": "apps/web/components/layouts/page-layout.tsx",
+      "exported": true,
+      "tags": [
+        "public"
+      ],
+      "signatureShort": "PageLayout({ children, mainClassName })",
+      "layer": "package-layer"
+    },
+    {
+      "name": "Providers",
+      "kind": "function",
+      "package": "@unisane-site/web",
+      "owner": "site-apps/web",
+      "file": "apps/web/components/providers.tsx",
+      "exported": true,
+      "tags": [
+        "public"
+      ],
+      "signatureShort": "Providers({ children })",
+      "layer": "package-layer"
+    },
+    {
+      "name": "Logo",
+      "kind": "function",
+      "package": "@unisane-site/web",
+      "owner": "site-apps/web",
+      "file": "apps/web/components/shared/logo.tsx",
+      "exported": true,
+      "tags": [
+        "public"
+      ],
+      "signatureShort": "Logo({ className, title = \"Unisane logo\", \"aria-hidden\": ariaHidden, size = 32, style, ...rest })",
+      "layer": "package-layer"
+    },
+    {
+      "name": "ThemeToggle",
+      "kind": "function",
+      "package": "@unisane-site/web",
+      "owner": "site-apps/web",
+      "file": "apps/web/components/shared/theme-toggle.tsx",
+      "exported": true,
+      "tags": [
+        "public"
+      ],
+      "signatureShort": "ThemeToggle()",
+      "layer": "package-layer"
+    },
+    {
+      "name": "Button",
+      "kind": "function",
+      "package": "@unisane-site/web",
+      "owner": "site-apps/web",
+      "file": "apps/web/components/ui/button.tsx",
+      "exported": true,
+      "tags": [
+        "public"
+      ],
+      "signatureShort": "Button({ className, variant, size, asChild = false, ...props })",
+      "layer": "package-layer"
+    },
+    {
+      "name": "ensureObserver",
+      "kind": "function",
+      "package": "@unisane-site/web",
+      "owner": "site-apps/web",
+      "file": "apps/web/hooks/use-header-section.ts",
+      "exported": false,
+      "tags": [],
+      "signatureShort": "ensureObserver()",
+      "layer": "package-layer"
+    },
+    {
+      "name": "updateActiveTheme",
+      "kind": "function",
+      "package": "@unisane-site/web",
+      "owner": "site-apps/web",
+      "file": "apps/web/hooks/use-header-section.ts",
+      "exported": false,
+      "tags": [],
+      "signatureShort": "updateActiveTheme()",
+      "layer": "package-layer"
+    },
+    {
+      "name": "useHeaderSection",
+      "kind": "function",
+      "package": "@unisane-site/web",
+      "owner": "site-apps/web",
+      "file": "apps/web/hooks/use-header-section.ts",
+      "exported": true,
+      "tags": [
+        "public"
+      ],
+      "signatureShort": "useHeaderSection(theme)",
+      "layer": "package-layer"
+    },
+    {
+      "name": "createBaseMetadata",
+      "kind": "function",
+      "package": "@unisane-site/web",
+      "owner": "site-apps/web",
+      "file": "apps/web/lib/seo/create-metadata.ts",
+      "exported": true,
+      "tags": [
+        "public"
+      ],
+      "signatureShort": "createBaseMetadata(): Metadata",
+      "layer": "package-layer"
+    },
+    {
+      "name": "createPageMetadata",
+      "kind": "function",
+      "package": "@unisane-site/web",
+      "owner": "site-apps/web",
+      "file": "apps/web/lib/seo/create-metadata.ts",
+      "exported": true,
+      "tags": [
+        "public"
+      ],
+      "signatureShort": "createPageMetadata(route, overrides): Metadata",
+      "layer": "package-layer"
+    },
+    {
+      "name": "mergeEntry",
+      "kind": "const-function",
+      "package": "@unisane-site/web",
+      "owner": "site-apps/web",
+      "file": "apps/web/lib/seo/create-metadata.ts",
+      "exported": false,
+      "tags": [],
+      "signatureShort": "mergeEntry(entry): SeoEntry",
+      "layer": "package-layer"
+    },
+    {
+      "name": "normaliseOgImages",
+      "kind": "const-function",
+      "package": "@unisane-site/web",
+      "owner": "site-apps/web",
+      "file": "apps/web/lib/seo/create-metadata.ts",
+      "exported": false,
+      "tags": [],
+      "signatureShort": "normaliseOgImages(images, fallback)",
+      "layer": "package-layer"
+    },
+    {
+      "name": "normaliseTwitterImages",
+      "kind": "const-function",
+      "package": "@unisane-site/web",
+      "owner": "site-apps/web",
+      "file": "apps/web/lib/seo/create-metadata.ts",
+      "exported": false,
+      "tags": [],
+      "signatureShort": "normaliseTwitterImages(images, fallback)",
+      "layer": "package-layer"
+    },
+    {
+      "name": "toAbsolute",
+      "kind": "const-function",
+      "package": "@unisane-site/web",
+      "owner": "site-apps/web",
+      "file": "apps/web/lib/seo/create-metadata.ts",
+      "exported": false,
+      "tags": [],
+      "signatureShort": "toAbsolute(path)",
+      "layer": "package-layer"
+    },
+    {
+      "name": "toArray",
+      "kind": "const-function",
+      "package": "@unisane-site/web",
+      "owner": "site-apps/web",
+      "file": "apps/web/lib/seo/create-metadata.ts",
+      "exported": false,
+      "tags": [],
+      "signatureShort": "toArray(value): T[] | undefined",
+      "layer": "package-layer"
+    },
+    {
+      "name": "cn",
+      "kind": "function",
+      "package": "@unisane-site/web",
+      "owner": "site-apps/web",
+      "file": "apps/web/lib/utils.ts",
+      "exported": true,
+      "tags": [
+        "public"
+      ],
+      "signatureShort": "cn(inputs)",
+      "layer": "package-layer"
+    }
+  ],
+  "generatedAt": "content-hash:30d6827d711b"
+}
