@@ -28,7 +28,10 @@ approved cutover.
 - [Public-history safety checkpoint](reference/generated/repository-public-history-safety-checkpoint-receipt.json)
 - [Site asset, font, and network inventory](reference/generated/site-asset-font-network-inventory.json)
 - [Site environment-variable contract](reference/site-environment-variable-contract.json)
-- [Phase 2 foundation and source reconciliation](reference/phase-2-foundation-and-source-reconciliation.json)
+
+## Current product memory
+
+- [SEO and public URL management gap](findings/F-20260420-web-seo-and-public-url-management-gap.md)
 
 The approved bootstrap owns `AGENTS.md`, `skopos.config.yaml`, and the local Scope.
 Reviewed existing-project adoption is activated for target-local Skopos Tasks, Evidence,
