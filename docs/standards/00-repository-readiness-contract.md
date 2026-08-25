@@ -19,23 +19,25 @@ visibility, publication, DNS or hosting changes, or deployment.
 
 ## Governing Authority
 
-This contract applies, but does not replace, the accepted umbrella authorities:
+This contract applies, but does not replace, the canonical repository owners:
 
-- `docs/standards/04-ecosystem-architecture.md`
-- `docs/decisions/D-20260724-unisane-ecosystem-repository-remote-and-visibility-contract.md`
-- `docs/work/plans/unisane-ecosystem-repository-separation-and-git-governance-plan.md`
+- The Infrastructure [ecosystem architecture Standard](https://github.com/unisanetech/unisane-infrastructure/blob/main/docs/standards/04-ecosystem-architecture.md)
+  and [repository remote and visibility Decision](https://github.com/unisanetech/unisane-infrastructure/blob/main/docs/decisions/D-20260724-unisane-ecosystem-repository-remote-and-visibility-contract.md)
+  own repository topology, visibility, and authority transfer. Until cutover is
+  explicitly completed, this repository remains a local, non-authoritative candidate.
 - `unisane-infrastructure/repository-system/manifests/unisane-site.json`
-- `docs/standards/10-ui-application-architecture-baseline.md`
-- `docs/standards/06-docs-structure-and-authority.md`
-- `docs/standards/docs-metadata-and-changelog-standard.md`
-- `docs/standards/08-workspace-build-and-tooling-simplicity-contract.md`
+- The UI [application architecture baseline](https://github.com/unisanetech/unisane-ui/blob/main/docs/standards/10-ui-application-architecture-baseline.md)
+  owns the shared UI application contract.
+- The Framework [documentation structure and authority Standard](https://github.com/unisanetech/unisane/blob/main/docs/standards/06-docs-structure-and-authority.md),
+  [documentation metadata and changelog Standard](https://github.com/unisanetech/unisane/blob/main/docs/standards/docs-metadata-and-changelog-standard.md),
+  and [workspace build and tooling simplicity Standard](https://github.com/unisanetech/unisane/blob/main/docs/standards/08-workspace-build-and-tooling-simplicity-contract.md)
+  own documentation and workspace conventions.
 - `AGENTS.md` and the accepted security/public-history rules embedded in the separation
   authority
 
 If this document conflicts with one of those canonical owners, the canonical owner wins
-and this contract must be corrected. The umbrella remains the only writable source
-authority until cutover; repo-local Skopos owns target-local Tasks, Evidence, Readiness,
-and closure only.
+and this contract must be corrected. Repo-local Skopos owns target-local Tasks,
+Evidence, Readiness, and closure only.
 
 ## Truth Discipline
 
