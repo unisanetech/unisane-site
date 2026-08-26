@@ -3,11 +3,11 @@
   "receiptKind": "public-history-safety-checkpoint",
   "scope": "all objects reachable from the exact approved local Site checkpoint",
   "checkpoint": {
-    "commit": "0c208a072a3d28b820f566f3ad6841aeb1c0b9ca",
-    "tree": "b455013a87c8adac10cf5ee5201981f98c4195df"
+    "commit": "2e7c369c6ebbcbb38f91da7afcc19ab97544830c",
+    "tree": "4679e70ab9fd7d3c6195ae3c9512b094ee268e89"
   },
   "sourceBinding": {
-    "certificateInputDigest": "81132a32cc976710b966c6786f3451a209c38a9dfb8a414d220e7365db4fe875",
+    "certificateInputDigest": "f7ef8205137e1e86c55ffe5720a8fd143e40914cbec6c011e1e606d52dcbd5b8",
     "inputs": [
       {
         "inputId": "checker",
@@ -15,7 +15,7 @@
       },
       {
         "inputId": "filter-spec",
-        "digest": "8b26eb576f5d0313412b869360cb4ca76afca426cf8f3f48a714034c26b1e347"
+        "digest": "154e352c377966b6333aa847b4899741881b1f7f998442841d91bc20a3bb85bb"
       },
       {
         "inputId": "provenance",
@@ -40,24 +40,24 @@
     "failClosedUnscannedObjectBytes": 16777216
   },
   "history": {
-    "commitCount": 34,
-    "mergeCommitCount": 0,
+    "commitCount": 57,
+    "mergeCommitCount": 1,
     "authorIdentityCount": 1,
     "authorIdentitySetDigest": "2100bcb7085a77fada11cc8451226228f7e137806c63f7a4e344922977a45e32",
-    "objectCount": 599,
-    "commitObjectCount": 34,
-    "treeCount": 260,
+    "objectCount": 776,
+    "commitObjectCount": 57,
+    "treeCount": 367,
     "tagObjectCount": 0,
-    "blobCount": 305,
-    "totalBlobBytes": 15307740,
-    "objectSetDigest": "ba2bfb43a6a46710f3fb869eb10fe0f87df7a166e48260c53829386e202602f3",
+    "blobCount": 352,
+    "totalBlobBytes": 15922565,
+    "objectSetDigest": "a3df800d32e9f1ea602ca639c2d011b2235f78f348a17270b78a223f398761b5",
     "pathAssociations": {
-      "count": 313,
-      "blobCount": 305,
-      "uniqueCommitTreeCount": 34,
-      "setDigest": "1d698ca5b68a9ea8cf8cb19082eec7eb77dfd2b16aae4958a716d8eee9edcdc3"
+      "count": 360,
+      "blobCount": 352,
+      "uniqueCommitTreeCount": 57,
+      "setDigest": "5a4403e65fc0514e13e19f8bde1fb9efb019b051b0a403a16beedf85f0568206"
     },
-    "pathStateDigest": "1058a033567b3de27125e25c3d7d45e6b2e25dac9af55d72408444170042cac4",
+    "pathStateDigest": "000b183364bb3639483632cf8a195dac0617e4d5921a156f2032238b9b9ace2d",
     "binary": {
       "count": 21,
       "categories": [
@@ -125,8 +125,8 @@
       ]
     },
     "reviewSignals": {
-      "occurrenceCount": 852,
-      "blobCount": 102,
+      "occurrenceCount": 1735,
+      "blobCount": 139,
       "categoryCount": 5,
       "categories": [
         {
@@ -137,27 +137,27 @@
         },
         {
           "category": "customer-or-testimonial-language",
-          "occurrenceCount": 495,
-          "blobCount": 53,
-          "signalSetDigest": "85063a37cd7c7be7ec2be85f2c3800547462fa581ec99f8531ef6a9058985ae1"
+          "occurrenceCount": 655,
+          "blobCount": 74,
+          "signalSetDigest": "5a31c8699d59ab253cab147a38f4c5740ecb40a21b5e3a0612acd11156763b9b"
         },
         {
           "category": "email-like-value",
-          "occurrenceCount": 11,
-          "blobCount": 6,
-          "signalSetDigest": "4de62894e930b9c31d2141f4eea93cb92a084c860579b78cc8b4d77126a1abbf"
+          "occurrenceCount": 12,
+          "blobCount": 7,
+          "signalSetDigest": "ff516983008232e1deb23669872b79d02e0085542ab45a8d96e91d39cd494308"
         },
         {
           "category": "phone-like-value",
-          "occurrenceCount": 245,
-          "blobCount": 45,
-          "signalSetDigest": "bf44699ce985aef64c2f440e923d6f3924f71492256ce46dc6224de9ed366bf7"
+          "occurrenceCount": 943,
+          "blobCount": 71,
+          "signalSetDigest": "9ac570622962f139bc3fa4bf5a995ef779597ebc5bdc3b63569b2515452cff6e"
         },
         {
           "category": "raw-network-or-provider-target",
-          "occurrenceCount": 91,
-          "blobCount": 32,
-          "signalSetDigest": "bc8ecfa6b6b3b10595d798d535cb2dc80770fc81b1bd0777d43ac99148eb5fa3"
+          "occurrenceCount": 115,
+          "blobCount": 38,
+          "signalSetDigest": "c46a6be24553128574abf38cab0ef9134a8f580053729b37cfeaedfbf17a1a3b"
         }
       ]
     },
@@ -168,8 +168,8 @@
       "categories": []
     },
     "contentSignalPathAssociations": {
-      "count": 853,
-      "setDigest": "386ada98226c3d0e1306d76549ff3b3caa5b590702330fd74b7e7b34b1c6295b"
+      "count": 1736,
+      "setDigest": "4acf07375abafe1b57036dcd59d4e8ca5a5fdefd9f3f9021309bc04a87fe1373"
     },
     "blockers": {
       "highConfidenceSecretOccurrenceCount": 0,
