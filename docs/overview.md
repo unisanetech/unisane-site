@@ -35,8 +35,10 @@ removes the generic package/config shells, removes every `@workspace/*` identity
 source alias, and owns one Node 24.13.0 / pnpm 10.26.0 workspace and lockfile. A
 same-host archive-backed checkout proves an empty-store frozen install and the exact
 provider-neutral `ci:verify` sequence for source-safety, typecheck, lint, build, test,
-local-readiness, and repository-boundary. No provider workflow or cross-platform CI is
-approved or active.
+local-readiness, and repository-boundary. The staged GitHub Actions workflow performs
+that same frozen-install and `ci:verify` contract with read-only repository permission
+and no credentials, release, or deployment behavior. It has not run on a hosted remote
+and is not yet an approved required check.
 
 Target-local Skopos adoption is activated and owns only this repository's local Tasks,
 Evidence, Readiness, and closure. It does not transfer writable Site source authority

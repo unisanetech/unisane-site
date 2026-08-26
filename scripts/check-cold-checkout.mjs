@@ -243,7 +243,7 @@ const report = {
   },
   ciParity: {
     declaration: 'package.json#scripts.ci:verify',
-    providerWorkflow: 'absent-by-design-pending-remote-and-security-authority',
+    providerWorkflow: '.github/workflows/ci.yml',
     commands: parityCommands,
     registeredActionCommandsMatched: false,
     registeredActionBindingsMatched: false,
