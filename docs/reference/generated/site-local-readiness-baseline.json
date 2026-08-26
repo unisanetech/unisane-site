@@ -161,22 +161,22 @@
           "route": "/",
           "sampleCount": 5,
           "responseBytes": 187239,
-          "medianMilliseconds": 3.431,
-          "p95Milliseconds": 3.653
+          "medianMilliseconds": 3.291,
+          "p95Milliseconds": 3.691
         },
         {
           "route": "/services",
           "sampleCount": 5,
           "responseBytes": 43863,
-          "medianMilliseconds": 1.169,
-          "p95Milliseconds": 1.348
+          "medianMilliseconds": 1.274,
+          "p95Milliseconds": 1.476
         },
         {
           "route": "/work",
           "sampleCount": 5,
           "responseBytes": 57567,
-          "medianMilliseconds": 1.426,
-          "p95Milliseconds": 1.886
+          "medianMilliseconds": 1.29,
+          "p95Milliseconds": 1.557
         }
       ]
     },
@@ -195,8 +195,8 @@
       },
       "routeHtml": [
         { "route": "/", "htmlBytes": 187239, "htmlGzipBytes": 36178 },
-        { "route": "/services", "htmlBytes": 43863, "htmlGzipBytes": 8571 },
-        { "route": "/work", "htmlBytes": 57567, "htmlGzipBytes": 8815 }
+        { "route": "/services", "htmlBytes": 43863, "htmlGzipBytes": 8574 },
+        { "route": "/work", "htmlBytes": 57567, "htmlGzipBytes": 8818 }
       ],
       "assets": [
         {
