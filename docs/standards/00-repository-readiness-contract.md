@@ -3,10 +3,10 @@ id: 'DOC-31092dd4b5be'
 owner: 'site-maintainers'
 scope: workspace
 role: standard
-lifecycle: durable
+lifecycle: historical
 authority: supporting
 provenance: accepted
-view: target
+view: transition
 status: accepted
 ---
 

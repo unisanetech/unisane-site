@@ -11,16 +11,14 @@ view: current
 
 # Unisane Site Documentation
 
-This is the repository-local documentation router for the non-authoritative standalone
-Site candidate. The umbrella `dev` branch remains writable authority until a separately
-approved cutover.
+This is the documentation router for the standalone `unisane-site` repository. The
+repository and its `main` remote exist; the final one-authority cutover from the umbrella
+remains a separate explicit governance action.
 
 ## Start here
 
 - [Site overview](overview.md)
-- [Repository readiness contract](standards/00-repository-readiness-contract.md)
-- [Source and history inventory](reference/current-source-and-history-inventory.md)
-- [Source-safety disposition](reference/source-safety-disposition.md)
+- [Standalone repository boundary](standards/01-standalone-repository-boundary.md)
 - [Repository provenance](repository-provenance.json)
 - [Generated foundation receipt](reference/generated/repository-foundation-receipt.json)
 - [Filtered-history checkpoint receipt](reference/generated/repository-filtered-history-checkpoint-receipt.json)
@@ -33,10 +31,15 @@ approved cutover.
 
 - [SEO and public URL management gap](findings/F-20260420-web-seo-and-public-url-management-gap.md)
 
-The approved bootstrap owns `AGENTS.md`, `skopos.config.yaml`, and the local Scope.
-Reviewed existing-project adoption is activated for target-local Skopos Tasks, Evidence,
-Readiness, and closure only. It does not transfer source authority: the umbrella `dev`
-branch remains writable Site authority until a separately approved cutover.
+## Historical migration evidence
+
+- [Repository readiness contract](standards/00-repository-readiness-contract.md)
+- [Source and history inventory](reference/current-source-and-history-inventory.md)
+- [Source-safety disposition](reference/source-safety-disposition.md)
+
+`AGENTS.md`, `skopos.config.yaml`, and the local Scope own repository-local agent and
+Project Memory behavior. Skopos Tasks, Evidence, Readiness, and closure are local to this
+repository and do not depend on the umbrella.
 
 `pnpm check:repository-boundary` is the live repository boundary and Git integrity
 authority. `pnpm check:history-safety` is the live complete reachable-history safety

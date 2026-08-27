@@ -14,8 +14,20 @@ const root = git('rev-parse', '--show-toplevel')
 const parent = dirname(root)
 const tracked = git('ls-files', '-z').split('\0').filter(Boolean)
 const remotes = git('remote').split('\n').filter(Boolean)
+const remoteUrls = Object.fromEntries(
+  remotes.map((name) => [name, git('remote', 'get-url', name)]),
+)
 const indexEntries = git('ls-files', '--stage').split('\n').filter(Boolean)
 const failures = []
+
+const approvedOriginUrls = new Set([
+  'git@github.com:unisanetech/unisane-site.git',
+  'https://github.com/unisanetech/unisane-site.git',
+])
+const approvedRemoteTrackingRefs = new Set([
+  'refs/remotes/origin/HEAD',
+  'refs/remotes/origin/main',
+])
 
 const listFiles = (directory) => {
   if (!existsSync(directory)) return []
@@ -74,9 +86,16 @@ if (
 ) {
   failures.push('nested unisane-landing residue is tracked')
 }
-if (remotes.length > 0) failures.push('repository has a remote')
-if (remoteTrackingRefs.length > 0)
-  failures.push('repository has remote-tracking ref residue')
+if (
+  remotes.some(
+    (name) => name !== 'origin' || !approvedOriginUrls.has(remoteUrls[name]),
+  )
+) {
+  failures.push('repository has an unapproved remote authority')
+}
+if (remoteTrackingRefs.some((ref) => !approvedRemoteTrackingRefs.has(ref))) {
+  failures.push('repository has unapproved remote-tracking refs')
+}
 if (fsck.status !== 0) failures.push('Git object/ref integrity check failed')
 if (parentAuthority.length > 0)
   failures.push('parent container exposes repository authority')
@@ -127,6 +146,7 @@ const report = {
   trackedFileCount: tracked.length,
   remoteCount: remotes.length,
   remoteNames: remotes,
+  remoteUrls,
   remoteTrackingRefs,
   gitIntegrity: {
     command: 'git fsck --full --strict --no-reflogs --no-progress',

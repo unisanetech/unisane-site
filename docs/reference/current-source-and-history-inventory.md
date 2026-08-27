@@ -3,10 +3,10 @@ id: 'DOC-12a19c8c930e'
 owner: 'site-maintainers'
 scope: workspace
 role: reference
-lifecycle: durable
+lifecycle: historical
 authority: supporting
 provenance: observed
-view: current
+view: transition
 status: accepted
 ---
 

@@ -3,7 +3,7 @@ id: 'DOC-c9d713a6f214'
 owner: 'site-maintainers'
 scope: workspace
 role: reference
-lifecycle: active
+lifecycle: historical
 authority: supporting
 provenance: observed
 view: transition

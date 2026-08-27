@@ -14,6 +14,10 @@
   "name": "unisane-site",
   "packageManager": "pnpm@10.26.0",
   "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/unisanetech/unisane-site.git"
+  },
   "scripts": {
     "build": "turbo run build",
     "check:asset-inventory": "node scripts/check-site-asset-inventory.mjs",

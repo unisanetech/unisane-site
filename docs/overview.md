@@ -6,60 +6,46 @@ role: overview
 lifecycle: durable
 authority: supporting
 provenance: accepted
-view: transition
+view: current
 status: accepted
 ---
 
 # Unisane Site Overview
 
-The intended `unisane-site` repository is the public Unisane brand, marketing,
-discovery, documentation-routing, support-link, and website deployment owner. It is a
-publication gateway, not writable product or package truth.
+`unisane-site` is the public Unisane brand, marketing, discovery,
+documentation-routing, support-link, and website deployment repository. It is a
+publication gateway, not writable product, package, pricing, or technical-contract
+truth.
 
-## Current State
+## Current state
 
-This local standalone candidate is filtered from umbrella commit
-`e3cb9c768c1b3b96c059269b2a68d0db1624b9bc`. The historical
-`unisane-landing/**` path is renamed to repository root, the approved public-site
-foundation is materialized, and the candidate has no remote. The umbrella `dev` branch
-remains the only writable Site authority.
+The standalone repository exists at `github.com/unisanetech/unisane-site`, uses `main`,
+and owns its complete source, workspace, lockfile, CI declarations, documentation,
+generated evidence, and local Skopos memory. It no longer depends on the umbrella
+checkout, a sibling repository, or the checkout parent.
 
-The authoritative tree now removes the generic template README identity, the simulated
-onboarding route/form/success path, every CTA to that route, unapproved contact/social/
-legal destinations, empty scaffolds, and copied UI components that have no import path
-from the retained routes. A dependency-free Site-local check prevents those behaviors
-and broken static internal targets from returning.
+The repository has one deployable application under `apps/web/**`. UI that is genuinely
+Site-specific is app-owned; shared UI is consumed only through immutable released
+packages. Generic package shells, copied unused components, simulated onboarding,
+empty scaffolds, and `@workspace/*` identities were removed during source convergence.
 
-The standalone target collapses the three used local UI files into app-owned source,
-removes the generic package/config shells, removes every `@workspace/*` identity and
-source alias, and owns one Node 24.13.0 / pnpm 10.26.0 workspace and lockfile. A
-same-host archive-backed checkout proves an empty-store frozen install and the exact
-provider-neutral `ci:verify` sequence for source-safety, typecheck, lint, build, test,
-local-readiness, and repository-boundary. The staged GitHub Actions workflow performs
-that same frozen-install and `ci:verify` contract with read-only repository permission
-and no credentials, release, or deployment behavior. It has not run on a hosted remote
-and is not yet an approved required check.
+Repository and remote existence does not approve public content, assets, licensing,
+deployment, DNS, analytics, or production operation. Those gates remain fail-closed
+until their accountable owners approve them. Final removal of umbrella writable
+authority is also an explicit fleet-governance cutover, not something inferred here.
 
-Target-local Skopos adoption is activated and owns only this repository's local Tasks,
-Evidence, Readiness, and closure. It does not transfer writable Site source authority
-from the umbrella `dev` branch or authorize any external operation.
+## Ownership
 
-The extraction object database was reduced from 110,009 stored objects to the 341
-objects reachable at the reviewed cleanup checkpoint, and the dangling
-`refs/remotes/origin/HEAD` residue was removed. The repo-local boundary check now fails
-on configured remotes, remote-tracking refs, invalid or dangling refs, and Git
-connectivity/integrity errors. The committed filtered-history checkpoint receipt covers
-the 12 imported commits; `pnpm check:history-safety` remains the live authority for all
-history reachable from the current local refs.
+Site owns the public application and Site-local user experience, Site content and
+presentation of immutable product projections, Site-specific quality requirements,
+deployment implementation after environment approval, and repository-local Project
+Memory.
 
-The remaining Site content, brand surfaces, and assets stay behind owner/rights blockers.
-Accessibility, SEO, performance, preview/deployment, full public-history review, legal,
-security, operations, domain, remote, public-release, and production-authority gates
-remain unresolved.
+Site does not own Framework, UI, Ops, Pro, or Platforms truth; mutable copies of product
+documentation; organization GitHub, DNS, cloud, secret, or provider control planes; or
+legal, brand, privacy, security, and production approval by implication.
 
-## Target Relationship
-
-The final dependency direction is downstream only:
+## Dependency direction
 
 ```text
 released Unisane UI packages ------> Site application
@@ -68,7 +54,17 @@ Site requirements -----------------> Site deployment
 Infrastructure desired state ------> GitHub/domain/vendor controls
 ```
 
-The Site never imports sibling source, unpublished packages, writable product docs,
-private platform source, or Infrastructure implementation. Its normal contributor and
-build path must work without Skopos; repo-local Skopos selects and records the same
-conventional commands for maintainers and agents.
+Cross-repository source links, workspace links, symlinks, submodules, branch
+dependencies, and parent-checkout discovery are forbidden. The normal install, build,
+test, and contribution path works from a clean checkout without Skopos.
+
+## Remaining release gates
+
+Before public release or production deployment, accountable owners must resolve source
+and content licensing, NOTICE and attribution, contributor and asset rights, approved
+brand claims and support routes, security and recovery ownership, domains and hosting,
+analytics and privacy, and measurable accessibility, SEO, performance, availability,
+and support budgets.
+
+Historical extraction inventories and dispositions remain under `docs/reference/**` as
+evidence. They are not current source authority.
